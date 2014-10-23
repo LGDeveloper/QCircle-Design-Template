@@ -348,11 +348,11 @@ public class QCircleTemplate {
 				if (firstContent != null) {
 					int parentSize = mFullSize;
 
-					if (mLayoutType == TemplateType.CIRCLE_HORIZONTAL) { // adjust width
+					if (mLayoutType == TemplateType.CIRCLE_VERTICAL) { // adjust width
 						LayoutParams params = firstContent.getLayoutParams();
 						params.width = (int)(parentSize * weight);
 						firstContent.setLayoutParams(params);
-					} else if (mLayoutType == TemplateType.CIRCLE_VERTICAL // adjust height
+					} else if (mLayoutType == TemplateType.CIRCLE_HORIZONTAL // adjust height
 					        || mLayoutType == TemplateType.CIRCLE_COMPLEX) {
 
 						parentSize = (int)(mFullSize * (1 - 0.2 * ((mBackButton != null? 1 : 0) + (mTitle != null? 1
@@ -701,11 +701,9 @@ public class QCircleTemplate {
 					// Gets the current state of the cover
 					int quickCoverState = intent.getIntExtra(EXTRA_ACCESSORY_COVER_STATE,
 					        EXTRA_ACCESSORY_COVER_OPENED);
+					
 					// Log.d(TAG, "quickCoverState= " + quickCoverState);
-
 					if (quickCoverState == EXTRA_ACCESSORY_COVER_CLOSED) { // closed
-						
-
 //						} else
 //							intenta.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						setQuickCircleWindowParam();

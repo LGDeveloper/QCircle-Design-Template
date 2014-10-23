@@ -21,8 +21,8 @@
 
             <RelativeLayout
                 android:id="@+id/side1"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
                 android:padding="@dimen/margin"
                 android:background="@android:color/holo_green_dark" />
 
