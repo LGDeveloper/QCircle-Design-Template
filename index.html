@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Qcircle-design-template by LGDeveloper</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Qcircle-design-template</h1>
+          <h2>Design template library for LG QCircle SDK</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/LGDeveloper/QCircle-Design-Template/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/LGDeveloper/QCircle-Design-Template/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/LGDeveloper/QCircle-Design-Template" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h1>
+
+<h2>
+<a name="lg-qcircle-design-template-overview" class="anchor" href="#lg-qcircle-design-template-overview"><span class="octicon octicon-link"></span></a>LG QCircle Design Template Overview</h2>
+
+<p>In order to develop an application for LG QuickCircle, you have to use the LG QCircle SDK.
+The LG QCircle SDK provides the broadcast intents and QuickCircle position information, but it does not provide the circle layout to display on QuickCircle. Therefore, the developer should design a circle layout and display the layout based on the position information of QuickCircle per model.</p>
+
+<p>The official release site is <a href="http://developer.lge.com">http://developer.lge.com</a> .</p>
+
+<p>The LG QCircle SDK makes development easy, but whenever you build an application, there are simple repetitive tasks to complete, such as designing circle layout, receiving the broadcast intents to verify opening and closing of QuickCircle case, and back button operation processing.</p>
+
+<p>The LG QCircle design template library provides the layout designs and basic UI elements through API, enabling developers to save time designing and using repetitive tasks. The LG QCircle design template library provides various circle layouts and receives QuickCircle broadcast intents, adjusts layout position, and handles back button operation. </p>
+
+<h3>
+<a name="what-are-the-features" class="anchor" href="#what-are-the-features"><span class="octicon octicon-link"></span></a>What are the features?</h3>
+
+<p>The LG QCircle design template provides a library file. In this library, the following features can be used:</p>
+
+<ul>
+<li>Applying various circle layouts on application for QuickCircle</li>
+<li>Automatically displaying layouts on QuickCircle's position per model</li>
+<li>Receiving and processing QuickCircle broadcast intent</li>
+</ul>
+
+<h3>
+<a name="what-kind-of-templates-does-the-library-support" class="anchor" href="#what-kind-of-templates-does-the-library-support"><span class="octicon octicon-link"></span></a>What kind of templates does the library support?</h3>
+
+<p>The LG QCircle design template provides 5 circle layouts as follows: (The title bar and the back button can be added according to developer's choices.)</p>
+
+<ol>
+<li><p>Empty content
+This provides an empty circle space. Any View can be added to this area. 
+However, even though the visible part is a circle, the actual content is a squared figure, so the Views on the four corners can be invisible. To avoid this, place important content away from the four corners when adding a View to the content area.</p></li>
+<li><p>Content with a horizontal sidebar
+This is a circle space with a sidebar on the left. The width of this sidebar can be adjusted.
+Any View can be added to both sides of the sidebar and the content area. The sidebar and the content area is simply meant to divide the space, the actual space for content is not important. 
+As with the Empty content, avoid putting important content on the four corners of the square.</p></li>
+<li><p>Content with a vertical sidebar
+This is a circle space with a sidebar on the upper part. The height of this sidebar can be adjusted.
+Any View can be added to both sides of the sidebar and the content area. The sidebar and the content area is simply meant to divide the space, the actual space for content is not important. 
+As with the Empty content, avoid putting important content on the four corners of the square.</p></li>
+<li><p>Content with two top bars
+This is a circle space with two top bars divided in half equally. The height of this sidebar can be adjusted, but the width for two spaces cannot be changed.
+This layout consists of three spaces - two top bars and one content area. Any View can be added to each space. The sidebar and the content area is simply meant to divide the space, the actual space for content is not important. 
+As with the Empty content, avoid putting important content on the four corners of the square.</p></li>
+<li><p>Content with two sidebars
+This is a circle space with two sidebars on the left and right sides. The width of these sidebars cannot be adjusted.
+This layout consists of three spaces - two sidebars and one content area. Any View can be added to each space. However, because these sidebars are limited in size, they cannot show much content.
+As with the Empty content, avoid putting important content on the four corners of the square.</p></li>
+</ol>
+
+<h1>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<blockquote>
+<p>For a reference guide about the LG QCircle design template library, see the API reference guide included in the design template compressed file.
+When an error occurred while using the LG QCircle design template library, a ‘warning’ appears on the Android logcat, reference the log when application of the design templates does not work</p>
+</blockquote>
+
+<h2>
+<a name="setting-a-template" class="anchor" href="#setting-a-template"><span class="octicon octicon-link"></span></a>Setting a Template</h2>
+
+<p>In order to make an application for QuickCircle with the LG QCircle design template, you have to set the circle layout. You have to use an instance from QCircleTemplate class included in the library in order to use LG QCircle design template in the application.
+This section describes the basic guide for QCircleTemplate class along with the codes.</p>
+
+<h3>
+<a name="setting-a-layout" class="anchor" href="#setting-a-layout"><span class="octicon octicon-link"></span></a>Setting a layout</h3>
+
+<p>You have to create a QCircleTemplate instance in order to apply the circle layout provided by LG QCircle design template to the application. Select which circle layout to use while creating the QCircleTemplate instance. The circle layout of QCircleTemplate cannot be changed once it has been created.</p>
+
+<p>Following code is for applying the content with a horizontal sidebar circle layout.</p>
+
+<div class="highlight highlight-java"><pre><span class="n">QCircleTemplate</span> <span class="n">template</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">QCircleTemplate</span><span class="o">(</span>
+                                           <span class="k">this</span><span class="o">,</span> 
+                                           <span class="n">TemplateType</span><span class="o">.</span><span class="na">CIRCLE_HORIZONTAL</span>
+                                 <span class="o">);</span>
+</pre></div>
+
+<p>The first parameter is for the Activity to apply this layout, and the second parameter refers to the content with a horizontal sidebar. When no second parameter is input, <code>QCircleTemplate</code> basically applies an Empty content circle layout.
+Usable layout is defined in the <code>TemplateType</code> class. The following table shows the layouts for constants for each type.</p>
+
+<table>
+<thead>
+<tr>
+<th>Constants</th>
+<th>Circle Layout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TemplateType.CIRCLE_EMPTY</td>
+<td>Empty content</td>
+</tr>
+<tr>
+<td>TemplateType.CIRCLE_HORIZONTAL</td>
+<td>Content with a horizontal sidebar</td>
+</tr>
+<tr>
+<td>TemplateType.CIRCLE_VERTICAL</td>
+<td>Content with a vertical sidebar</td>
+</tr>
+<tr>
+<td>TemplateType.CIRCLE_COMPLEX</td>
+<td>Content with two tobbars</td>
+</tr>
+<tr>
+<td>TemplateType.CIRCLE_SIDEBAR</td>
+<td>Content with two sidebars</td>
+</tr>
+</tbody>
+</table>
+
+<p>In order to show the circular layout, use <code>setContentView()</code> in Android Activity. QCircle template library has an API, <code>getView()</code>, which returns the View of the created template. 
+The following codes will set the view in your Activity.</p>
+
+<pre><code>setContentView(Template.getView());
+</code></pre>
+
+<p>You can see the initial circular layout you set when you execute the above code line.</p>
+
+<p>There is no title bar or a back button in the initial circle layout. These two elements should be added to each layout, if necessary. The following section explains how to add a title bar or a back button. </p>
+
+<h3>
+<a name="adding-a-title-bar" class="anchor" href="#adding-a-title-bar"><span class="octicon octicon-link"></span></a>Adding a title bar</h3>
+
+<p>Once it adds a title bar to the circle layout, the title appears at the top of QuickCircle. A title bar consists of a <code>TextView</code> with a transparent background. </p>
+
+<p>To add a title bar, use the following code.</p>
+
+<pre><code>template.setTitle("My Title", 0.3f);
+</code></pre>
+
+<p>The first parameter is the text which appears as the title bar, the second parameter is a ratio of title bar's height. The ratio of title bar height refers to the ratio between the occupied height by the title bar and the entire height of QuickCircle. If this value is not entered, then the default value of 20% is used (LG QCircle UI/UX guide presents this value). </p>
+
+<p>The title bar added to the content layout with a horizontal sidebar is as follows:
+[picture]</p>
+
+<p>The height of the left sidebar and the height of the main content window are adjusted automatically to avoid overlapping with the title bar. 
+Since the background of the title bar is transparent, the background picture is displayed below the title bar, as well when any background color or picture is applied for the entire QuickCircle. </p>
+
+<p>When you want to use a complex layout that includes an image, etc. instead of a text on the title bar, create a XML layout file or generate a layout with Java code and apply it to the title. 
+The following code is for applying a XML layout file to the title.</p>
+
+<pre><code>View titleView = (View) getLayoutInflater().inflate(R.layout.titlebar, null); 
+template.setTitle(titleView, 0.3f);
+</code></pre>
+
+<h3>
+<a name="adding-a-back-button" class="anchor" href="#adding-a-back-button"><span class="octicon octicon-link"></span></a>Adding a back button</h3>
+
+<p>When a back button is added to the circle layout, it appears at the bottom of QuickCircle. The back button consists of a single button and the background is light gray. The back button's height is fixed at 20% of QuickCircle's height.
+If you tap this back button, it shuts down the current Activity. </p>
+
+<blockquote>
+<p>When you create a <code>QCircleTemplate</code> instance, the back button only works after the current Activity is handed over as a Context. </p>
+</blockquote>
+
+<p>To add a back button, use the following code:</p>
+
+<pre><code>template.setBackbutton();
+</code></pre>
+
+<p>The added back button to the content layout with a horizontal sidebar is as follows:
+[picture]</p>
+
+<p>The added title bar and a back button to the content layout with a horizontal sidebar are as follows:
+[picture]</p>
+
+<p>The height of the left sidebar and the height of the main content window are adjusted automatically to avoid overlapping with the title bar. </p>
+
+<p>The back button cannot be adjusted by developers. When you need to modify it, you should use a back button that you have created, instead of the button provided in QCircle design template.</p>
+
+<p>However, you can make the background of the back button transparent to apply the QuickCircle's background. The way to do this is described in the section Customizing layout.</p>
+
+<h2>
+<a name="using-the-template" class="anchor" href="#using-the-template"><span class="octicon octicon-link"></span></a>Using the Template</h2>
+
+<p>There is a content area and a sidebar on a circle layout provided in the QCircle design template. Each of them can be freely decorated by developers. 
+This section explains how to add content to the content area or sidebars on the layout.</p>
+
+<h3>
+<a name="customizing-layout" class="anchor" href="#customizing-layout"><span class="octicon octicon-link"></span></a>Customizing layout</h3>
+
+<ol>
+<li>Adjusting the size of sidebar
+There is a content area and a sidebar on the circle layout. Each space can be modified according to the developer’s preference. </li>
+</ol>
+
+<p>QCircle design template provides the API that controls the space ratio between the sidebar and the content area when using content layouts with a horizontal sidebar, a vertical sidebar, and two top bars. 
+The following code sets the sidebar size to 50% of the entire circle content window.</p>
+
+<div class="highlight highlight-java"><pre><span class="n">template</span><span class="o">.</span><span class="na">setSidebarRatio</span><span class="o">(</span><span class="mf">0.5f</span><span class="o">);</span>
+</pre></div>
+
+<p>The first parameter is the sidebar ratio. This ratio does not relate to the entire QuickCircle, but rather to the total circle content window. That is, if there is an area occupied by a title bar or a back button, this ratio excludes those areas. </p>
+
+<p>If you use the content with a horizontal sidebar, the ratio is about the width of the sidebar and if you use either the content with a vertical sidebar or the content with two top bars, then the ratio is about the height of the sidebar. </p>
+
+<blockquote>
+<p>The above method references the properties of circle layout when called. Therefore, the sidebar space ratio will not change by adding a title bar or a back button after the above method is called. 
+If you want to change the sidebar ratio according to the rest of circle content area after you add a title bar or a back button, call the above method again.</p>
+</blockquote>
+
+<ol>
+<li>Setting the UI properties per area
+The content area and the sidebar belong to the <code>RelativeLayout</code>. <code>QCircleTemplate</code> provides the API that returns <code>RelativeLayout</code> in order for developers to modify each area for themselves.</li>
+</ol>
+
+<p>The following code imports the<code>RelativeLayout</code> for the main content area.</p>
+
+<div class="highlight highlight-java"><pre><span class="n">RelativeLayout</span> <span class="n">main</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_MAIN</span><span class="o">);</span> 
+</pre></div>
+
+<p>The first parameter refers to an ID that assigns the area of the circle layout. The IDs for each area are saved in the <code>TemplateTag</code> class. Provided constants for area IDs are as follows: </p>
+
+<table>
+<thead>
+<tr>
+<th>ID constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TemplateTag.CONTENT</code></td>
+<td>The entire circle content window (excluding the title bar and the back button).</td>
+</tr>
+</tbody>
+</table>
+
+<p>Because this layout includes the content area and the sidebar, you must be careful not to twist the layouts of existing child Views when adding other layouts to this layout.
+<code>TemplateTag.CONTENT_MAIN</code> | The main content window. It is the same as the content window in the Empty content.
+<code>TemplateTag.CONTENT_SIDE_1</code> | The first sidebar. It has no significance when there is no sidebar in the layout.
+<code>TemplateTag.CONTENT_SIDE_2</code> | The second sidebar. It has no significance when there are less than two sidebars in the layout.</p>
+
+<p>You can find out where each area is placed in each circle layout in the section What kind of templates does the library support?</p>
+
+<p>You can change the properties of the imported <code>RelativeLayout</code> using Android API.
+The following code changes the background color of the main content.</p>
+
+<div class="highlight highlight-java"><pre><span class="n">main</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+</pre></div>
+
+<p>Like the content with two sidebars, there is a layout that does not provide API to control the sidebar's size on the <code>QCircleTemplate</code>.  In this case, you can adjust the size using the Android API. 
+The following code changes the width of the first sidebar in the content layout with two sidebars.</p>
+
+<div class="highlight highlight-java"><pre><span class="n">RelativeLayout</span> <span class="n">side1</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_SIDE_1</span><span class="o">);</span>
+<span class="n">LayoutParams</span> <span class="n">params</span> <span class="o">=</span> <span class="n">side1</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">();</span>
+<span class="n">params</span><span class="o">.</span><span class="na">width</span> <span class="o">=</span> <span class="mi">400</span><span class="o">;</span>
+<span class="n">side1</span><span class="o">.</span><span class="na">setLayoutParams</span><span class="o">(</span><span class="n">params</span><span class="o">);</span>
+</pre></div>
+
+<blockquote>
+<p>Caution
+You must be careful when changing layout parameters of each area using the Android API.
+The layout can be twisted when changed by developers because the circle layout that LG QCircle design template provides configures the layout parameters in order for each area to be positioned properly.</p>
+</blockquote>
+
+<ol>
+<li>Setting the entire background
+You can specify the background for each area by using the method described above. However, even if you use <code>TemplateTag.CONTENT</code>, it does not affect the title bar or the back button's area. If you want to set a background for the entire QuickCircle including the title bar and the back button, use the following code:</li>
+</ol>
+
+<div class="highlight highlight-java"><pre><span class="c1">// set background color</span>
+<span class="n">template</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLACK</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+
+<span class="c1">// set background image</span>
+<span class="n">Drawable</span> <span class="n">mypic</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getDrawable</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">beanbird</span><span class="o">);</span>
+<span class="n">template</span><span class="o">.</span><span class="na">setBackgroundDrawable</span><span class="o">(</span><span class="n">mypic</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+</pre></div>
+
+<p>The first parameter refers to the color or image source to be applied to the background, the second parameter refers to a flag to make the back button background transparent. 
+The title bar area is set to be transparent by default. If you specified a custom title using the <code>setTitle(View view, Context context)</code>, then the title's background should be set to be transparent to apply the above code.</p>
+
+<p>The following image shows the content layout with a horizontal sidebar that applied the entire background image. To display the sidebar's position, it paints a translucent color on the sidebar.
+[picture]</p>
+
+<h3>
+<a name="adding-content" class="anchor" href="#adding-content"><span class="octicon octicon-link"></span></a>Adding content</h3>
+
+<p>The information provided by the application should be output on the content area or the sidebar of the circle layout.
+As mentioned previously, you can add the Android UI component freely to this layout because the content area and the sidebar are the <code>RelativeLayout</code>.
+For example, you can add a <code>TextView</code> to the content area or add an <code>ImageView</code> to the sidebar. You can also add a complex layout that has both a <code>TextView</code> and an <code>ImageView</code>. 
+Similar to the previous description, add the desired UI component using the Android API after retrieving the <code>RelativeLayout</code> for each area. </p>
+
+<p>The following code is to add the layout generated with the layout XML to the content area and to add the image to the sidebar.</p>
+
+<div class="highlight highlight-java"><pre><span class="c1">// main content</span>
+<span class="n">View</span> <span class="n">myContent</span> <span class="o">=</span> <span class="o">(</span><span class="n">View</span><span class="o">)</span> <span class="n">getLayoutInflater</span><span class="o">().</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="n">RelativeLayout</span> <span class="n">main</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_MAIN</span><span class="o">);</span>
+<span class="n">main</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">myContent</span><span class="o">);</span>
+
+<span class="c1">// sidebar</span>
+<span class="n">RelativeLayout</span> <span class="n">side1</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_SIDE_1</span><span class="o">);</span>
+<span class="n">side1</span><span class="o">.</span><span class="na">setBackgroundResource</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">sidebarimg</span><span class="o">);</span>
+</pre></div>
+
+<p>The image below shows that a content layout with a horizontal sidebar which has an icon on the sidebar as well as the text and a button on the content area.
+[picture]</p>
+
+<h2>
+<a name="others" class="anchor" href="#others"><span class="octicon octicon-link"></span></a>Others</h2>
+
+<h3>
+<a name="setting-an-intent-for-full-screen" class="anchor" href="#setting-an-intent-for-full-screen"><span class="octicon octicon-link"></span></a>Setting an Intent for full screen</h3>
+
+<p>The application for LG QuickCircle has to display a circle layout when the QuickCircle case is closed, and display a full screen layout when the case is open. 
+LG QCircle design template enables running a specific <code>Intent</code> when the case is open. When this <code>Intent</code> is a general Android's Activity, it runs as full screen by default.</p>
+
+<p>You can set which <code>Intent</code> to run by using the following code:</p>
+
+<div class="highlight highlight-java"><pre><span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">FullActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">template</span><span class="o">.</span><span class="na">setFullscreenIntent</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+</pre></div>
+
+<p>You should first select the Activity to run as full screen. In order to use a new Activity, first make the Activity in the application and then create an <code>Intent</code> that runs the Activity as shown above. 
+<code>QCircleTemplate</code> does not care which <code>Intent</code> is set, it just runs it by using <code>startActivity()</code>. Therefore, the information and properties of <code>Intent</code> that you want to run should be set in your application. </p>
+
+<h1>
+<a name="extra-tips" class="anchor" href="#extra-tips"><span class="octicon octicon-link"></span></a>Extra Tips</h1>
+
+<h2>
+<a name="adding-a-custom-layout" class="anchor" href="#adding-a-custom-layout"><span class="octicon octicon-link"></span></a>Adding a Custom Layout</h2>
+
+<p>LG QCircle design template provides 5 circle layouts by default. 
+Besides these, users can add custom layouts to the template. In order to add custom layouts, the following are required:</p>
+
+<ul>
+<li>Layout XML file</li>
+<li>The resource files used on the layout (such as image, text, animations, etc.)</li>
+</ul>
+
+<h3>
+<a name="creating-a-custom-layout" class="anchor" href="#creating-a-custom-layout"><span class="octicon octicon-link"></span></a>Creating a custom layout</h3>
+
+<p>To make a layout XML file for LG QCircle design template, you must include the required UI component. 
+A circle layout of LG QCircle design template consists of the following required items:
+[picture]</p>
+
+<table>
+<thead>
+<tr>
+<th>Required Layout</th>
+<th>Type</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entire Layout</td>
+<td>FrameLayout</td>
+<td><code>root</code></td>
+</tr>
+<tr>
+<td>Circle Layout</td>
+<td>RelativeLayout</td>
+<td><code>circlelayout</code></td>
+</tr>
+<tr>
+<td>Circle Content</td>
+<td>RelativeLayout</td>
+<td><code>content</code></td>
+</tr>
+<tr>
+<td>Circle Hole Image</td>
+<td>any</td>
+<td><code>circle</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><code>root</code>, <code>circlelayout</code>, and <code>content</code> are the ID of each layout. <code>root</code> is a <code>FrameLayout</code>, and others are <code>RelativeLayout</code>s. 
+<code>content</code> has the same height as the <code>circlelayout</code> when there is no title bar or back button. In the content, there can be a content area or a sidebar. If you use the <code>getLayoutById(TemplateTag.CONTENT)</code> from <code>QCircleTemplate</code>, you can obtain the total circle content area, in other words, <code>content</code>. </p>
+
+<p>The custom layout must have the above layout structure. Each type and ID of layouts should also be the same as above. 
+Also, if you overlap the image with a hole in the center to the squared <code>circlelayout</code> to make a circle, the image must be under <code>root</code> and have its ID assigned as '<code>circle</code>'. Otherwise, the layout can be twisted because the overlapped image cannot be processed when the circle layout is moved according to the QuickCircle's position information of each model.</p>
+
+<p>There is no specific rule for the layout or the UI component in <code>content</code>. However, when you need to get the content area or a sidebar in <code>content</code> using the <code>getLayoutById()</code>, you should make each layout as <code>RelativeLayout</code>. In addition, when you need to use the ID defined in the <code>TemplateTag</code>, the ID for the content area should be specified as ‘<code>main</code>’ and the ID for the sidebar should be specified as ‘<code>side1</code>’ or ‘<code>side2</code>’.</p>
+
+<p>The following is the custom XML file with four parts: </p>
+
+<div class="highlight highlight-XML"><pre><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;FrameLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:id=</span><span class="s">"@+id/root"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:background=</span><span class="s">"@android:color/background_dark"</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;RelativeLayout</span>
+        <span class="na">android:id=</span><span class="s">"@+id/circlelayout"</span>
+        <span class="na">android:layout_width=</span><span class="s">"@dimen/square_size"</span>
+        <span class="na">android:layout_height=</span><span class="s">"@dimen/square_size"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:background=</span><span class="s">"@android:color/background_light"</span>
+        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span> <span class="nt">&gt;</span>
+
+        <span class="c">&lt;!-- child #1: Title --&gt;</span>
+        <span class="c">&lt;!-- child #2: content --&gt;</span>
+        <span class="nt">&lt;RelativeLayout</span>
+            <span class="na">android:id=</span><span class="s">"@+id/content"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_centerHorizontal=</span><span class="s">"true"</span>
+            <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
+            <span class="na">android:padding=</span><span class="s">"@dimen/margin"</span> <span class="nt">&gt;</span>
+
+            <span class="nt">&lt;LinearLayout</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+                <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
+                <span class="nt">&gt;</span>
+                <span class="nt">&lt;LinearLayout</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+                <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+                <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+                <span class="nt">&gt;</span>
+                <span class="nt">&lt;RelativeLayout</span>
+                    <span class="na">android:id=</span><span class="s">"@+id/main"</span>
+                    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+                    <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
+                    <span class="na">android:layout_weight=</span><span class="s">"1"</span>        
+                   <span class="nt">&gt;</span>
+                <span class="nt">&lt;/RelativeLayout&gt;</span>
+                <span class="nt">&lt;RelativeLayout</span>
+                    <span class="na">android:id=</span><span class="s">"@+id/side1"</span>
+                    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+                    <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
+                    <span class="na">android:layout_weight=</span><span class="s">"1"</span> 
+                    <span class="nt">&gt;</span>
+                <span class="nt">&lt;/RelativeLayout&gt;</span>
+            <span class="nt">&lt;/LinearLayout&gt;</span>
+            <span class="nt">&lt;LinearLayout</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+                <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+                <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+                <span class="nt">&gt;</span>
+                <span class="nt">&lt;RelativeLayout</span>
+                    <span class="na">android:id=</span><span class="s">"@+id/side2"</span>
+                    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+                    <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
+                    <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+                   <span class="nt">&gt;</span>
+                <span class="nt">&lt;/RelativeLayout&gt;</span>
+                <span class="nt">&lt;RelativeLayout</span>
+                    <span class="na">android:id=</span><span class="s">"@+id/side3"</span>
+                    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+                    <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
+                    <span class="na">android:layout_weight=</span><span class="s">"1"</span>
+                   <span class="nt">&gt;</span>
+                <span class="nt">&lt;/RelativeLayout&gt;</span>
+            <span class="nt">&lt;/LinearLayout&gt;</span>
+            <span class="nt">&lt;/LinearLayout&gt;</span>
+        <span class="nt">&lt;/RelativeLayout&gt;</span>
+
+        <span class="c">&lt;!--  child #3: Button --&gt;</span>
+    <span class="nt">&lt;/RelativeLayout&gt;</span>
+
+    <span class="nt">&lt;View</span>
+        <span class="na">android:id=</span><span class="s">"@+id/circle"</span>
+        <span class="na">android:layout_width=</span><span class="s">"@dimen/square_size"</span>
+        <span class="na">android:layout_height=</span><span class="s">"@dimen/square_size"</span>
+        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
+        <span class="na">android:background=</span><span class="s">"@drawable/circlebackground"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/FrameLayout&gt;</span>
+</pre></div>
+
+<h3>
+<a name="using-a-custom-layout-in-applications" class="anchor" href="#using-a-custom-layout-in-applications"><span class="octicon octicon-link"></span></a>Using a custom layout in applications</h3>
+
+<p>In order to apply a custom layout to the application, you must include the created XML layout file and other resource files in the <em>res</em> directory in the application. </p>
+
+<p>Use the following code to apply the created layout to the <code>QCircleTemplate</code>.</p>
+
+<div class="highlight highlight-java"><pre><span class="n">QCircleTemplate</span> <span class="n">template</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">QCircleTemplate</span><span class="o">(</span>
+                                           <span class="k">this</span><span class="o">,</span> 
+                                           <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">circle_custom</span>
+                                 <span class="o">);</span>
+</pre></div>
+
+<p>There are four areas in this layout, each area's IDs are <code>main</code>, <code>side1</code>, <code>side2</code>, and <code>side3</code>.<br>
+<code>main</code>, <code>side1</code>, and <code>side2</code> are the defined value in the <code>TemplateTag</code>, so you can use the method explained in the previous chapter. However, because the <code>side3</code> is the newly added ID, it cannot be used in the <code>TemplateTag</code> and you should get the layout by its ID.</p>
+
+<p>The following code adds text lines in four areas:</p>
+
+<div class="highlight highlight-java"><pre><span class="n">RelativeLayout</span> <span class="n">main</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_MAIN</span><span class="o">);</span>
+<span class="n">TextView</span> <span class="n">text1</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TextView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> 
+<span class="n">text1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"main"</span><span class="o">);</span>
+<span class="n">main</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">text1</span><span class="o">);</span>
+
+<span class="n">RelativeLayout</span> <span class="n">side1</span> <span class="o">=</span> 
+                <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_SIDE_1</span><span class="o">);</span>
+<span class="n">TextView</span> <span class="n">text2</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TextView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> 
+<span class="n">text2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"side1"</span><span class="o">);</span>
+<span class="n">side1</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">text2</span><span class="o">);</span>
+
+<span class="n">RelativeLayout</span> <span class="n">side2</span> <span class="o">=</span> 
+                <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_SIDE_2</span><span class="o">);</span>
+<span class="n">TextView</span> <span class="n">text3</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TextView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> 
+<span class="n">text3</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"side2"</span><span class="o">);</span>
+<span class="n">side2</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">text3</span><span class="o">);</span>
+
+<span class="n">RelativeLayout</span> <span class="n">side3</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">side3</span><span class="o">);</span>
+<span class="n">TextView</span> <span class="n">text4</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TextView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> 
+<span class="n">text4</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"side3"</span><span class="o">);</span>
+<span class="n">side3</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">text4</span><span class="o">);</span>
+</pre></div>
+
+<p>As shown above, the ID, <code>side3</code> that is not supported in the <code>TemplateTag</code> is input in the <code>getLayoutById()</code> directly. </p>
+
+<p>The image when the custom layout is actually applied is as follows: To distinguish four areas, different colors are used on each area, and the size and position of the text are adjusted.
+[picture]</p>
+        </section>
+
+        <footer>
+          Qcircle-design-template is maintained by <a href="https://github.com/LGDeveloper">LGDeveloper</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
