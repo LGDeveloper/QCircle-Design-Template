@@ -1,0 +1,25 @@
+QCircle Design Template Library Project Contributor License Agreement 
+
+By making a contribution to this QCircle Design Template Library Project (¡°Project¡±), I accept and agree to the following terms 
+and conditions for my present and future contributions submitted to the Project. Except for the license granted herein to the 
+Project and recipients of software distributed by the Project, I reserve all right, title, and interest in and to my contributions. 
+a. Grant of Copyright License. Subject to the terms and conditions of this Agreement, I hereby grant to the Project and to recipients
+of software distributed by the Project a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license
+to reproduce, prepare derivative works of, publicly display, publicly perform, sublicense, and distribute my contributions and such
+derivative works. b. Grant of Patent License: Subject to the terms and conditions of this Agreement, I hereby grant to the Project
+and to recipients of software distributed by the Project a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable 
+(except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer the 
+contributed work, where such license applies only to those patent claims licensable by me that are necessarily infringed by my 
+contribution(s) alone or by combination of my contribution(s) with the contributed work to which such contribution(s) were submitted. 
+If any entity institutes patent litigation against me or any other entity (including a cross-claim or counterclaim in a lawsuit) 
+alleging that my contribution, or the work to which I have contributed, constitutes patent infringement, then any patent licenses 
+granted to that entity under this Agreement shall terminate as of the date such litigation is filed. c. The contribution was 
+created in whole or in part by me and I have the right to submit the contribution on my own behalf or on behalf of a third party 
+who has authorized me to submit this contribution to the Project; or d. The contribution is based upon previous work that, to the 
+best of my knowledge, is covered under an appropriate open source license and I have the right and authorization to submit that 
+work with modifications, whether created in whole or in part by me, under the same open source license (unless I am permitted to 
+submit under a different license) that I have identified in the contribution; or e. The contribution was provided directly to me 
+by some other person who represented and warranted (c) or (d) and I have not modified it. f. I understand and agree that this 
+Project and the contribution are publicly known and that a record of the contribution (including all personal information I submit 
+with it, including my sign-off record) is maintained indefinitely and may be redistributed consistent with this Project or the open 
+source license(s) involved.
