@@ -33,7 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="@dimen/margin"
-                android:layout_toRightOf="@+id/side1" />
+                android:layout_below="@id/side1"  
+                />
         </RelativeLayout>
         <!--  child #3: Button -->
     </RelativeLayout>

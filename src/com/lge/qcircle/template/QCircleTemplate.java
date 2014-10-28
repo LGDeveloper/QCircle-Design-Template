@@ -67,7 +67,9 @@ public class QCircleTemplate {
 
 	// layout values
 	private int mFullSize = 0; // circle diameter
-	private int mYOffset = 0; // y offset of circle
+	private int mTopOffset = 0; // top offset of circle
+	private int mYpos = 0; // y offset of circle
+	
 	private final float fixedButtonRatio = 0.23f; // Button height ratio
 	private final float fixedTitleRatio = 0.23f; // Title height ratio
 	protected boolean useSmartLighting = false; // flag for smartlighting
@@ -352,9 +354,9 @@ public class QCircleTemplate {
 						LayoutParams params = firstContent.getLayoutParams();
 						params.width = (int)(parentSize * weight);
 						firstContent.setLayoutParams(params);
+						
 					} else if (mLayoutType == TemplateType.CIRCLE_HORIZONTAL // adjust height
 					        || mLayoutType == TemplateType.CIRCLE_COMPLEX) {
-
 						parentSize = (int)(mFullSize * (1 - 0.2 * ((mBackButton != null? 1 : 0) + (mTitle != null? 1
 						        : 0))));
 						LayoutParams params = firstContent.getLayoutParams();
@@ -592,25 +594,29 @@ public class QCircleTemplate {
 		// y position (in G3, y position = y offset)
 		id = mContext.getResources().getIdentifier("config_circle_window_y_pos", "dimen",
 		        "com.lge.internal");
-		mYOffset = mContext.getResources().getDimensionPixelSize(id);
+		mYpos = mContext.getResources().getDimensionPixelSize(id);
 
 		// adjust Y offset for the model
 		id = mContext.getResources().getIdentifier("config_circle_window_height", "dimen",
 		        "com.lge.internal");
-		int height = mContext.getResources().getDimensionPixelSize(id);
+		int height = mContext.getResources().getDimensionPixelSize(id);	
+		mTopOffset = mYpos + ((height - mFullSize) / 2);
 
-		String device = android.os.Build.DEVICE;
-		if (!device.equalsIgnoreCase(DEVICE_G3)) { // besides of G3
-			mYOffset += (height - mFullSize) / 2;
-		}
 
+		
 		// 2. adjust the circle layout for the model
 		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(mFullSize, mFullSize);
 
 		// circle image
 		View circleView = (View)mRootLayout.findViewById(R.id.circle);
+		String device = android.os.Build.DEVICE;
 		if (circleView != null) {
-			params.topMargin = mYOffset;
+			if(device.equalsIgnoreCase(DEVICE_G3)|| device.equalsIgnoreCase(DEVICE_T6)){
+				params.topMargin = 0;	
+			}
+			else{
+				params.topMargin = mTopOffset;
+			}
 			params.gravity = Gravity.CENTER_HORIZONTAL;
 			circleView.setLayoutParams(params);
 
