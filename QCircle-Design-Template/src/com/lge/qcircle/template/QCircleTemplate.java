@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
@@ -49,6 +48,8 @@ public class QCircleTemplate {
 	protected static final String EXTRA_ACCESSORY_COVER_STATE = "com.lge.intent.extra.ACCESSORY_COVER_STATE";
 	protected static final String ACTION_ACCESSORY_COVER_EVENT = "com.lge.android.intent.action.ACCESSORY_COVER_EVENT";
 	protected static final int QUICKCOVERSETTINGS_QUICKCIRCLE = 3;
+	protected static final int QUICKCOVERSETTINGS_USEQUICKCIRCLE = 1;
+	
 	protected static final String DEVICE_G3 = "g3";
 	protected static final String DEVICE_T6 = "tiger6";
 
@@ -72,7 +73,7 @@ public class QCircleTemplate {
 	
 	private final float fixedButtonRatio = 0.23f; // Button height ratio
 	private final float fixedTitleRatio = 0.23f; // Title height ratio
-	protected boolean useSmartLighting = false; // flag for smartlighting
+//	protected boolean useSmartLighting = false; // flag for smartlighting
 
 	/**
 	 * creates a template with an empty content.
@@ -102,7 +103,7 @@ public class QCircleTemplate {
 	 */
 	public QCircleTemplate(Context context, TemplateType type) {
 		mContext = context;
-		//registerIntentReceiver(); // register cover events
+		registerIntentReceiver(); // register cover events
 
 		if (type == null)
 			type = TemplateType.CIRCLE_EMPTY;
@@ -123,7 +124,7 @@ public class QCircleTemplate {
 	 */
 	public QCircleTemplate(Context context, int templateId) {
 		mContext = context;
-	//	registerIntentReceiver();
+		registerIntentReceiver();
 
 		if (templateId <= 0) {
 			templateId = R.layout.qcircle_empty;
@@ -441,10 +442,10 @@ public class QCircleTemplate {
 	 *            off.
 	 * @see #showSmartLighting()
 	 */
-	public void setSmartLighting(boolean flag) {
-		useSmartLighting = flag;
-		// NEED TO IMPLEMENT (some codes for initialize smart lighting
-	}
+//	public void setSmartLighting(boolean flag) {
+//		useSmartLighting = flag;
+//		// NEED TO IMPLEMENT (some codes for initialize smart lighting
+//	}
 
 	/**
 	 * shows smart lighting on the circle view.
@@ -455,11 +456,11 @@ public class QCircleTemplate {
 	 * 
 	 * @see #setSmartLighting(boolean)
 	 */
-	public void showSmartLighting() {
-		if (useSmartLighting) {
-			// NEED TO IMPLEMENT
-		}
-	}
+//	public void showSmartLighting() {
+//		if (useSmartLighting) {
+//			// NEED TO IMPLEMENT
+//		}
+//	}
 
 	/**
 	 * initializes the layout of the circle window.
@@ -686,7 +687,6 @@ public class QCircleTemplate {
 	 * 
 	 */
 	
-	/*
 	protected void registerIntentReceiver() {
 
 		mReceiver = new BroadcastReceiver() {
@@ -701,10 +701,13 @@ public class QCircleTemplate {
 
 				int quickCaseType = Settings.Global.getInt(mContext.getContentResolver(),
 				        "cover_type", 0);
+				int quickCircleEnabled = Settings.Global.getInt(mContext.getContentResolver(),
+						"quick_view_enable", 0);
 
 				// Receives a LG QCirle intent for the cover event
 				if (ACTION_ACCESSORY_COVER_EVENT.equals(action)
-				        && quickCaseType == QUICKCOVERSETTINGS_QUICKCIRCLE) {
+				        && quickCaseType == QUICKCOVERSETTINGS_QUICKCIRCLE
+				        && quickCircleEnabled == QUICKCOVERSETTINGS_USEQUICKCIRCLE) {
 
 					// Gets the current state of the cover
 					int quickCoverState = intent.getIntExtra(EXTRA_ACCESSORY_COVER_STATE,
@@ -717,7 +720,8 @@ public class QCircleTemplate {
 						setQuickCircleWindowParam();
 					} else if (quickCoverState == EXTRA_ACCESSORY_COVER_OPENED) { // opened
 						if (mFullscreenIntent != null && mContext != null) {
-							mContext.startActivity(mFullscreenIntent);
+							mContext.unregisterReceiver(this);
+							mContext.startActivity(mFullscreenIntent);							 
 						}
 						if (mContext instanceof Activity) {
 							((Activity)mContext).finish();
@@ -733,7 +737,7 @@ public class QCircleTemplate {
 		// Register a broadcast receiver with the system
 		mContext.registerReceiver(mReceiver, filter);
 	}
-*/
+	
 	/**
 	 * makes the circle shown even if the screen is locked.
 	 */
