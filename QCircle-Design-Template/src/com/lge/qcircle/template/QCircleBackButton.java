@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 /**
- * This class represents back buttons of QuickCircle.<P>
+ * This class represents back buttons of QuickCircle.
  *
  * @author jeongeun.jeon
  */
@@ -33,9 +33,9 @@ public final class QCircleBackButton {
 	}
 
 	/**
-	 * sets the layout of the button.<P>
+	 * sets the layout of the button.
 	 *
-	 * @return true if a button is configured successfully or<BR>
+	 * @return true if a button is configured successfully or
 	 * false otherwise.
 	 */
 	private boolean setButton() {
@@ -65,7 +65,7 @@ public final class QCircleBackButton {
 	}
 
 	/**
-	 * gets the view of the button. <P>
+	 * gets the view of the button.
 	 *
 	 * @return button view
 	 */
