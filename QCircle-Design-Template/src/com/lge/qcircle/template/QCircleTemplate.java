@@ -102,7 +102,7 @@ public class QCircleTemplate {
 	 */
 	public QCircleTemplate(Context context, TemplateType type) {
 		mContext = context;
-		registerIntentReceiver(); // register cover events
+		//registerIntentReceiver(); // register cover events
 
 		if (type == null)
 			type = TemplateType.CIRCLE_EMPTY;
@@ -123,7 +123,7 @@ public class QCircleTemplate {
 	 */
 	public QCircleTemplate(Context context, int templateId) {
 		mContext = context;
-		registerIntentReceiver();
+	//	registerIntentReceiver();
 
 		if (templateId <= 0) {
 			templateId = R.layout.qcircle_empty;
@@ -685,6 +685,8 @@ public class QCircleTemplate {
 	 * fullscreen intent by calling {@link #setFullscreenIntent(Intent)}.
 	 * 
 	 */
+	
+	/*
 	protected void registerIntentReceiver() {
 
 		mReceiver = new BroadcastReceiver() {
@@ -731,7 +733,7 @@ public class QCircleTemplate {
 		// Register a broadcast receiver with the system
 		mContext.registerReceiver(mReceiver, filter);
 	}
-
+*/
 	/**
 	 * makes the circle shown even if the screen is locked.
 	 */
