@@ -78,8 +78,10 @@ public final class QCircleTitle {
 		if (context != null) {
 			mContext = context;
 			mRootView = createRootView(context, backgroundColor);
-			if (title != null)
+			if (title != null) {
+				if (title instanceof TextView) mTitleView = (TextView) title;
 				mRootView.addView(title);
+			}
 		} else {
 			Log.e(TAG, "Cannot create a title view. context is null");
 		}
