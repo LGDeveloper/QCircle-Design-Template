@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
 
 /**
  * This class represents back buttons of QuickCircle.
@@ -18,8 +20,11 @@ public final class QCircleBackButton {
 	private final String TAG = "QCircleBackButton";
 	private OnClickListener mListener;
 	private ImageView mBtnContent = null;
+	private int		mButtonHeight = 0;
 	private Context mContext = null;
 	private boolean isDark = false;
+	
+	private static float PADDING_RATIO = 0.35f;
 
 	/**
 	 * creates a back button.
@@ -27,8 +32,8 @@ public final class QCircleBackButton {
 	 * @param context {@code Activity} which has a circle view.<br>
 	 * <b>If it is null, you might get errors when you use method of this class.</b>
 	 */
-	public QCircleBackButton(Context context) {
-		this(context, null);
+	public QCircleBackButton(Context context, int height) {
+		this(context, height, null);
 	}
 
 	/**
@@ -38,9 +43,10 @@ public final class QCircleBackButton {
 	 * <b>If it is null, you might get errors when you use method of this class.</b>
 	 * @param listener Listener on click
 	 */
-	public QCircleBackButton(Context context, OnClickListener listener) {
+	public QCircleBackButton(Context context, int height, OnClickListener listener) {
 		mContext = context;
 		mListener = listener;
+		mButtonHeight = height;
 		if (!setButton())
 			Log.d(TAG, "Cannot create a button. Context is null.");
 	}
@@ -55,10 +61,11 @@ public final class QCircleBackButton {
 		boolean result = false;
 		if (mContext != null) {
 			mBtnContent = new ImageView(mContext);
+			mBtnContent.setPadding(0,(int)(mButtonHeight*PADDING_RATIO), 0, (int)(mButtonHeight*PADDING_RATIO));
+			
 			// set attributes
 			mBtnContent.setId(R.id.backButton);
 			setTheme();
-			mBtnContent.setScaleType(ScaleType.CENTER);
 			mBtnContent.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
