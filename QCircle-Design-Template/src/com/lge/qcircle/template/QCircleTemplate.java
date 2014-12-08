@@ -1,6 +1,7 @@
 package com.lge.qcircle.template;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -56,6 +57,7 @@ public class QCircleTemplate {
 	protected Context mContext = null;
 	protected BroadcastReceiver mReceiver = null;
 	protected Intent mFullscreenIntent = null;
+	protected IntentCreatorAsync mAsyncCreator = null;
 
 	// Views
 	protected TemplateType mLayoutType = TemplateType.CIRCLE_EMPTY;
@@ -99,7 +101,7 @@ public class QCircleTemplate {
 	 */
 	public QCircleTemplate(Context context, TemplateType type) {
 		mContext = context;
-		registerIntentReceiver(); // register cover events
+		registerIntentReceiver();
 		if (type == null)
 			type = TemplateType.CIRCLE_EMPTY;
 		setTemplateType(type); // set layout style
@@ -135,6 +137,17 @@ public class QCircleTemplate {
 			Log.w(TAG, "The given intent is null");
 		}
 		mFullscreenIntent = intent;
+		mAsyncCreator = null;
+	}
+
+	/**
+	 * sets the intent running in fullscreen when the cover is opened.
+	 *
+	 * @param creatorAsync will be called only when need the intent.
+	 */
+	public void setFullscreenIntent(IntentCreatorAsync creatorAsync) {
+		mFullscreenIntent = null;
+		mAsyncCreator = creatorAsync;
 	}
 
 	/**
@@ -144,6 +157,7 @@ public class QCircleTemplate {
 	 * @return root view of the layout.
 	 */
 	public View getView() {
+		setQuickCircleWindowParam();
 		return mRootLayout;
 	}
 
@@ -277,15 +291,40 @@ public class QCircleTemplate {
 	 * has one.<br>
 	 * Note that this method does not create a button when the button already exists.
 	 */
-	public void setBackbutton() {
+	public void setBackButton() {
+		setBackButton(null);
+	}
+
+	/**
+	 * sets a back button with callback.
+	 * <p>
+	 * It creates a back button on the bottom of the layout.
+	 * <p>
+	 * You do not need to implement an {@code onClickListener} for the button, because it already
+	 * has one.<br>
+	 * Note that this method does not create a button when the button already exists.
+	 * @param onClickListener Callback for back button.
+	 *                        <b>should be used for closing objects, like camera</b>
+	 */
+	public void setBackButton(View.OnClickListener onClickListener) {
 		if (mBackButton == null) {
 			if (mContext != null)
-				mBackButton = new QCircleBackButton(mContext);
+				mBackButton = new QCircleBackButton(mContext, onClickListener);
 			else {
 				Log.e(TAG, "Cannot create the back button: context is null");
 				return;
 			}
 			addBackButtonView(mBackButton);
+		}
+	}
+
+	/**
+	 * Set the theme to the back button. Default is light.
+	 * @param isDark Is dark theme
+	 */
+	public void setBackButtonTheme(boolean isDark) {
+		if (mBackButton != null) {
+			mBackButton.isDark(isDark);
 		}
 	}
 
@@ -303,15 +342,6 @@ public class QCircleTemplate {
 		RelativeLayout result = null;
 		if (mContent != null && id > 0) {
 			result = (RelativeLayout) mContent.findViewById(id);
-			// if (result == null && mContent.findViewById(R.id.content_top) != null) {
-			// result = (RelativeLayout)mContent.findViewById(R.id.content_top).findViewById(id);
-			// } else if (result == null && mContentLayout != null) {
-			// result = (RelativeLayout)mContentLayout.findViewById(id);
-			// }
-			// for R.id.content
-			// if( result == null && ( mLayoutType == TemplateType.CIRCLE_COMPLEX || mLayoutType ==
-			// TemplateType.CIRCLE_EMPTY) )
-			// return mContent;
 		}
 		return result;
 	}
@@ -483,7 +513,7 @@ public class QCircleTemplate {
 	/**
 	 * adds a button view to the layout.
 	 * <p>
-	 * It is called by {@link QCircleTemplate#setBackbutton()} to adjust the circle layout. The
+	 * It is called by {@link QCircleTemplate#setBackButton()} to adjust the circle layout. The
 	 * button view is added on the bottom of the layout and the content window will be on the top of
 	 * the button view.
 	 *
@@ -639,15 +669,21 @@ public class QCircleTemplate {
 					// Gets the current state of the cover
 					int quickCoverState = intent.getIntExtra(EXTRA_ACCESSORY_COVER_STATE,
 							EXTRA_ACCESSORY_COVER_OPENED);
-					// Log.d(TAG, "quickCoverState= " + quickCoverState);
 					if (quickCoverState == EXTRA_ACCESSORY_COVER_CLOSED) { // closed
-//						} else
-//							intenta.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						setQuickCircleWindowParam();
+						//setQuickCircleWindowParam();
 					} else if (quickCoverState == EXTRA_ACCESSORY_COVER_OPENED) { // opened
 						if (mFullscreenIntent != null && mContext != null) {
-							mContext.unregisterReceiver(this);
 							mContext.startActivity(mFullscreenIntent);
+						} else if (mContent != null && mAsyncCreator != null) {
+							Intent launching = mAsyncCreator.getIntent();
+							if (launching != null) {
+								try {
+									mContext.startActivity(launching);
+								} catch (ActivityNotFoundException e) {
+									// Package does not exist, ignore.
+									e.printStackTrace();
+								}
+							}
 						}
 						if (mContext instanceof Activity) {
 							((Activity) mContext).finish();
@@ -660,6 +696,14 @@ public class QCircleTemplate {
 		filter.addAction(ACTION_ACCESSORY_COVER_EVENT);
 		// Register a broadcast receiver with the system
 		mContext.registerReceiver(mReceiver, filter);
+	}
+
+	public void unregisterReceiver() {
+		try {
+			mContext.unregisterReceiver(mReceiver);
+		} catch (Exception ignored) {
+			// Receiver not registered
+		}
 	}
 
 	/**
@@ -712,7 +756,7 @@ public class QCircleTemplate {
 	 */
 	protected void loadCustomTemplate(int templateId) {
 		if (mContext != null && templateId > 0) {
-			View layoutView = (View) ((Activity) mContext).getLayoutInflater().inflate(templateId,
+			View layoutView = ((Activity) mContext).getLayoutInflater().inflate(templateId,
 					null);
 			if (layoutView == null)
 				Log.w(TAG, "Cannot set the custom layout: " + templateId);
@@ -723,5 +767,9 @@ public class QCircleTemplate {
 		} else {
 			Log.w(TAG, "Cannot set the custom layout. Context is null");
 		}
+	}
+
+	public static interface IntentCreatorAsync {
+		Intent getIntent();
 	}
 }
