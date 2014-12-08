@@ -309,7 +309,7 @@ public class QCircleTemplate {
 	public void setBackButton(View.OnClickListener onClickListener) {
 		if (mBackButton == null) {
 			if (mContext != null)
-				mBackButton = new QCircleBackButton(mContext, onClickListener);
+				mBackButton = new QCircleBackButton(mContext, (int)(mFullSize * fixedButtonRatio), onClickListener);
 			else {
 				Log.e(TAG, "Cannot create the back button: context is null");
 				return;
