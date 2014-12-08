@@ -16,9 +16,10 @@ import android.widget.ImageView.ScaleType;
  */
 public final class QCircleBackButton {
 	private final String TAG = "QCircleBackButton";
-
+	private OnClickListener mListener;
 	private ImageView mBtnContent = null;
 	private Context mContext = null;
+	private boolean isDark = false;
 
 	/**
 	 * creates a back button.
@@ -27,7 +28,19 @@ public final class QCircleBackButton {
 	 * <b>If it is null, you might get errors when you use method of this class.</b>
 	 */
 	public QCircleBackButton(Context context) {
+		this(context, null);
+	}
+
+	/**
+	 * creates a back button.
+	 *
+	 * @param context {@code Activity} which has a circle view.<br>
+	 * <b>If it is null, you might get errors when you use method of this class.</b>
+	 * @param listener Listener on click
+	 */
+	public QCircleBackButton(Context context, OnClickListener listener) {
 		mContext = context;
+		mListener = listener;
 		if (!setButton())
 			Log.d(TAG, "Cannot create a button. Context is null.");
 	}
@@ -44,12 +57,12 @@ public final class QCircleBackButton {
 			mBtnContent = new ImageView(mContext);
 			// set attributes
 			mBtnContent.setId(R.id.backButton);
-			mBtnContent.setImageResource(R.drawable.backover);
-			mBtnContent.setBackgroundResource(R.drawable.back_button_background);
+			setTheme();
 			mBtnContent.setScaleType(ScaleType.CENTER);
 			mBtnContent.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					if (mListener != null) mListener.onClick(v);
 					if (mContext != null) {
 						try {
 							((Activity) mContext).finish();
@@ -64,6 +77,16 @@ public final class QCircleBackButton {
 		return result;
 	}
 
+
+	private void setTheme() {
+		mBtnContent.setImageResource(isDark ? R.drawable.backover_dark : R.drawable.backover);
+		mBtnContent.setBackgroundResource(isDark ? R.drawable.back_button_background_dark : R.drawable.back_button_background);
+	}
+
+	public void isDark(boolean isDark) {
+		this.isDark = isDark;
+		setTheme();
+	}
 	/**
 	 * gets the view of the button.
 	 *
@@ -78,7 +101,7 @@ public final class QCircleBackButton {
 	 *
 	 * @return ID of the button view
 	 */
-	public int getId() {
+	public static int getId() {
 		return R.id.backButton;
 	}
 
@@ -87,6 +110,6 @@ public final class QCircleBackButton {
 	 */
 	public void setBackgroundTransparent() {
 		if (mBtnContent != null)
-			mBtnContent.setBackgroundColor(Color.TRANSPARENT);
+			mBtnContent.setBackgroundResource(R.drawable.back_button_background_semi_transparent);
 	}
 }
