@@ -6,4 +6,6 @@
     <color name="back_button_color_dark_pressed">#78909C</color>
     <color name="back_button_color_semi_transparent_normal">#30000000</color>
     <color name="back_button_color_semi_transparent_pressed">#60000000</color>
+    <color name="dialog_title_background_color_regular">#669B9F</color>
+    <color name="dialog_title_background_color_error">#DC4439</color>
 </resources>
