@@ -24,7 +24,7 @@ public final class QCircleTitle {
 	/**
 	 * creates a title bar with a text.
 	 * <p>
-	 * It makes a {@link TextView} with the given text.
+	 * It makes a {@link android.widget.TextView} with the given text.
 	 *
 	 * @param title   title text for the title. <br>
 	 *                If it is null, no title text will be shown but the title bar will occupy some
@@ -39,7 +39,7 @@ public final class QCircleTitle {
 	/**
 	 * creates a title bar with a text.
 	 * <p>
-	 * It makes a {@link TextView} with the given text.
+	 * It makes a {@link android.widget.TextView} with the given text.
 	 *
 	 * @param title           title text for the title. <br>
 	 *                        If it is null, no title text will be shown but the title bar will occupy some
