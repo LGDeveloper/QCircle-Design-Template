@@ -97,11 +97,11 @@ public class QCircleDialog {
 	 * @param activity         The activity
 	 * @param activityTemplate The template that the activity uses
 	 */
-	public void show(Activity activity, QCircleTemplate activityTemplate) {
+	public void show(final Activity activity, QCircleTemplate activityTemplate) {
 		this.activity = activity;
 		this.activityTemplate = activityTemplate;
 		RelativeLayout layout = (RelativeLayout) activityTemplate.getLayoutById(TemplateTag.CONTENT).getParent();
-		QCircleTemplate template = new QCircleTemplate(activity);
+		final QCircleTemplate template = new QCircleTemplate(activity);
 		template.setTitle(title == null ? "" : title, Color.WHITE, activity.getResources().getColor(
 				mode == DialogMode.Error ? R.color.dialog_title_background_color_error : R.color.dialog_title_background_color_regular));
 		template.setTitleTextSize(17);
@@ -148,7 +148,8 @@ public class QCircleDialog {
 					@Override
 					public void onClick(View v) {
 						if (negativeButtonListener != null) negativeButtonListener.onClick(v);
-						hide();
+						template.unregisterReceiver();
+						activity.finish();
 					}
 				});
 				break;
