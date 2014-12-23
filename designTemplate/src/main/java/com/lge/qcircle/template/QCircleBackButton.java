@@ -84,16 +84,26 @@ public final class QCircleBackButton {
 		return result;
 	}
 
-
+    /**
+     * sets theme of the back button.
+     * @author Yoav Sternberg
+     */
 	private void setTheme() {
 		mBtnContent.setImageResource(isDark ? R.drawable.backover_dark : R.drawable.backover);
 		mBtnContent.setBackgroundResource(isDark ? R.drawable.back_button_background_dark : R.drawable.back_button_background);
 	}
 
+    /**
+     * uses dark theme for the back button.<P>
+     *
+     * @param isDark  flag which indicates whether dark theme is used or not.
+     * @author Yoav Sternberg
+     */
 	public void isDark(boolean isDark) {
 		this.isDark = isDark;
 		setTheme();
 	}
+
 	/**
 	 * gets the view of the button.
 	 *

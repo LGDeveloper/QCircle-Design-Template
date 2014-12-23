@@ -50,10 +50,11 @@ public class QCircleTemplate {
 	protected static final int QUICKCOVERSETTINGS_QUICKCIRCLE = 3;
 	protected static final int QUICKCOVERSETTINGS_USEQUICKCIRCLE = 1;
 
+    // strings for special devices
 	protected static final String DEVICE_G3 = "g3";
 	protected static final String DEVICE_T6 = "tiger6";
 
-	//
+	// environments
 	protected Context mContext = null;
 	protected BroadcastReceiver mReceiver = null;
 	protected Intent mFullscreenIntent = null;
@@ -74,7 +75,6 @@ public class QCircleTemplate {
 
 	private final float fixedButtonRatio = 0.23f; // Button height ratio
 	private final float fixedTitleRatio = 0.23f; // Title height ratio
-//	protected boolean useSmartLighting = false; // flag for smartlighting
 
 	/**
 	 * creates a template with an empty content.
@@ -101,7 +101,6 @@ public class QCircleTemplate {
 	 */
 	public QCircleTemplate(Context context, TemplateType type) {
 		mContext = context;
-//		registerIntentReceiver();
 		if (type == null)
 			type = TemplateType.CIRCLE_EMPTY;
 		setTemplateType(type); // set layout style
@@ -118,7 +117,6 @@ public class QCircleTemplate {
 	 */
 	public QCircleTemplate(Context context, int templateId) {
 		mContext = context;
-//		registerIntentReceiver();
 		if (templateId <= 0) {
 			templateId = R.layout.qcircle_empty;
 		}
@@ -321,6 +319,7 @@ public class QCircleTemplate {
 	/**
 	 * Set the theme to the back button. Default is light.
 	 * @param isDark Is dark theme
+     * @author Yoav Sternberg
 	 */
 	public void setBackButtonTheme(boolean isDark) {
 		if (mBackButton != null) {
@@ -470,6 +469,11 @@ public class QCircleTemplate {
 		}
 	}
 
+    /**
+     * changes the height of the title.<P>
+     * If there is no title bar on the layout, no happens.
+     * @param heightRatio ratio of the title bar.
+     */
 	private void changeTitleViewHeight(float heightRatio) {
 		if (mTitle != null) {
 			if (heightRatio <= 0) // adjust the height
@@ -700,6 +704,11 @@ public class QCircleTemplate {
         }
 	}
 
+    /**
+     * un-registers a default broadcast receiver.<P>
+     * It must be called when {@link #registerIntentReceiver) has been called.
+     * @author Yoav Sternberg
+     */
 	public void unregisterReceiver() {
 		try {
 			mContext.unregisterReceiver(mReceiver);
@@ -772,6 +781,9 @@ public class QCircleTemplate {
 		}
 	}
 
+    /**
+     * @author Yoav Sternberg
+     */
 	public static interface IntentCreatorAsync {
 		Intent getIntent();
 	}
