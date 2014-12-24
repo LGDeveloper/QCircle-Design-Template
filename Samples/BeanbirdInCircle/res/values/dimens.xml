@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- physical width(mm) of quickcircle window -->
-    <dimen name="physical_width_of_quickcircle">52mm</dimen>
-    <!-- physical height(mm) of quickcircle window -->
-    <dimen name="physical_height_of_quickcircle">52mm</dimen>
-
-</resources>
