@@ -1,0 +1,1 @@
+include ':designTemplate', ':Sample_SimpleCircle', ':Sample_BeanbirdInCircle'

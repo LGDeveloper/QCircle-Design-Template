@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/QCircle-Design-Template.iml" filepath="$PROJECT_DIR$/QCircle-Design-Template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QCircleDesignTemplate.iml" filepath="$PROJECT_DIR$/QCircleDesignTemplate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sample_BeanbirdInCircle/Sample_BeanbirdInCircle.iml" filepath="$PROJECT_DIR$/Sample_BeanbirdInCircle/Sample_BeanbirdInCircle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sample_SimpleCircle/Sample_SimpleCircle.iml" filepath="$PROJECT_DIR$/Sample_SimpleCircle/Sample_SimpleCircle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/designTemplate/designTemplate.iml" filepath="$PROJECT_DIR$/designTemplate/designTemplate.iml" />
+    </modules>
+  </component>
+</project>
+

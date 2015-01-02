@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.lge.qcircle.template.sample.SimpleCircle"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/sidebackbutton"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        tools:replace="android:theme, android:label"
+        >
+        <activity
+            android:name="com.lge.qcircle.template.sample.SimpleCircle.MainActivity"
+            android:label="@string/app_name"
+            android:icon="@drawable/sidebackbutton"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.lge.quickcover" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lge.qcircle.template.sample.SimpleCircle.FullActivity"></activity>
+    </application>
+
+</manifest>
