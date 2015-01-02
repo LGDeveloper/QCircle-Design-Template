@@ -57,7 +57,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
 <title>
 
-  QCircleBackButton
+  QCircleDialog.Builder
 
 
 </title>
@@ -156,9 +156,9 @@
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="selected api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleBackButton.html">QCircleBackButton</a></li>
+          <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleBackButton.html">QCircleBackButton</a></li>
           <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleDialog.html">QCircleDialog</a></li>
-          <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a></li>
+          <li class="selected api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a></li>
           <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleTemplate.html">QCircleTemplate</a></li>
           <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html">QCircleTitle</a></li>
           <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/TemplateTag.html">TemplateTag</a></li>
@@ -262,11 +262,11 @@ Summary:
 
 <div id="jd-header">
     public
+    static 
      
-    final 
     
     class
-<h1>QCircleBackButton</h1>
+<h1>QCircleDialog.Builder</h1>
 
 
 
@@ -299,7 +299,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
          	
-        <td colspan="1" class="jd-inheritance-class-cell">com.lge.qcircle.template.QCircleBackButton</td>
+        <td colspan="1" class="jd-inheritance-class-cell">com.lge.qcircle.template.QCircleDialog.Builder</td>
     </tr>
     
 
@@ -315,7 +315,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>The <code>QCircleBackButton</code> class represents back buttons of QuickCircle.</p>
+<p>The <code>QCircleDialog.Builder</code> class is a builder to create a Dialog for Quick Circle.</p>
 
 
 
@@ -381,28 +381,8 @@ Summary:
             
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleBackButton.html#QCircleBackButton(Context, int)">QCircleBackButton</a></span>(Context context, int height)
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#QCircleDialog.Builder()">QCircleDialog.Builder</a></span>()
         
-        <div class="jd-descrdiv">creates a back button.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol">
-            
-            
-            
-            
-            
-            
-        </td>
-        <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleBackButton.html#QCircleBackButton(Context, int, OnClickListener)">QCircleBackButton</a></span>(Context context, int height, OnClickListener listener)
-        
-        <div class="jd-descrdiv">creates a back button.</div>
-  
   </td></tr>
 
 
@@ -425,14 +405,14 @@ Summary:
             
             
             
-            static
             
-            int
+            
+            <a href="../../../../com/lge/qcircle/template/QCircleDialog.html">QCircleDialog</a>
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleBackButton.html#getId()">getId</a></span>()
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#create()">create</a></span>()
         
-        <div class="jd-descrdiv">gets the ID of the button view.</div>
+        <div class="jd-descrdiv">creates a dialog.</div>
   
   </td></tr>
 
@@ -445,12 +425,48 @@ Summary:
             
             
             
-            View
+            <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleBackButton.html#getView()">getView</a></span>()
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#setImage(Drawable)">setImage</a></span>(Drawable image)
         
-        <div class="jd-descrdiv">gets the view of the button.</div>
+        <div class="jd-descrdiv">sets main image of the dialog.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">
+            
+            
+            
+            
+            
+            <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
+        </td>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#setMode(com.lge.qcircle.template.QCircleDialog.DialogMode)">setMode</a></span>(<a href="../../../../com/lge/qcircle/template/QCircleDialog.DialogMode.html">QCircleDialog.DialogMode</a> mode)
+        
+        <div class="jd-descrdiv">sets a mode fot eh dialog.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">
+            
+            
+            
+            
+            
+            <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
+        </td>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#setNegativeButtonListener(View.OnClickListener)">setNegativeButtonListener</a></span>(View.OnClickListener negativeButtonListener)
+        
+        <div class="jd-descrdiv">sets a listener for negative button.</div>
   
   </td></tr>
 
@@ -466,9 +482,9 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleBackButton.html#isDark(boolean)">isDark</a></span>(boolean isDark)
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#setNegativeButtonText(java.lang.String)">setNegativeButtonText</a></span>(String negativeButtonText)
         
-        <div class="jd-descrdiv">uses dark theme for the back button.</div>
+        <div class="jd-descrdiv">sets a text for negative button.</div>
   
   </td></tr>
 
@@ -481,12 +497,66 @@ Summary:
             
             
             
+            <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
+        </td>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#setPositiveButtonListener(View.OnClickListener)">setPositiveButtonListener</a></span>(View.OnClickListener positiveButtonListener)
+        
+        <div class="jd-descrdiv">sets a listener for positive button.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">
+            
+            
+            
+            
+            
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleBackButton.html#setBackgroundTransparent()">setBackgroundTransparent</a></span>()
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#setPositiveButtonText(java.lang.String)">setPositiveButtonText</a></span>(String positiveButtonText)
         
-        <div class="jd-descrdiv">sets the background of the button transparent.</div>
+        <div class="jd-descrdiv">sets a text for positive button.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">
+            
+            
+            
+            
+            
+            <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
+        </td>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#setText(java.lang.String)">setText</a></span>(String text)
+        
+        <div class="jd-descrdiv">sets main text of the dialog.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">
+            
+            
+            
+            
+            
+            <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
+        </td>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html#setTitle(java.lang.String)">setTitle</a></span>(String title)
+        
+        <div class="jd-descrdiv">sets title of the Dialog.</div>
   
   </td></tr>
 
@@ -709,7 +779,7 @@ From class
 
 
 
-<a id="QCircleBackButton(Context, int)"></a>
+<a id="QCircleDialog.Builder()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -721,8 +791,8 @@ From class
          
         
       </span>
-      <span class="sympad">QCircleBackButton</span>
-      <span class="normal">(Context context, int height)</span>
+      <span class="sympad">QCircleDialog.Builder</span>
+      <span class="normal">()</span>
     </h4>
       <div class="api-level">
         <div>
@@ -734,64 +804,7 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>creates a back button.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>context</th>
-          <td><code>Activity</code> which has a circle view.<br>
- <b>If it is null, you might get errors when you use method of this class.</b>
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<a id="QCircleBackButton(Context, int, OnClickListener)"></a>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        
-      </span>
-      <span class="sympad">QCircleBackButton</span>
-      <span class="normal">(Context context, int height, OnClickListener listener)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>creates a back button.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>context</th>
-          <td><code>Activity</code> which has a circle view.<br>
- <b>If it is null, you might get errors when you use method of this class.</b></td>
-        </tr>
-        <tr>
-          <th>listener</th>
-          <td>Listener on click
-</td>
-        </tr>
-      </table>
-  </div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
@@ -812,19 +825,19 @@ From class
 
 
 
-<a id="getId()"></a>
+<a id="create()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
         public 
-        static 
          
          
          
-        int
+         
+        <a href="../../../../com/lge/qcircle/template/QCircleDialog.html">QCircleDialog</a>
       </span>
-      <span class="sympad">getId</span>
+      <span class="sympad">create</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -837,10 +850,11 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>gets the ID of the button view.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>creates a dialog.<P>
+ It should be called when setting of the dialog is done by the Builder.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>ID of the button view
+      <ul class="nolist"><li>a dialog created by the Builder.
 </li></ul>
   </div>
 
@@ -848,7 +862,7 @@ From class
 </div>
 
 
-<a id="getView()"></a>
+<a id="setImage(Drawable)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -858,10 +872,10 @@ From class
          
          
          
-        View
+        <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
       </span>
-      <span class="sympad">getView</span>
-      <span class="normal">()</span>
+      <span class="sympad">setImage</span>
+      <span class="normal">(Drawable image)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -873,10 +887,19 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>gets the view of the button.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>sets main image of the dialog.<P></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>image</th>
+          <td>main image as a Drawable. It will be displayed on the bottom of the main text.</td>
+        </tr>
+      </table>
+  </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>button view
+      <ul class="nolist"><li>a Builder with main image
 </li></ul>
   </div>
 
@@ -884,7 +907,97 @@ From class
 </div>
 
 
-<a id="isDark(boolean)"></a>
+<a id="setMode(com.lge.qcircle.template.QCircleDialog.DialogMode)"></a>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
+      </span>
+      <span class="sympad">setMode</span>
+      <span class="normal">(<a href="../../../../com/lge/qcircle/template/QCircleDialog.DialogMode.html">QCircleDialog.DialogMode</a> mode)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>sets a mode fot eh dialog.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>mode</th>
+          <td>dialog mode. see <code><a href="../../../../com/lge/qcircle/template/QCircleDialog.DialogMode.html">QCircleDialog.DialogMode</a></code>.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a Builder with the dialog mode.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<a id="setNegativeButtonListener(View.OnClickListener)"></a>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
+      </span>
+      <span class="sympad">setNegativeButtonListener</span>
+      <span class="normal">(View.OnClickListener negativeButtonListener)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>sets a listener for negative button.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>negativeButtonListener</th>
+          <td>listener to set</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a Builder with the listener for negative button
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<a id="setNegativeButtonText(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -896,8 +1009,8 @@ From class
          
         void
       </span>
-      <span class="sympad">isDark</span>
-      <span class="normal">(boolean isDark)</span>
+      <span class="sympad">setNegativeButtonText</span>
+      <span class="normal">(String negativeButtonText)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -909,13 +1022,14 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>uses dark theme for the back button.<P></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>sets a text for negative button.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>isDark</th>
-          <td>flag which indicates whether dark theme is used or not.</td>
+          <th>negativeButtonText</th>
+          <td>text for negative button
+</td>
         </tr>
       </table>
   </div>
@@ -924,7 +1038,7 @@ From class
 </div>
 
 
-<a id="setBackgroundTransparent()"></a>
+<a id="setPositiveButtonListener(View.OnClickListener)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -934,10 +1048,10 @@ From class
          
          
          
-        void
+        <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
       </span>
-      <span class="sympad">setBackgroundTransparent</span>
-      <span class="normal">()</span>
+      <span class="sympad">setPositiveButtonListener</span>
+      <span class="normal">(View.OnClickListener positiveButtonListener)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -949,8 +1063,152 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>sets the background of the button transparent.
-</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>sets a listener for positive button.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>positiveButtonListener</th>
+          <td>lister to set</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a Builder with the listener for positive button
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<a id="setPositiveButtonText(java.lang.String)"></a>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setPositiveButtonText</span>
+      <span class="normal">(String positiveButtonText)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>sets a text for positive button.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>positiveButtonText</th>
+          <td>text for positive button
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<a id="setText(java.lang.String)"></a>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
+      </span>
+      <span class="sympad">setText</span>
+      <span class="normal">(String text)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>sets main text of the dialog.<P></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>text</th>
+          <td>main text. It will be displayed on the middle of the dialog.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a Builder with main text
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<a id="setTitle(java.lang.String)"></a>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a>
+      </span>
+      <span class="sympad">setTitle</span>
+      <span class="normal">(String title)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>sets title of the Dialog.<P></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>title</th>
+          <td>text of the title. It will be displayed on the top of the dialog.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a Builder with title text
+</li></ul>
+  </div>
 
     </div>
 </div>

@@ -1,7 +1,7 @@
 package com.lge.qcircle.template;
 
 /**
- * This class provides IDs of content views which are on the circle.<P>
+ * The {@code TemplateTag} class provides IDs of content views which are on the circle.<P>
  * You can get the layout of a content view by using {@link QCircleTemplate#getLayoutById(int)} with a constant of this class.<BR>
  *  
  * @see QCircleTemplate#getLayoutById(int)

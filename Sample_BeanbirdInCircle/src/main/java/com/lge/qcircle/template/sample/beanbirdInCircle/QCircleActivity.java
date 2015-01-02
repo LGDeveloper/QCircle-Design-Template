@@ -94,6 +94,7 @@ public class QCircleActivity extends Activity {
 		template.setTitle("Bean Bird In Circle");
 		//add back button
 		template.setBackButton();
+        template.setBackButtonTheme(true);
 
         //Register your own broadcast receiver
         registerReceiver();             // and then register your own broadcast receiver

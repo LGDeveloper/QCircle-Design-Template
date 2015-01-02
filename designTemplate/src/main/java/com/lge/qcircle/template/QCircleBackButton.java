@@ -12,7 +12,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 
 /**
- * This class represents back buttons of QuickCircle.
+ * The {@code QCircleBackButton} class represents back buttons of QuickCircle.
  *
  * @author jeongeun.jeon
  */

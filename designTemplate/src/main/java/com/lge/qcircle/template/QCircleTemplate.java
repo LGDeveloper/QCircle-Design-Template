@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 /**
- * This class provides design templates for LG QuickCircle.
+ * The {@code QCircleTemplate} class provides design templates for LG QuickCircle.
  * <p>
  * There are 5 templates: <br>
  * <ul>

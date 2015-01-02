@@ -148,10 +148,17 @@
           <div id="classes-nav">
             <ul>
               
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleTemplate.IntentCreatorAsync.html">QCircleTemplate.IntentCreatorAsync</a></li>
+      </ul>
+    </li>
               
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleBackButton.html">QCircleBackButton</a></li>
+          <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleDialog.html">QCircleDialog</a></li>
+          <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleDialog.Builder.html">QCircleDialog.Builder</a></li>
           <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleTemplate.html">QCircleTemplate</a></li>
           <li class="selected api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html">QCircleTitle</a></li>
           <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/TemplateTag.html">TemplateTag</a></li>
@@ -161,6 +168,7 @@
               
     <li><h2>Enums</h2>
       <ul>
+          <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/QCircleDialog.DialogMode.html">QCircleDialog.DialogMode</a></li>
           <li class="api apilevel-"><a href="../../../../com/lge/qcircle/template/TemplateType.html">TemplateType</a></li>
       </ul>
     </li>
@@ -307,8 +315,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>This class represents title views of QuickCircle.
- <P></p>
+<p>The <code>QCircleTitle</code> class represents title views of QuickCircle.</p>
 
 
 
@@ -374,7 +381,7 @@ Summary:
             
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html#QCircleTitle(android.content.Context, java.lang.String)">QCircleTitle</a></span>(Context context, String title)
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html#QCircleTitle(Context, java.lang.String)">QCircleTitle</a></span>(Context context, String title)
         
         <div class="jd-descrdiv">creates a title bar with a text.</div>
   
@@ -392,7 +399,43 @@ Summary:
             
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html#QCircleTitle(android.content.Context, android.view.View)">QCircleTitle</a></span>(Context context, View title)
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html#QCircleTitle(Context, java.lang.String, int, int)">QCircleTitle</a></span>(Context context, String title, int titleTextColor, int backgroundColor)
+        
+        <div class="jd-descrdiv">creates a title bar with a text.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">
+            
+            
+            
+            
+            
+            
+        </td>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html#QCircleTitle(Context, View)">QCircleTitle</a></span>(Context context, View title)
+        
+        <div class="jd-descrdiv">creates a title bar with the given View.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">
+            
+            
+            
+            
+            
+            
+        </td>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html#QCircleTitle(Context, View, int)">QCircleTitle</a></span>(Context context, View title, int backgroundColor)
         
         <div class="jd-descrdiv">creates a title bar with the given View.</div>
   
@@ -495,7 +538,7 @@ Summary:
             boolean
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html#setView(android.view.View)">setView</a></span>(View view)
+        <span class="sympad"><a href="../../../../com/lge/qcircle/template/QCircleTitle.html#setView(View)">setView</a></span>(View view)
         
         <div class="jd-descrdiv">sets the view of the title.</div>
   
@@ -720,7 +763,7 @@ From class
 
 
 
-<a id="QCircleTitle(android.content.Context, java.lang.String)"></a>
+<a id="QCircleTitle(Context, java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -746,22 +789,22 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p>creates a title bar with a text.
- <P>
- It makes a TextView with the given text.</p></div>
+ <p>
+ It makes a android.widget.TextView with the given text.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>context</th>
-          <td><code>Activity</code> which has a circle view.<BR>
-            If it is null, you might get errors when you use method of this class.
+          <td><code>Activity</code> which has a circle view.<br>
+                If it is null, you might get errors when you use method of this class.
 </td>
         </tr>
         <tr>
           <th>title</th>
-          <td>title text for the title. <BR>
-            If it is null, no title text will be shown but the title bar will occupy some
-            space.</td>
+          <td>title text for the title. <br>
+                If it is null, no title text will be shown but the title bar will occupy some
+                space.</td>
         </tr>
       </table>
   </div>
@@ -770,7 +813,65 @@ From class
 </div>
 
 
-<a id="QCircleTitle(android.content.Context, android.view.View)"></a>
+<a id="QCircleTitle(Context, java.lang.String, int, int)"></a>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">QCircleTitle</span>
+      <span class="normal">(Context context, String title, int titleTextColor, int backgroundColor)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>creates a title bar with a text.
+ <p>
+ It makes a android.widget.TextView with the given text.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>context</th>
+          <td><code>Activity</code> which has a circle view.<br>
+                        If it is null, you might get errors when you use method of this class.</td>
+        </tr>
+        <tr>
+          <th>title</th>
+          <td>title text for the title. <br>
+                        If it is null, no title text will be shown but the title bar will occupy some
+                        space.</td>
+        </tr>
+        <tr>
+          <th>titleTextColor</th>
+          <td>The color of the title</td>
+        </tr>
+        <tr>
+          <th>backgroundColor</th>
+          <td>The background color of the title
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<a id="QCircleTitle(Context, View)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -795,20 +896,70 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>creates a title bar with the given View.
- <P></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>creates a title bar with the given View.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>context</th>
-          <td><code>Activity</code> which has a circle view.<BR>
-            If it is null, you might get errors when you use method of this class.</td>
+          <td><code>Activity</code> which has a circle view.<br>
+                If it is null, you might get errors when you use method of this class.</td>
         </tr>
         <tr>
           <th>title</th>
-          <td>View for the title bar.<BR>
-            If it is null, a empty title bar will be created.
+          <td>View for the title bar.<br>
+                If it is null, a empty title bar will be created.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<a id="QCircleTitle(Context, View, int)"></a>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">QCircleTitle</span>
+      <span class="normal">(Context context, View title, int backgroundColor)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>creates a title bar with the given View.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>context</th>
+          <td><code>Activity</code> which has a circle view.<br>
+                        If it is null, you might get errors when you use method of this class.</td>
+        </tr>
+        <tr>
+          <th>title</th>
+          <td>View for the title bar.<br>
+                        If it is null, a empty title bar will be created.</td>
+        </tr>
+        <tr>
+          <th>backgroundColor</th>
+          <td>The background color of the title
 </td>
         </tr>
       </table>
@@ -858,8 +1009,7 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>gets the ID of the title view.
- <P></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>gets the ID of the title view.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>ID of the title view
@@ -895,8 +1045,7 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>gets the view of the title.
- <P></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>gets the view of the title.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>root of the title view
@@ -932,15 +1081,14 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>sets the font size of the title text.
- <P></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>sets the font size of the title text.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>size</th>
-          <td>font size in pixel. <BR>
-            If it is less or equal to 0, the font size will not change.
+          <td>font size in pixel. <br>
+             If it is less or equal to 0, the font size will not change.
 </td>
         </tr>
       </table>
@@ -975,16 +1123,15 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>sets the text of the title view.
- <P></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>sets the text of the title view.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>title</th>
-          <td>title text for the title. <BR>
-            If it is null, no title text will be shown but the title bar will occupy some
-            space.
+          <td>title text for the title. <br>
+              If it is null, no title text will be shown but the title bar will occupy some
+              space.
 </td>
         </tr>
       </table>
@@ -994,7 +1141,7 @@ From class
 </div>
 
 
-<a id="setView(android.view.View)"></a>
+<a id="setView(View)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1019,8 +1166,7 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>sets the view of the title.
- <P></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>sets the view of the title.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -1032,8 +1178,8 @@ From class
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>true if the title view is added successfully or<BR>
-         false otherwise.
+      <ul class="nolist"><li>true if the title view is added successfully or<br>
+ false otherwise.
 </li></ul>
   </div>
 

@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * This class represents title views of QuickCircle.
+ * The {@code QCircleTitle} class represents title views of QuickCircle.
  *
  * @author jeongeun.jeon
  */

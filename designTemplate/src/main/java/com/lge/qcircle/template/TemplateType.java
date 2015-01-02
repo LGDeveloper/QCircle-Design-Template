@@ -1,7 +1,7 @@
 package com.lge.qcircle.template;
 
 /**
- * This enumeration defines constants for design templates which are supported by {@link QCircleTemplate}.  <P>
+ * The {@code TemplateType} enumeration defines constants for design templates which are supported by {@link QCircleTemplate}.  <P>
  * Use the constant when you set the circle template using {@link QCircleTemplate#QCircleTemplate(android.content.Context, com.lge.qcircle.template.TemplateType)}.
  * @author jeongeun.jeon
  * @see QCircleTemplate
