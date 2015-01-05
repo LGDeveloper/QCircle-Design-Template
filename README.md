@@ -14,6 +14,13 @@ introduction of sample applications: simple circle, beanbird in circle
 # [Extra Tips](https://github.com/LGDeveloper/QCircle-Design-Template/wiki/Extra-Tips)
 how to utilize the LG QCircle design template that is irrelevant with developing applications
 
+# Include in your project
+The QCircle-Design-Template Library is pushed to Maven Central, so you just need to add the following dependency to your `build.gradle`.
+
+```groovy
+compile 'com.lge.developer:qcircle-design-template:1.0.0'
+```
+
 # Directories
 - designTemplate: library module for QCircle design template
 - sample_SimpleCircle: sample application 
