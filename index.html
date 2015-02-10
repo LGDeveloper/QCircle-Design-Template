@@ -3,39 +3,36 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
     <title>Qcircle-design-template by LGDeveloper</title>
   </head>
 
   <body>
-    <div id="container">
+    <header>
       <div class="inner">
+        <h1>Qcircle-design-template</h1>
+        <h2>Design template library for LG QCircle SDK</h2>
+        <a href="https://github.com/LGDeveloper/QCircle-Design-Template" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
 
-        <header>
-          <h1>Qcircle-design-template</h1>
-          <h2>Design template library for LG QCircle SDK</h2>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/LGDeveloper/QCircle-Design-Template/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/LGDeveloper/QCircle-Design-Template/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/LGDeveloper/QCircle-Design-Template" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
           <h1>
-<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h1>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h1>
 
 <h2>
-<a name="lg-qcircle-design-template-overview" class="anchor" href="#lg-qcircle-design-template-overview"><span class="octicon octicon-link"></span></a>LG QCircle Design Template Overview</h2>
+<a id="lg-qcircle-design-template-overview" class="anchor" href="#lg-qcircle-design-template-overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>LG QCircle Design Template Overview</h2>
 
 <p>In order to develop an application for LG QuickCircle, you have to use the LG QCircle SDK.
 The LG QCircle SDK provides the broadcast intents and QuickCircle position information, but it does not provide the circle layout to display on QuickCircle. Therefore, the developer should design a circle layout and display the layout based on the position information of QuickCircle per model.</p>
@@ -47,7 +44,7 @@ The LG QCircle SDK provides the broadcast intents and QuickCircle position infor
 <p>The LG QCircle design template library provides the layout designs and basic UI elements through API, enabling developers to save time designing and using repetitive tasks. The LG QCircle design template library provides various circle layouts and receives QuickCircle broadcast intents, adjusts layout position, and handles back button operation. </p>
 
 <h3>
-<a name="what-are-the-features" class="anchor" href="#what-are-the-features"><span class="octicon octicon-link"></span></a>What are the features?</h3>
+<a id="what-are-the-features" class="anchor" href="#what-are-the-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>What are the features?</h3>
 
 <p>The LG QCircle design template provides a library file. In this library, the following features can be used:</p>
 
@@ -58,7 +55,7 @@ The LG QCircle SDK provides the broadcast intents and QuickCircle position infor
 </ul>
 
 <h3>
-<a name="what-kind-of-templates-does-the-library-support" class="anchor" href="#what-kind-of-templates-does-the-library-support"><span class="octicon octicon-link"></span></a>What kind of templates does the library support?</h3>
+<a id="what-kind-of-templates-does-the-library-support" class="anchor" href="#what-kind-of-templates-does-the-library-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>What kind of templates does the library support?</h3>
 
 <p>The LG QCircle design template provides 5 circle layouts as follows: (The title bar and the back button can be added according to developer's choices.)</p>
 
@@ -85,7 +82,7 @@ As with the Empty content, avoid putting important content on the four corners o
 </ol>
 
 <h1>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
 
 <blockquote>
 <p>For a reference guide about the LG QCircle design template library, see the API reference guide included in the design template compressed file.
@@ -93,23 +90,22 @@ When an error occurred while using the LG QCircle design template library, a ‘
 </blockquote>
 
 <h2>
-<a name="setting-a-template" class="anchor" href="#setting-a-template"><span class="octicon octicon-link"></span></a>Setting a Template</h2>
+<a id="setting-a-template" class="anchor" href="#setting-a-template" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting a Template</h2>
 
 <p>In order to make an application for QuickCircle with the LG QCircle design template, you have to set the circle layout. You have to use an instance from QCircleTemplate class included in the library in order to use LG QCircle design template in the application.
 This section describes the basic guide for QCircleTemplate class along with the codes.</p>
 
 <h3>
-<a name="setting-a-layout" class="anchor" href="#setting-a-layout"><span class="octicon octicon-link"></span></a>Setting a layout</h3>
+<a id="setting-a-layout" class="anchor" href="#setting-a-layout" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting a layout</h3>
 
 <p>You have to create a QCircleTemplate instance in order to apply the circle layout provided by LG QCircle design template to the application. Select which circle layout to use while creating the QCircleTemplate instance. The circle layout of QCircleTemplate cannot be changed once it has been created.</p>
 
 <p>Following code is for applying the content with a horizontal sidebar circle layout.</p>
 
-<div class="highlight highlight-java"><pre><span class="n">QCircleTemplate</span> <span class="n">template</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">QCircleTemplate</span><span class="o">(</span>
-                                           <span class="k">this</span><span class="o">,</span> 
-                                           <span class="n">TemplateType</span><span class="o">.</span><span class="na">CIRCLE_HORIZONTAL</span>
-                                 <span class="o">);</span>
-</pre></div>
+<div class="highlight highlight-java"><pre><span class="pl-stj">QCircleTemplate</span> template <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">QCircleTemplate</span>(
+                                           <span class="pl-v">this</span>, 
+                                           <span class="pl-stj">TemplateType</span><span class="pl-c1"><span class="pl-k">.</span>CIRCLE_HORIZONTAL</span>
+                                 );</pre></div>
 
 <p>The first parameter is for the Activity to apply this layout, and the second parameter refers to the content with a horizontal sidebar. When no second parameter is input, <code>QCircleTemplate</code> basically applies an Empty content circle layout.
 Usable layout is defined in the <code>TemplateType</code> class. The following table shows the layouts for constants for each type.</p>
@@ -156,7 +152,7 @@ The following codes will set the view in your Activity.</p>
 <p>There is no title bar or a back button in the initial circle layout. These two elements should be added to each layout, if necessary. The following section explains how to add a title bar or a back button. </p>
 
 <h3>
-<a name="adding-a-title-bar" class="anchor" href="#adding-a-title-bar"><span class="octicon octicon-link"></span></a>Adding a title bar</h3>
+<a id="adding-a-title-bar" class="anchor" href="#adding-a-title-bar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a title bar</h3>
 
 <p>Once it adds a title bar to the circle layout, the title appears at the top of QuickCircle. A title bar consists of a <code>TextView</code> with a transparent background. </p>
 
@@ -181,7 +177,7 @@ template.setTitle(titleView, 0.3f);
 </code></pre>
 
 <h3>
-<a name="adding-a-back-button" class="anchor" href="#adding-a-back-button"><span class="octicon octicon-link"></span></a>Adding a back button</h3>
+<a id="adding-a-back-button" class="anchor" href="#adding-a-back-button" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a back button</h3>
 
 <p>When a back button is added to the circle layout, it appears at the bottom of QuickCircle. The back button consists of a single button and the background is light gray. The back button's height is fixed at 20% of QuickCircle's height.
 If you tap this back button, it shuts down the current Activity. </p>
@@ -208,13 +204,13 @@ If you tap this back button, it shuts down the current Activity. </p>
 <p>However, you can make the background of the back button transparent to apply the QuickCircle's background. The way to do this is described in the section Customizing layout.</p>
 
 <h2>
-<a name="using-the-template" class="anchor" href="#using-the-template"><span class="octicon octicon-link"></span></a>Using the Template</h2>
+<a id="using-the-template" class="anchor" href="#using-the-template" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using the Template</h2>
 
 <p>There is a content area and a sidebar on a circle layout provided in the QCircle design template. Each of them can be freely decorated by developers. 
 This section explains how to add content to the content area or sidebars on the layout.</p>
 
 <h3>
-<a name="customizing-layout" class="anchor" href="#customizing-layout"><span class="octicon octicon-link"></span></a>Customizing layout</h3>
+<a id="customizing-layout" class="anchor" href="#customizing-layout" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizing layout</h3>
 
 <ol>
 <li>Adjusting the size of sidebar
@@ -224,8 +220,7 @@ There is a content area and a sidebar on the circle layout. Each space can be mo
 <p>QCircle design template provides the API that controls the space ratio between the sidebar and the content area when using content layouts with a horizontal sidebar, a vertical sidebar, and two top bars. 
 The following code sets the sidebar size to 50% of the entire circle content window.</p>
 
-<div class="highlight highlight-java"><pre><span class="n">template</span><span class="o">.</span><span class="na">setSidebarRatio</span><span class="o">(</span><span class="mf">0.5f</span><span class="o">);</span>
-</pre></div>
+<div class="highlight highlight-java"><pre>template<span class="pl-k">.</span>setSidebarRatio(<span class="pl-c1">0.5f</span>);</pre></div>
 
 <p>The first parameter is the sidebar ratio. This ratio does not relate to the entire QuickCircle, but rather to the total circle content window. That is, if there is an area occupied by a title bar or a back button, this ratio excludes those areas. </p>
 
@@ -243,8 +238,7 @@ The content area and the sidebar belong to the <code>RelativeLayout</code>. <cod
 
 <p>The following code imports the<code>RelativeLayout</code> for the main content area.</p>
 
-<div class="highlight highlight-java"><pre><span class="n">RelativeLayout</span> <span class="n">main</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_MAIN</span><span class="o">);</span> 
-</pre></div>
+<div class="highlight highlight-java"><pre><span class="pl-stj">RelativeLayout</span> main <span class="pl-k">=</span> template<span class="pl-k">.</span>getLayoutById(<span class="pl-stj">TemplateTag</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_MAIN</span>); </pre></div>
 
 <p>The first parameter refers to an ID that assigns the area of the circle layout. The IDs for each area are saved in the <code>TemplateTag</code> class. Provided constants for area IDs are as follows: </p>
 
@@ -273,17 +267,15 @@ The content area and the sidebar belong to the <code>RelativeLayout</code>. <cod
 <p>You can change the properties of the imported <code>RelativeLayout</code> using Android API.
 The following code changes the background color of the main content.</p>
 
-<div class="highlight highlight-java"><pre><span class="n">main</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
-</pre></div>
+<div class="highlight highlight-java"><pre>main<span class="pl-k">.</span>setBackgroundColor(<span class="pl-stj">Color</span><span class="pl-c1"><span class="pl-k">.</span>BLUE</span>);</pre></div>
 
 <p>Like the content with two sidebars, there is a layout that does not provide API to control the sidebar's size on the <code>QCircleTemplate</code>.  In this case, you can adjust the size using the Android API. 
 The following code changes the width of the first sidebar in the content layout with two sidebars.</p>
 
-<div class="highlight highlight-java"><pre><span class="n">RelativeLayout</span> <span class="n">side1</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_SIDE_1</span><span class="o">);</span>
-<span class="n">LayoutParams</span> <span class="n">params</span> <span class="o">=</span> <span class="n">side1</span><span class="o">.</span><span class="na">getLayoutParams</span><span class="o">();</span>
-<span class="n">params</span><span class="o">.</span><span class="na">width</span> <span class="o">=</span> <span class="mi">400</span><span class="o">;</span>
-<span class="n">side1</span><span class="o">.</span><span class="na">setLayoutParams</span><span class="o">(</span><span class="n">params</span><span class="o">);</span>
-</pre></div>
+<div class="highlight highlight-java"><pre><span class="pl-stj">RelativeLayout</span> side1 <span class="pl-k">=</span> template<span class="pl-k">.</span>getLayoutById(<span class="pl-stj">TemplateTag</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_SIDE_1</span>);
+<span class="pl-stj">LayoutParams</span> params <span class="pl-k">=</span> side1<span class="pl-k">.</span>getLayoutParams();
+params<span class="pl-k">.</span>width <span class="pl-k">=</span> <span class="pl-c1">400</span>;
+side1<span class="pl-k">.</span>setLayoutParams(params);</pre></div>
 
 <blockquote>
 <p>Caution
@@ -296,13 +288,12 @@ The layout can be twisted when changed by developers because the circle layout t
 You can specify the background for each area by using the method described above. However, even if you use <code>TemplateTag.CONTENT</code>, it does not affect the title bar or the back button's area. If you want to set a background for the entire QuickCircle including the title bar and the back button, use the following code:</li>
 </ol>
 
-<div class="highlight highlight-java"><pre><span class="c1">// set background color</span>
-<span class="n">template</span><span class="o">.</span><span class="na">setBackgroundColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLACK</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+<div class="highlight highlight-java"><pre><span class="pl-c">// set background color</span>
+template<span class="pl-k">.</span>setBackgroundColor(<span class="pl-stj">Color</span><span class="pl-c1"><span class="pl-k">.</span>BLACK</span>, <span class="pl-c1">true</span>);
 
-<span class="c1">// set background image</span>
-<span class="n">Drawable</span> <span class="n">mypic</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getDrawable</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">beanbird</span><span class="o">);</span>
-<span class="n">template</span><span class="o">.</span><span class="na">setBackgroundDrawable</span><span class="o">(</span><span class="n">mypic</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
-</pre></div>
+<span class="pl-c">// set background image</span>
+<span class="pl-stj">Drawable</span> mypic <span class="pl-k">=</span> getResources()<span class="pl-k">.</span>getDrawable(<span class="pl-stj">R</span><span class="pl-k">.</span>drawable<span class="pl-k">.</span>beanbird);
+template<span class="pl-k">.</span>setBackgroundDrawable(mypic, <span class="pl-c1">true</span>);</pre></div>
 
 <p>The first parameter refers to the color or image source to be applied to the background, the second parameter refers to a flag to make the back button background transparent. 
 The title bar area is set to be transparent by default. If you specified a custom title using the <code>setTitle(View view, Context context)</code>, then the title's background should be set to be transparent to apply the above code.</p>
@@ -311,7 +302,7 @@ The title bar area is set to be transparent by default. If you specified a custo
 [picture]</p>
 
 <h3>
-<a name="adding-content" class="anchor" href="#adding-content"><span class="octicon octicon-link"></span></a>Adding content</h3>
+<a id="adding-content" class="anchor" href="#adding-content" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding content</h3>
 
 <p>The information provided by the application should be output on the content area or the sidebar of the circle layout.
 As mentioned previously, you can add the Android UI component freely to this layout because the content area and the sidebar are the <code>RelativeLayout</code>.
@@ -320,42 +311,40 @@ Similar to the previous description, add the desired UI component using the Andr
 
 <p>The following code is to add the layout generated with the layout XML to the content area and to add the image to the sidebar.</p>
 
-<div class="highlight highlight-java"><pre><span class="c1">// main content</span>
-<span class="n">View</span> <span class="n">myContent</span> <span class="o">=</span> <span class="o">(</span><span class="n">View</span><span class="o">)</span> <span class="n">getLayoutInflater</span><span class="o">().</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-<span class="n">RelativeLayout</span> <span class="n">main</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_MAIN</span><span class="o">);</span>
-<span class="n">main</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">myContent</span><span class="o">);</span>
+<div class="highlight highlight-java"><pre><span class="pl-c">// main content</span>
+<span class="pl-stj">View</span> myContent <span class="pl-k">=</span> (<span class="pl-stj">View</span>) getLayoutInflater()<span class="pl-k">.</span>inflate(<span class="pl-stj">R</span><span class="pl-k">.</span>layout<span class="pl-k">.</span>activity_main, <span class="pl-c1">null</span>);
+<span class="pl-stj">RelativeLayout</span> main <span class="pl-k">=</span> template<span class="pl-k">.</span>getLayoutById(<span class="pl-stj">TemplateTag</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_MAIN</span>);
+main<span class="pl-k">.</span>addView(myContent);
 
-<span class="c1">// sidebar</span>
-<span class="n">RelativeLayout</span> <span class="n">side1</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_SIDE_1</span><span class="o">);</span>
-<span class="n">side1</span><span class="o">.</span><span class="na">setBackgroundResource</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">sidebarimg</span><span class="o">);</span>
-</pre></div>
+<span class="pl-c">// sidebar</span>
+<span class="pl-stj">RelativeLayout</span> side1 <span class="pl-k">=</span> template<span class="pl-k">.</span>getLayoutById(<span class="pl-stj">TemplateTag</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_SIDE_1</span>);
+side1<span class="pl-k">.</span>setBackgroundResource(<span class="pl-stj">R</span><span class="pl-k">.</span>drawable<span class="pl-k">.</span>sidebarimg);</pre></div>
 
 <p>The image below shows that a content layout with a horizontal sidebar which has an icon on the sidebar as well as the text and a button on the content area.
 [picture]</p>
 
 <h2>
-<a name="others" class="anchor" href="#others"><span class="octicon octicon-link"></span></a>Others</h2>
+<a id="others" class="anchor" href="#others" aria-hidden="true"><span class="octicon octicon-link"></span></a>Others</h2>
 
 <h3>
-<a name="setting-an-intent-for-full-screen" class="anchor" href="#setting-an-intent-for-full-screen"><span class="octicon octicon-link"></span></a>Setting an Intent for full screen</h3>
+<a id="setting-an-intent-for-full-screen" class="anchor" href="#setting-an-intent-for-full-screen" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting an Intent for full screen</h3>
 
 <p>The application for LG QuickCircle has to display a circle layout when the QuickCircle case is closed, and display a full screen layout when the case is open. 
 LG QCircle design template enables running a specific <code>Intent</code> when the case is open. When this <code>Intent</code> is a general Android's Activity, it runs as full screen by default.</p>
 
 <p>You can set which <code>Intent</code> to run by using the following code:</p>
 
-<div class="highlight highlight-java"><pre><span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">FullActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-<span class="n">template</span><span class="o">.</span><span class="na">setFullscreenIntent</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
-</pre></div>
+<div class="highlight highlight-java"><pre><span class="pl-stj">Intent</span> intent <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">Intent</span>(<span class="pl-v">this</span>, <span class="pl-stj">FullActivity</span><span class="pl-k">.</span>class);
+template<span class="pl-k">.</span>setFullscreenIntent(intent);</pre></div>
 
 <p>You should first select the Activity to run as full screen. In order to use a new Activity, first make the Activity in the application and then create an <code>Intent</code> that runs the Activity as shown above. 
 <code>QCircleTemplate</code> does not care which <code>Intent</code> is set, it just runs it by using <code>startActivity()</code>. Therefore, the information and properties of <code>Intent</code> that you want to run should be set in your application. </p>
 
 <h1>
-<a name="extra-tips" class="anchor" href="#extra-tips"><span class="octicon octicon-link"></span></a>Extra Tips</h1>
+<a id="extra-tips" class="anchor" href="#extra-tips" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extra Tips</h1>
 
 <h2>
-<a name="adding-a-custom-layout" class="anchor" href="#adding-a-custom-layout"><span class="octicon octicon-link"></span></a>Adding a Custom Layout</h2>
+<a id="adding-a-custom-layout" class="anchor" href="#adding-a-custom-layout" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a Custom Layout</h2>
 
 <p>LG QCircle design template provides 5 circle layouts by default. 
 Besides these, users can add custom layouts to the template. In order to add custom layouts, the following are required:</p>
@@ -366,7 +355,7 @@ Besides these, users can add custom layouts to the template. In order to add cus
 </ul>
 
 <h3>
-<a name="creating-a-custom-layout" class="anchor" href="#creating-a-custom-layout"><span class="octicon octicon-link"></span></a>Creating a custom layout</h3>
+<a id="creating-a-custom-layout" class="anchor" href="#creating-a-custom-layout" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a custom layout</h3>
 
 <p>To make a layout XML file for LG QCircle design template, you must include the required UI component. 
 A circle layout of LG QCircle design template consists of the following required items:
@@ -414,138 +403,135 @@ Also, if you overlap the image with a hole in the center to the squared <code>ci
 
 <p>The following is the custom XML file with four parts: </p>
 
-<div class="highlight highlight-XML"><pre><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;FrameLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
-    <span class="na">android:id=</span><span class="s">"@+id/root"</span>
-    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-    <span class="na">android:background=</span><span class="s">"@android:color/background_dark"</span> <span class="nt">&gt;</span>
+<div class="highlight highlight-XML"><pre>&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s1"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span><span class="pl-e"> encoding</span>=<span class="pl-s1"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>?&gt;
+&lt;<span class="pl-ent">FrameLayout</span> <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">android</span>=<span class="pl-s1"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>@+id/root<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">background</span>=<span class="pl-s1"><span class="pl-pds">"</span>@android:color/background_dark<span class="pl-pds">"</span></span> &gt;
 
-    <span class="nt">&lt;RelativeLayout</span>
-        <span class="na">android:id=</span><span class="s">"@+id/circlelayout"</span>
-        <span class="na">android:layout_width=</span><span class="s">"@dimen/square_size"</span>
-        <span class="na">android:layout_height=</span><span class="s">"@dimen/square_size"</span>
-        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
-        <span class="na">android:background=</span><span class="s">"@android:color/background_light"</span>
-        <span class="na">android:gravity=</span><span class="s">"center_horizontal"</span> <span class="nt">&gt;</span>
+    &lt;<span class="pl-ent">RelativeLayout</span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>@+id/circlelayout<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>@dimen/square_size<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>@dimen/square_size<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_gravity</span>=<span class="pl-s1"><span class="pl-pds">"</span>center_horizontal<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">background</span>=<span class="pl-s1"><span class="pl-pds">"</span>@android:color/background_light<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">gravity</span>=<span class="pl-s1"><span class="pl-pds">"</span>center_horizontal<span class="pl-pds">"</span></span> &gt;
 
-        <span class="c">&lt;!-- child #1: Title --&gt;</span>
-        <span class="c">&lt;!-- child #2: content --&gt;</span>
-        <span class="nt">&lt;RelativeLayout</span>
-            <span class="na">android:id=</span><span class="s">"@+id/content"</span>
-            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-            <span class="na">android:layout_centerHorizontal=</span><span class="s">"true"</span>
-            <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
-            <span class="na">android:padding=</span><span class="s">"@dimen/margin"</span> <span class="nt">&gt;</span>
+        <span class="pl-c">&lt;!-- child #1: Title --&gt;</span>
+        <span class="pl-c">&lt;!-- child #2: content --&gt;</span>
+        &lt;<span class="pl-ent">RelativeLayout</span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>@+id/content<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_centerHorizontal</span>=<span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">gravity</span>=<span class="pl-s1"><span class="pl-pds">"</span>center_vertical<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">padding</span>=<span class="pl-s1"><span class="pl-pds">"</span>@dimen/margin<span class="pl-pds">"</span></span> &gt;
 
-            <span class="nt">&lt;LinearLayout</span>
-                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-                <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-                <span class="na">android:orientation=</span><span class="s">"horizontal"</span>
-                <span class="nt">&gt;</span>
-                <span class="nt">&lt;LinearLayout</span>
-                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-                <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-                <span class="na">android:orientation=</span><span class="s">"vertical"</span>
-                <span class="na">android:layout_weight=</span><span class="s">"1"</span>
-                <span class="nt">&gt;</span>
-                <span class="nt">&lt;RelativeLayout</span>
-                    <span class="na">android:id=</span><span class="s">"@+id/main"</span>
-                    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-                    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-                    <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
-                    <span class="na">android:layout_weight=</span><span class="s">"1"</span>        
-                   <span class="nt">&gt;</span>
-                <span class="nt">&lt;/RelativeLayout&gt;</span>
-                <span class="nt">&lt;RelativeLayout</span>
-                    <span class="na">android:id=</span><span class="s">"@+id/side1"</span>
-                    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-                    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-                    <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
-                    <span class="na">android:layout_weight=</span><span class="s">"1"</span> 
-                    <span class="nt">&gt;</span>
-                <span class="nt">&lt;/RelativeLayout&gt;</span>
-            <span class="nt">&lt;/LinearLayout&gt;</span>
-            <span class="nt">&lt;LinearLayout</span>
-                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-                <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-                <span class="na">android:orientation=</span><span class="s">"vertical"</span>
-                <span class="na">android:layout_weight=</span><span class="s">"1"</span>
-                <span class="nt">&gt;</span>
-                <span class="nt">&lt;RelativeLayout</span>
-                    <span class="na">android:id=</span><span class="s">"@+id/side2"</span>
-                    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-                    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-                    <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
-                    <span class="na">android:layout_weight=</span><span class="s">"1"</span>
-                   <span class="nt">&gt;</span>
-                <span class="nt">&lt;/RelativeLayout&gt;</span>
-                <span class="nt">&lt;RelativeLayout</span>
-                    <span class="na">android:id=</span><span class="s">"@+id/side3"</span>
-                    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
-                    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
-                    <span class="na">android:gravity=</span><span class="s">"center_vertical"</span>
-                    <span class="na">android:layout_weight=</span><span class="s">"1"</span>
-                   <span class="nt">&gt;</span>
-                <span class="nt">&lt;/RelativeLayout&gt;</span>
-            <span class="nt">&lt;/LinearLayout&gt;</span>
-            <span class="nt">&lt;/LinearLayout&gt;</span>
-        <span class="nt">&lt;/RelativeLayout&gt;</span>
+            &lt;<span class="pl-ent">LinearLayout</span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">orientation</span>=<span class="pl-s1"><span class="pl-pds">"</span>horizontal<span class="pl-pds">"</span></span>
+                &gt;
+                &lt;<span class="pl-ent">LinearLayout</span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">orientation</span>=<span class="pl-s1"><span class="pl-pds">"</span>vertical<span class="pl-pds">"</span></span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_weight</span>=<span class="pl-s1"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>
+                &gt;
+                &lt;<span class="pl-ent">RelativeLayout</span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>@+id/main<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">gravity</span>=<span class="pl-s1"><span class="pl-pds">"</span>center_vertical<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_weight</span>=<span class="pl-s1"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>        
+                   &gt;
+                &lt;/<span class="pl-ent">RelativeLayout</span>&gt;
+                &lt;<span class="pl-ent">RelativeLayout</span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>@+id/side1<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">gravity</span>=<span class="pl-s1"><span class="pl-pds">"</span>center_vertical<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_weight</span>=<span class="pl-s1"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> 
+                    &gt;
+                &lt;/<span class="pl-ent">RelativeLayout</span>&gt;
+            &lt;/<span class="pl-ent">LinearLayout</span>&gt;
+            &lt;<span class="pl-ent">LinearLayout</span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">orientation</span>=<span class="pl-s1"><span class="pl-pds">"</span>vertical<span class="pl-pds">"</span></span>
+                <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_weight</span>=<span class="pl-s1"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>
+                &gt;
+                &lt;<span class="pl-ent">RelativeLayout</span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>@+id/side2<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">gravity</span>=<span class="pl-s1"><span class="pl-pds">"</span>center_vertical<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_weight</span>=<span class="pl-s1"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>
+                   &gt;
+                &lt;/<span class="pl-ent">RelativeLayout</span>&gt;
+                &lt;<span class="pl-ent">RelativeLayout</span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>@+id/side3<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">gravity</span>=<span class="pl-s1"><span class="pl-pds">"</span>center_vertical<span class="pl-pds">"</span></span>
+                    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_weight</span>=<span class="pl-s1"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>
+                   &gt;
+                &lt;/<span class="pl-ent">RelativeLayout</span>&gt;
+            &lt;/<span class="pl-ent">LinearLayout</span>&gt;
+            &lt;/<span class="pl-ent">LinearLayout</span>&gt;
+        &lt;/<span class="pl-ent">RelativeLayout</span>&gt;
 
-        <span class="c">&lt;!--  child #3: Button --&gt;</span>
-    <span class="nt">&lt;/RelativeLayout&gt;</span>
+        <span class="pl-c">&lt;!--  child #3: Button --&gt;</span>
+    &lt;/<span class="pl-ent">RelativeLayout</span>&gt;
 
-    <span class="nt">&lt;View</span>
-        <span class="na">android:id=</span><span class="s">"@+id/circle"</span>
-        <span class="na">android:layout_width=</span><span class="s">"@dimen/square_size"</span>
-        <span class="na">android:layout_height=</span><span class="s">"@dimen/square_size"</span>
-        <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span>
-        <span class="na">android:background=</span><span class="s">"@drawable/circlebackground"</span> <span class="nt">/&gt;</span>
+    &lt;<span class="pl-ent">View</span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>@+id/circle<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>@dimen/square_size<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>@dimen/square_size<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_gravity</span>=<span class="pl-s1"><span class="pl-pds">"</span>center_horizontal<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">background</span>=<span class="pl-s1"><span class="pl-pds">"</span>@drawable/circlebackground<span class="pl-pds">"</span></span> /&gt;
 
-<span class="nt">&lt;/FrameLayout&gt;</span>
-</pre></div>
+&lt;/<span class="pl-ent">FrameLayout</span>&gt;</pre></div>
 
 <h3>
-<a name="using-a-custom-layout-in-applications" class="anchor" href="#using-a-custom-layout-in-applications"><span class="octicon octicon-link"></span></a>Using a custom layout in applications</h3>
+<a id="using-a-custom-layout-in-applications" class="anchor" href="#using-a-custom-layout-in-applications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using a custom layout in applications</h3>
 
 <p>In order to apply a custom layout to the application, you must include the created XML layout file and other resource files in the <em>res</em> directory in the application. </p>
 
 <p>Use the following code to apply the created layout to the <code>QCircleTemplate</code>.</p>
 
-<div class="highlight highlight-java"><pre><span class="n">QCircleTemplate</span> <span class="n">template</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">QCircleTemplate</span><span class="o">(</span>
-                                           <span class="k">this</span><span class="o">,</span> 
-                                           <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">circle_custom</span>
-                                 <span class="o">);</span>
-</pre></div>
+<div class="highlight highlight-java"><pre><span class="pl-stj">QCircleTemplate</span> template <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">QCircleTemplate</span>(
+                                           <span class="pl-v">this</span>, 
+                                           <span class="pl-stj">R</span><span class="pl-k">.</span>layout<span class="pl-k">.</span>circle_custom
+                                 );</pre></div>
 
 <p>There are four areas in this layout, each area's IDs are <code>main</code>, <code>side1</code>, <code>side2</code>, and <code>side3</code>.<br>
 <code>main</code>, <code>side1</code>, and <code>side2</code> are the defined value in the <code>TemplateTag</code>, so you can use the method explained in the previous chapter. However, because the <code>side3</code> is the newly added ID, it cannot be used in the <code>TemplateTag</code> and you should get the layout by its ID.</p>
 
 <p>The following code adds text lines in four areas:</p>
 
-<div class="highlight highlight-java"><pre><span class="n">RelativeLayout</span> <span class="n">main</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_MAIN</span><span class="o">);</span>
-<span class="n">TextView</span> <span class="n">text1</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TextView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> 
-<span class="n">text1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"main"</span><span class="o">);</span>
-<span class="n">main</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">text1</span><span class="o">);</span>
+<div class="highlight highlight-java"><pre><span class="pl-stj">RelativeLayout</span> main <span class="pl-k">=</span> template<span class="pl-k">.</span>getLayoutById(<span class="pl-stj">TemplateTag</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_MAIN</span>);
+<span class="pl-stj">TextView</span> text1 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">TextView</span>(<span class="pl-v">this</span>); 
+text1<span class="pl-k">.</span>setText(<span class="pl-s1"><span class="pl-pds">"</span>main<span class="pl-pds">"</span></span>);
+main<span class="pl-k">.</span>addView(text1);
 
-<span class="n">RelativeLayout</span> <span class="n">side1</span> <span class="o">=</span> 
-                <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_SIDE_1</span><span class="o">);</span>
-<span class="n">TextView</span> <span class="n">text2</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TextView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> 
-<span class="n">text2</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"side1"</span><span class="o">);</span>
-<span class="n">side1</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">text2</span><span class="o">);</span>
+<span class="pl-stj">RelativeLayout</span> side1 <span class="pl-k">=</span> 
+                template<span class="pl-k">.</span>getLayoutById(<span class="pl-stj">TemplateTag</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_SIDE_1</span>);
+<span class="pl-stj">TextView</span> text2 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">TextView</span>(<span class="pl-v">this</span>); 
+text2<span class="pl-k">.</span>setText(<span class="pl-s1"><span class="pl-pds">"</span>side1<span class="pl-pds">"</span></span>);
+side1<span class="pl-k">.</span>addView(text2);
 
-<span class="n">RelativeLayout</span> <span class="n">side2</span> <span class="o">=</span> 
-                <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">TemplateTag</span><span class="o">.</span><span class="na">CONTENT_SIDE_2</span><span class="o">);</span>
-<span class="n">TextView</span> <span class="n">text3</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TextView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> 
-<span class="n">text3</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"side2"</span><span class="o">);</span>
-<span class="n">side2</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">text3</span><span class="o">);</span>
+<span class="pl-stj">RelativeLayout</span> side2 <span class="pl-k">=</span> 
+                template<span class="pl-k">.</span>getLayoutById(<span class="pl-stj">TemplateTag</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_SIDE_2</span>);
+<span class="pl-stj">TextView</span> text3 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">TextView</span>(<span class="pl-v">this</span>); 
+text3<span class="pl-k">.</span>setText(<span class="pl-s1"><span class="pl-pds">"</span>side2<span class="pl-pds">"</span></span>);
+side2<span class="pl-k">.</span>addView(text3);
 
-<span class="n">RelativeLayout</span> <span class="n">side3</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="na">getLayoutById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">side3</span><span class="o">);</span>
-<span class="n">TextView</span> <span class="n">text4</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TextView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> 
-<span class="n">text4</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"side3"</span><span class="o">);</span>
-<span class="n">side3</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">text4</span><span class="o">);</span>
-</pre></div>
+<span class="pl-stj">RelativeLayout</span> side3 <span class="pl-k">=</span> template<span class="pl-k">.</span>getLayoutById(<span class="pl-stj">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>side3);
+<span class="pl-stj">TextView</span> text4 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">TextView</span>(<span class="pl-v">this</span>); 
+text4<span class="pl-k">.</span>setText(<span class="pl-s1"><span class="pl-pds">"</span>side3<span class="pl-pds">"</span></span>);
+side3<span class="pl-k">.</span>addView(text4);</pre></div>
 
 <p>As shown above, the ID, <code>side3</code> that is not supported in the <code>TemplateTag</code> is input in the <code>getLayoutById()</code> directly. </p>
 
@@ -553,13 +539,23 @@ Also, if you overlap the image with a hole in the center to the squared <code>ci
 [picture]</p>
         </section>
 
-        <footer>
-          Qcircle-design-template is maintained by <a href="https://github.com/LGDeveloper">LGDeveloper</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+        <aside id="sidebar">
+          <a href="https://github.com/LGDeveloper/QCircle-Design-Template/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/LGDeveloper/QCircle-Design-Template/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
 
-        
+          <p class="repo-owner"><a href="https://github.com/LGDeveloper/QCircle-Design-Template"></a> is maintained by <a href="https://github.com/LGDeveloper">LGDeveloper</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
       </div>
     </div>
+
+  
   </body>
 </html>
