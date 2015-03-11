@@ -19,6 +19,8 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import com.lge.qcircle.template.QCircleBackButton;
+import com.lge.qcircle.template.QCircleTitle;
 
 /**
  * The {@code QCircleTemplate} class provides design templates for LG QuickCircle.
@@ -41,6 +43,7 @@ import android.widget.RelativeLayout;
  * @see com.lge.qcircle.template.TemplateType
  */
 public class QCircleTemplate {
+
 	// constants
 	protected static final String TAG = "QCircleTemplate";
 	protected static final int EXTRA_ACCESSORY_COVER_OPENED = 0;
@@ -55,7 +58,7 @@ public class QCircleTemplate {
 	protected static final String DEVICE_T6 = "tiger6";
 
 	// environments
-	protected Context mContext = null;
+	protected static Context mContext = null;
 	protected BroadcastReceiver mReceiver = null;
 	protected Intent mFullscreenIntent = null;
 	protected IntentCreatorAsync mAsyncCreator = null;
@@ -69,9 +72,9 @@ public class QCircleTemplate {
 	protected QCircleTitle mTitle = null;
 
 	// layout values
-	private int mFullSize = 0; // circle diameter
-	private int mTopOffset = 0; // top offset of circle
-	private int mYpos = 0; // y offset of circle
+	private static int mFullSize = 0; // circle diameter
+	private static int mTopOffset = 0; // top offset of circle
+	private static int mYpos = 0; // y offset of circle
 
 	private final float fixedButtonRatio = 0.23f; // Button height ratio
 	private final float fixedTitleRatio = 0.23f; // Title height ratio
@@ -171,6 +174,9 @@ public class QCircleTemplate {
 	 *              If it is null, no title text will be shown but the title bar will occupy some
 	 *              space.
 	 */
+    /*
+	 * @deprecated
+	 */
 	public void setTitle(String title) {
 		setTitle(title, fixedTitleRatio);
 	}
@@ -190,6 +196,9 @@ public class QCircleTemplate {
 	 * @param heightRatio ratio of the title bar. <br>
 	 *                    If it is less or equal to 0, the height ratio of the title bar will be 0.2 of
 	 *                    QuickCircle diameter.
+	 */
+    /*
+	 * @deprecated
 	 */
 	public void setTitle(String title, float heightRatio) {
 		setTitle(title, heightRatio, Color.BLACK, Color.TRANSPARENT);
@@ -212,6 +221,9 @@ public class QCircleTemplate {
 	 *                        QuickCircle diameter.
 	 * @param textColor       The color of the title
 	 * @param backgroundColor The background color of the title
+	 */
+    /*
+	 * @deprecated
 	 */
 	public void setTitle(String title, float heightRatio, int textColor, int backgroundColor) {
 		if (mTitle == null) {
@@ -564,7 +576,9 @@ public class QCircleTemplate {
 	protected void setCircleLayout() {
 		// 1. get circle size and Y offset
 		// circle size
-		int id = mContext.getResources().getIdentifier("config_circle_diameter", "dimen",
+
+        /*
+        int id = mContext.getResources().getIdentifier("config_circle_diameter", "dimen",
 				"com.lge.internal");
 		mFullSize = mContext.getResources().getDimensionPixelSize(id);
 		// y position (in G3, y position = y offset)
@@ -576,6 +590,11 @@ public class QCircleTemplate {
 				"com.lge.internal");
 		int height = mContext.getResources().getDimensionPixelSize(id);
 		mTopOffset = mYpos + ((height - mFullSize) / 2);
+        */
+
+
+        initCircleLayoutParam();
+
 		// 2. adjust the circle layout for the model
 		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(mFullSize, mFullSize);
 		// circle image
@@ -602,12 +621,34 @@ public class QCircleTemplate {
 		}
 	}
 
-	/**
-	 * sets the design template.
-	 * <p>
-	 *
-	 * @param type design template type to be set
-	 */
+    /**
+     * locates the circle on the correct position. The correct position depends on phone model.
+     * <p>
+     * @author sujin.cho
+     */
+    private static void initCircleLayoutParam()
+    {
+        // circle size
+        int id = mContext.getResources().getIdentifier(
+                "config_circle_diameter", "dimen", "com.lge.internal");
+        mFullSize = mContext.getResources().getDimensionPixelSize(id);
+        // y position (in G3, y position = y offset)
+        id = mContext.getResources().getIdentifier(
+                "config_circle_window_y_pos", "dimen", "com.lge.internal");
+        mYpos = mContext.getResources().getDimensionPixelSize(id);
+        // adjust Y offset for the model
+        id = mContext.getResources().getIdentifier(
+                "config_circle_window_height", "dimen", "com.lge.internal");
+        int height = mContext.getResources().getDimensionPixelSize(id);
+        mTopOffset = mYpos + ((height - mFullSize) / 2);
+    }
+
+        /**
+         * sets the design template.
+         * <p>
+         *
+         * @param type design template type to be set
+         */
 	protected void setTemplateType(TemplateType type) {
 		mLayoutType = type;
 		if (mContext != null) {
@@ -787,4 +828,30 @@ public class QCircleTemplate {
 	public static interface IntentCreatorAsync {
 		Intent getIntent();
 	}
+
+    /**
+     * @author sujin.cho
+     */
+    public void addElement(QCircleTemplateElement element)
+    {
+        element.setElement(mCircleLayout);
+        if(element instanceof QCircleBackButton) mBackButton = (QCircleBackButton) element;
+        else if(element instanceof QCircleTitle) mTitle = (QCircleTitle) element;
+        adjustContentLayout();
+    }
+
+    public static int getDiameter() {
+        if(mFullSize == 0) {
+            initCircleLayoutParam();
+        }
+        return mFullSize;
+    }
+
+    public static int getYpos() {
+        if(mTopOffset == 0) {
+            initCircleLayoutParam();
+        }
+        return mTopOffset;
+    }
+
 }

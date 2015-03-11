@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -14,12 +15,16 @@ import android.widget.TextView;
  *
  * @author jeongeun.jeon
  */
-public final class QCircleTitle {
+public final class QCircleTitle extends QCircleTemplateElement {
 	private final String TAG = "QCircleTitle";
 	protected Context mContext = null;
 
 	protected LinearLayout mRootView = null;
 	protected TextView mTitleView = null;
+
+    //sujin.cho
+    RelativeLayout.LayoutParams params = null;
+    private final float fixedTitleRatio = 0.23f; // Title height ratio
 
 	/**
 	 * creates a title bar with a text.
@@ -211,4 +216,36 @@ public final class QCircleTitle {
 		text.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		return text;
 	}
+
+    /**
+     * @author sujin.cho
+     */
+    @Override
+    protected void setElement(RelativeLayout parent) {
+        // TODO Auto-generated method stub
+        setLayoutParams();
+        parent.addView(mRootView);
+    }
+
+    /*
+	 * @author sujin.cho
+	 *
+	 */
+    private void setLayoutParams()
+    {
+        int titleAreaHeight = (int)(QCircleTemplate.getDiameter() * fixedTitleRatio);
+        params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, titleAreaHeight);
+        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
+        mRootView.setLayoutParams(params);
+    }
+
+    public void setTitleHeight(float heightRatio)
+    {
+        if (heightRatio <= 0) // adjust the height
+            heightRatio = fixedTitleRatio;
+        params = (RelativeLayout.LayoutParams)mRootView.getLayoutParams();
+        params.height = (int)(QCircleTemplate.getDiameter() * heightRatio);
+        mRootView.setLayoutParams(params);
+    }
+
 }

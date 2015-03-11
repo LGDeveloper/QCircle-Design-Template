@@ -1,7 +1,9 @@
 package com.lge.qcircle.template.sample.SimpleCircle;
 
+import com.lge.qcircle.template.QCircleBackButton;
 import com.lge.qcircle.template.QCircleDialog;
 import com.lge.qcircle.template.QCircleTemplate;
+import com.lge.qcircle.template.QCircleTitle;
 import com.lge.qcircle.template.TemplateTag;
 import com.lge.qcircle.template.TemplateType;
 
@@ -57,7 +59,11 @@ public class MainActivity extends Activity {
 	private final String TAG = "[Template APIs Sample]";
 	private Window win = null;
 	private int mQuickCoverState = 0;
-	
+
+    //sujin.cho 20150311
+    private QCircleTitle mTitle;
+    private QCircleBackButton mBackButton;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,9 +79,14 @@ public class MainActivity extends Activity {
 		
 		//**[START] Add a title bar
 		/*Add text*/
+        /*modified
 		template.setTitle("My Title");
 		template.setTitleTextSize(20);
-		
+		*/
+        mTitle = new QCircleTitle(this,"My Title");
+        mTitle.setTextSize(20);
+        template.addElement(mTitle);
+
 		/*
 		//If you want to add an image or sub layout to a title bar
 		//create a new view and set it as a title

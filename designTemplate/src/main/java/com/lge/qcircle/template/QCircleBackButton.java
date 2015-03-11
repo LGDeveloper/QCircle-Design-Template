@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
  *
  * @author jeongeun.jeon
  */
-public final class QCircleBackButton {
+public final class QCircleBackButton extends QCircleTemplateElement{
 	private final String TAG = "QCircleBackButton";
 	private OnClickListener mListener;
 	private ImageView mBtnContent = null;
@@ -25,6 +25,8 @@ public final class QCircleBackButton {
 	private boolean isDark = false;
 	
 	private static float PADDING_RATIO = 0.35f;
+    //sujin.cho
+    RelativeLayout.LayoutParams params = null;
 
 	/**
 	 * creates a back button.
@@ -118,7 +120,7 @@ public final class QCircleBackButton {
 	 *
 	 * @return ID of the button view
 	 */
-	public static int getId() {
+	public int getId() {
 		return R.id.backButton;
 	}
 
@@ -129,4 +131,26 @@ public final class QCircleBackButton {
 		if (mBtnContent != null)
 			mBtnContent.setBackgroundResource(R.drawable.back_button_background_semi_transparent);
 	}
+
+    /**
+     * @author sujin.cho
+     */
+    @Override
+    public void setElement(RelativeLayout parent) {
+        // TODO Auto-generated method stub
+        setLayoutParams();
+        parent.addView(mBtnContent);
+    }
+
+    private void setLayoutParams()
+    {
+        //int buttonAreaHeight = (int) (mFullSize * fixedButtonRatio);
+        int buttonAreaHeight = (int)(1046 * 0.23);
+
+        // add a button into the bottom of the circle layout
+        params = new RelativeLayout.LayoutParams(1046,buttonAreaHeight);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
+        mBtnContent.setLayoutParams(params);
+        //mCircleLayout.addView(buttonView.getView(), params);
+    }
 }
