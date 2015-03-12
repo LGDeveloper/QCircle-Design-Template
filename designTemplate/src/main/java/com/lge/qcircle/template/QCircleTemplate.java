@@ -3,6 +3,7 @@ package com.lge.qcircle.template;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -50,8 +51,7 @@ public class QCircleTemplate {
 	protected static final int EXTRA_ACCESSORY_COVER_CLOSED = 1;
 	protected static final String EXTRA_ACCESSORY_COVER_STATE = "com.lge.intent.extra.ACCESSORY_COVER_STATE";
 	protected static final String ACTION_ACCESSORY_COVER_EVENT = "com.lge.android.intent.action.ACCESSORY_COVER_EVENT";
-	protected static final int QUICKCOVERSETTINGS_QUICKCIRCLE = 3;
-	protected static final int QUICKCOVERSETTINGS_USEQUICKCIRCLE = 1;
+
 
     // strings for special devices
 	protected static final String DEVICE_G3 = "g3";
@@ -574,25 +574,9 @@ public class QCircleTemplate {
 	 * <p>
 	 */
 	protected void setCircleLayout() {
+
 		// 1. get circle size and Y offset
 		// circle size
-
-        /*
-        int id = mContext.getResources().getIdentifier("config_circle_diameter", "dimen",
-				"com.lge.internal");
-		mFullSize = mContext.getResources().getDimensionPixelSize(id);
-		// y position (in G3, y position = y offset)
-		id = mContext.getResources().getIdentifier("config_circle_window_y_pos", "dimen",
-				"com.lge.internal");
-		mYpos = mContext.getResources().getDimensionPixelSize(id);
-		// adjust Y offset for the model
-		id = mContext.getResources().getIdentifier("config_circle_window_height", "dimen",
-				"com.lge.internal");
-		int height = mContext.getResources().getDimensionPixelSize(id);
-		mTopOffset = mYpos + ((height - mFullSize) / 2);
-        */
-
-
         initCircleLayoutParam();
 
 		// 2. adjust the circle layout for the model
@@ -628,6 +612,10 @@ public class QCircleTemplate {
      */
     private static void initCircleLayoutParam()
     {
+        if(!isQuickCircleAvailable(mContext)){
+            Log.i(TAG, "Quick Circle case is not available");
+        }
+
         // circle size
         int id = mContext.getResources().getIdentifier(
                 "config_circle_diameter", "dimen", "com.lge.internal");
@@ -641,6 +629,39 @@ public class QCircleTemplate {
                 "config_circle_window_height", "dimen", "com.lge.internal");
         int height = mContext.getResources().getDimensionPixelSize(id);
         mTopOffset = mYpos + ((height - mFullSize) / 2);
+    }
+
+    /**
+     * Checks the availability of  Quick Circle case.
+     * <P>
+     * Checks whether a smart case is available and if it is, check the case type.
+     * @param context
+     */
+    public static boolean isQuickCircleAvailable(Context context)
+    {
+        ContentResolver contentResolver = context.getContentResolver();
+        boolean smartcaseEnabled = false;
+        int smartcaseType = 0;
+        boolean result = false;
+
+        if(contentResolver == null)
+        {
+            Log.d(TAG, "Content Resolver is null");
+            return result;
+        }
+        smartcaseEnabled = Settings.Global.getInt(contentResolver,"quick_view_enable", 1) == 1 ? true : false;
+        if(!smartcaseEnabled){
+            Log.i(TAG, "No smart case available");
+            return result;
+        }
+        smartcaseType = Settings.Global.getInt(contentResolver, "cover_type", 0);
+        if(smartcaseType != 3){
+            Log.i(TAG, "Case type is not Quick Circle");
+            return result;
+        }
+        result = true;
+
+        return result;
     }
 
         /**
@@ -704,14 +725,13 @@ public class QCircleTemplate {
                     if (action == null) {
                         return;
                     }
-                    int quickCaseType = Settings.Global.getInt(mContext.getContentResolver(),
-                            "cover_type", 0);
-                    int quickCircleEnabled = Settings.Global.getInt(mContext.getContentResolver(),
-                            "quick_view_enable", 0);
+
+                    if(!isQuickCircleAvailable(mContext)){
+                        Log.i(TAG, "Quick Circle case is not available");
+                    }
+
                     // Receives a LG QCirle intent for the cover event
-                    if (ACTION_ACCESSORY_COVER_EVENT.equals(action)
-                            && quickCaseType == QUICKCOVERSETTINGS_QUICKCIRCLE
-                            && quickCircleEnabled == QUICKCOVERSETTINGS_USEQUICKCIRCLE) {
+                    if (ACTION_ACCESSORY_COVER_EVENT.equals(action)) {
                         // Gets the current state of the cover
                         int quickCoverState = intent.getIntExtra(EXTRA_ACCESSORY_COVER_STATE,
                                 EXTRA_ACCESSORY_COVER_OPENED);

@@ -26,7 +26,23 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	
 	private static float PADDING_RATIO = 0.35f;
     //sujin.cho
+    private final float fixedButtonRatio = 0.23f;
     RelativeLayout.LayoutParams params = null;
+
+
+
+    /**
+     * creates a back button.
+     *
+     * @param context {@code Activity} which has a circle view.<br>
+     * <b>If it is null, you might get errors when you use method of this class.</b>
+     */
+    public QCircleBackButton(Context context) {
+        mContext = context;
+        mButtonHeight = (int)(fixedButtonRatio * QCircleTemplate.getDiameter());
+        if (!setButton())
+            Log.d(TAG, "Cannot create a button. Context is null.");
+    }
 
 	/**
 	 * creates a back button.

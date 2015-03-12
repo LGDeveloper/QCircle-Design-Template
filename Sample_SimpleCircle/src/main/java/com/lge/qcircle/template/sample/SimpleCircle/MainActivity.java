@@ -79,24 +79,23 @@ public class MainActivity extends Activity {
 		
 		//**[START] Add a title bar
 		/*Add text*/
-        /*modified
-		template.setTitle("My Title");
-		template.setTitleTextSize(20);
-		*/
         mTitle = new QCircleTitle(this,"My Title");
         mTitle.setTextSize(20);
         template.addElement(mTitle);
 
 		/*
 		//If you want to add an image or sub layout to a title bar
-		//create a new view and set it as a title
+		//create a new view and set it as a title*/
 		View newView = (View) getLayoutInflater().inflate(R.layout.activity_main, null);
-		template.setTitle(newView, 0.3f);
-		*/
+        mTitle.setView(newView);
 		//**[END]
-		
+
+
 		//**[START] Add a back button
-		template.setBackButton();
+        mBackButton = new QCircleBackButton(this);
+        template.addElement(mBackButton);
+
+
 		//**[END]
 						
 		//**[START] Customize the Layout
@@ -110,6 +109,8 @@ public class MainActivity extends Activity {
 
         //**[START] Register a broadcast receiver
         template.registerIntentReceiver();
+
+
         //If you want to use your own broadcast receiver provided by QCircleTemplate,
         //uncomment the following line.
         //IntentFilter filter = new IntentFilter();
@@ -185,24 +186,15 @@ public class MainActivity extends Activity {
 			if (action == null) {
 				return;
 			}
+
 			//Receives a LG QCirle intent for the cover event
 			if (ACTION_ACCESSORY_COVER_EVENT.equals(action)) {
 
-				if (DEBUG) {
-					Log.d(TAG, "ACTION_ACCESSORY_COVER_EVENT");
-				}
-				//Check the availability of the case 
-				quickCircleEnabled = Settings.Global.getInt(getContentResolver(),
-						SMARTCOVER_ENABLE, 1) == 1 ? true : false;
-				
-				if (DEBUG) {
-					Log.d(TAG, "quickCircleEnabled:" + quickCircleEnabled);
-				}
-				if(!quickCircleEnabled) return;
-				
-				//Get a case type
-				quickCaseType = Settings.Global.getInt(getContentResolver(), "cover_type", 0/*default value*/);
-				if(quickCaseType != TYPE_QUICKCIRCLE) return;
+                //Check the availability of the case
+                if(!QCircleTemplate.isQuickCircleAvailable(getApplicationContext())){
+                    Log.i(TAG, "Quick Circle case is not available");
+                }
+
 
 				//Gets the current state of the cover
 				mQuickCoverState = intent.getIntExtra(EXTRA_ACCESSORY_COVER_STATE,
