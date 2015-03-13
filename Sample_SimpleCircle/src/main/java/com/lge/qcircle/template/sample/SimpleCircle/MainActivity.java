@@ -14,6 +14,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -43,18 +44,6 @@ public class MainActivity extends Activity {
 	public static final String ACTION_ACCESSORY_COVER_EVENT = "com.lge.android.intent.action.ACCESSORY_COVER_EVENT";
 	// [END]declared in LGIntent.java of LG Framework
 
-	// [START] QuickCover Settings DB
-	public static final String SMARTCOVER_ENABLE = "quick_view_enable";
-	// Quick Cover Type
-	public static final int TYPE_QUICKCIRCLE = 3;
-	// [END] QuickCover Settings DB
-
-	// [START] QuickCircle info.
-	static boolean quickCircleEnabled = false;
-	static int quickCaseType = 0;
-	static boolean quickCircleClosed = true;
-	// [END] QuickCircle info.
-
 	private final boolean DEBUG = true;
 	private final String TAG = "[Template APIs Sample]";
 	private Window win = null;
@@ -63,6 +52,8 @@ public class MainActivity extends Activity {
     //sujin.cho 20150311
     private QCircleTitle mTitle;
     private QCircleBackButton mBackButton;
+    private Button mButton = null;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +77,8 @@ public class MainActivity extends Activity {
 		/*
 		//If you want to add an image or sub layout to a title bar
 		//create a new view and set it as a title*/
-		View newView = (View) getLayoutInflater().inflate(R.layout.activity_main, null);
-        mTitle.setView(newView);
+		//View newView = (View) getLayoutInflater().inflate(R.layout.activity_main, null);
+        //mTitle.setView(newView);
 		//**[END]
 
 
@@ -140,6 +131,21 @@ public class MainActivity extends Activity {
             }
         });
 
+
+        //sujin.cho
+        mButton = new Button(this);
+        mButton.setText("My Button");
+        mButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                mTitle.setBackgroundColor(Color.GREEN);
+                mTitle.setTitle("Hello");
+
+            }
+        });
+
 		/* Customize the first side bar*/
 		//If the app has more than one side bar, CONTENT_SIDE_2 can be used for the second side bar.
 		RelativeLayout side1 = template.getLayoutById(TemplateTag.CONTENT_SIDE_1);
@@ -149,6 +155,9 @@ public class MainActivity extends Activity {
 			LayoutParams params = side1.getLayoutParams();
 			params.width = 400;
 			side1.setLayoutParams(params);
+
+            //sujin.cho
+            side1.addView(mButton);
 		}
 		//**[END]
 

@@ -13,8 +13,8 @@ public class QCircleFeature {
     private static Intent numberBadge = null;
     private static final String ACTION_UPDATE_NOTIFICATION = "com.lge.launcher.intent.action.BADGE_COUNT_UPDATE";
     private static final int G3_DIAMETER = 1046;
-    static final int QUICKCOVERSETTINGS_QUICKCIRCLE = 3;
-    static final int QUICKCOVERSETTINGS_USEQUICKCIRCLE = 1;
+
+
 
 
     public static void activateNumberBadge(Context context, int count)

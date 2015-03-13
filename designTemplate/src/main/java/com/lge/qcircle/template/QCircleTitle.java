@@ -26,6 +26,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
     RelativeLayout.LayoutParams params = null;
     private final float fixedTitleRatio = 0.23f; // Title height ratio
 
+
 	/**
 	 * creates a title bar with a text.
 	 * <p>
@@ -134,7 +135,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	 *              If it is null, no title text will be shown but the title bar will occupy some
 	 *              space.
 	 */
-	public void setTitle(String title) {
+	public void setText(String title) {
 		if (mRootView != null && mTitleView != null)
 			mTitleView.setText(title);
 		else if (mRootView != null) {
@@ -154,6 +155,26 @@ public final class QCircleTitle extends QCircleTemplateElement {
 			mTitleView.setTextSize(size);
 		}
 	}
+
+    /**
+     * change a background color of title view
+     * @author sujin.cho
+     */
+    public void setBackgroundColor(int color)
+    {
+        if(mRootView != null)
+            mRootView.setBackgroundColor(color);
+    }
+
+    /**
+     * change a text color
+     * @author sujin.cho
+     */
+    public void setTextColor(int color)
+    {
+        if(mTitleView != null)
+            mTitleView.setTextColor(color);
+    }
 
 	/**
 	 * create a root layout.
@@ -218,6 +239,11 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	}
 
     /**
+     * add a title view to parent
+     * This method is called in QCircle Template.
+     *
+     * @param parent QCircle Layout which
+     *
      * @author sujin.cho
      */
     @Override
@@ -228,6 +254,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
     }
 
     /*
+     * set layout parameters of title view. sets position and height of the title view.
 	 * @author sujin.cho
 	 *
 	 */
@@ -239,6 +266,10 @@ public final class QCircleTitle extends QCircleTemplateElement {
         mRootView.setLayoutParams(params);
     }
 
+    /*
+    * change a height of title view.
+    * @author sujin..cho
+    */
     public void setTitleHeight(float heightRatio)
     {
         if (heightRatio <= 0) // adjust the height
