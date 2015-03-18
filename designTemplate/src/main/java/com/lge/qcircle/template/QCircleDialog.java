@@ -15,6 +15,7 @@ import android.widget.TextView;
  * It cannot be instantiated by a constructor.
  * Use {@link com.lge.qcircle.template.QCircleDialog.Builder} instead.<P>
  * Created by Yoav.
+ *
  * @author Yoav Sternberg
  */
 public class QCircleDialog {
@@ -31,10 +32,11 @@ public class QCircleDialog {
 	DialogMode mode;
 	View templateLayout;
 
-    /**
-     * private constructor.
-     * @param builder
-     */
+	/**
+	 * private constructor.
+	 *
+	 * @param builder
+	 */
 	private QCircleDialog(Builder builder) {
 		this.title = builder.title;
 		this.text = builder.text;
@@ -46,10 +48,11 @@ public class QCircleDialog {
 		this.mode = builder.mode;
 	}
 
-    /**
-     * The {@code QCircleDialog.Builder} class is a builder to create a Dialog for Quick Circle.
-     * @author Yoav Sternberg
-     */
+	/**
+	 * The {@code QCircleDialog.Builder} class is a builder to create a Dialog for Quick Circle.
+	 *
+	 * @author Yoav Sternberg
+	 */
 	public static class Builder {
 		private String title = null;
 		private String text;
@@ -58,91 +61,98 @@ public class QCircleDialog {
 		private Drawable image = null;
 		private View.OnClickListener positiveButtonListener;
 		private View.OnClickListener negativeButtonListener = null;
-		private QCircleDialog.DialogMode mode = DialogMode.Ok;
+		private DialogMode mode = DialogMode.Ok;
 
-        /**
-         * sets title of the Dialog.<P>
-         *
-         * @param title text of the title. It will be displayed on the top of the dialog.
-         * @return a Builder with title text
-         */
+		/**
+		 * sets title of the Dialog.<P>
+		 *
+		 * @param title text of the title. It will be displayed on the top of the dialog.
+		 * @return a Builder with title text
+		 */
 		public Builder setTitle(String title) {
 			this.title = title;
 			return this;
 		}
 
-        /**
-         * sets main text of the dialog.<P>
-         * @param text main text. It will be displayed on the middle of the dialog.
-         * @return a Builder with main text
-         */
+		/**
+		 * sets main text of the dialog.<P>
+		 *
+		 * @param text main text. It will be displayed on the middle of the dialog.
+		 * @return a Builder with main text
+		 */
 		public Builder setText(String text) {
 			this.text = text;
 			return this;
 		}
 
-        /**
-         * sets main image of the dialog.<P>
-         *
-         * @param image main image as a Drawable. It will be displayed on the bottom of the main text.
-         * @return a Builder with main image
-         */
+		/**
+		 * sets main image of the dialog.<P>
+		 *
+		 * @param image main image as a Drawable. It will be displayed on the bottom of the main text.
+		 * @return a Builder with main image
+		 */
 		public Builder setImage(Drawable image) {
 			this.image = image;
 			return this;
 		}
 
-        /**
-         * sets a listener for positive button.
-         * @param positiveButtonListener    lister to set
-         * @return a Builder with the listener for positive button
-         */
+		/**
+		 * sets a listener for positive button.
+		 *
+		 * @param positiveButtonListener lister to set
+		 * @return a Builder with the listener for positive button
+		 */
 		public Builder setPositiveButtonListener(View.OnClickListener positiveButtonListener) {
 			this.positiveButtonListener = positiveButtonListener;
 			return this;
 		}
 
-        /**
-         * sets a listener for negative button.
-         * @param negativeButtonListener    listener to set
-         * @return a Builder with the listener for negative button
-         */
+		/**
+		 * sets a listener for negative button.
+		 *
+		 * @param negativeButtonListener listener to set
+		 * @return a Builder with the listener for negative button
+		 */
 		public Builder setNegativeButtonListener(View.OnClickListener negativeButtonListener) {
 			this.negativeButtonListener = negativeButtonListener;
 			return this;
 		}
 
-        /**
-         * sets a mode fot eh dialog.
-         * @param mode  dialog mode. see {@link com.lge.qcircle.template.QCircleDialog.DialogMode}.
-         * @return a Builder with the dialog mode.
-         */
-		public Builder setMode(QCircleDialog.DialogMode mode) {
+		/**
+		 * sets a mode fot eh dialog.
+		 *
+		 * @param mode dialog mode. see {@link com.lge.qcircle.template.QCircleDialog.DialogMode}.
+		 * @return a Builder with the dialog mode.
+		 */
+		public Builder setMode(DialogMode mode) {
 			this.mode = mode;
 			return this;
 		}
 
-        /**
-         * sets a text for positive button.
-         * @param positiveButtonText    text for positive button
-         */
+		/**
+		 * sets a text for positive button.
+		 *
+		 * @param positiveButtonText text for positive button
+		 */
 		public void setPositiveButtonText(String positiveButtonText) {
 			this.positiveButtonText = positiveButtonText;
 		}
 
-        /**
-         * sets a text for negative button.
-         * @param negativeButtonText    text for negative button
-         */
+		/**
+		 * sets a text for negative button.
+		 *
+		 * @param negativeButtonText text for negative button
+		 */
 		public void setNegativeButtonText(String negativeButtonText) {
 			this.negativeButtonText = negativeButtonText;
 		}
 
-        /**
-         * creates a dialog.<P>
-         * It should be called when setting of the dialog is done by the Builder.
-         * @return  a dialog created by the Builder.
-         */
+		/**
+		 * creates a dialog.<P>
+		 * It should be called when setting of the dialog is done by the Builder.
+		 *
+		 * @return a dialog created by the Builder.
+		 */
 		public QCircleDialog create() {
 			return new QCircleDialog(this);
 		}
@@ -162,13 +172,14 @@ public class QCircleDialog {
 		template.setTitle(title == null ? "" : title, Color.WHITE, activity.getResources().getColor(
 				mode == DialogMode.Error ? R.color.dialog_title_background_color_error : R.color.dialog_title_background_color_regular));
 		template.setTitleTextSize(17);
-		RelativeLayout dialogLayout = (RelativeLayout) activity.getLayoutInflater().inflate(R.layout.qcircle_dialog_layout, layout, false);
+		RelativeLayout dialogLayout = (RelativeLayout) activity.getLayoutInflater()
+				.inflate(mode == DialogMode.YesNo ? R.layout.qcircle_dialog_layout_yes_no : R.layout.qcircle_dialog_layout, layout, false);
 		if (text != null) {
 			((TextView) dialogLayout.findViewById(R.id.text)).setText(text);
 		}
 		if (image != null) {
 			((ImageView) dialogLayout.findViewById(R.id.image)).setImageDrawable(image);
-		}
+		} else dialogLayout.findViewById(R.id.image).setVisibility(View.GONE);
 		switch (mode) {
 			case YesNo:
 				Button negativeButton = (Button) dialogLayout.findViewById(R.id.negative);
@@ -212,25 +223,22 @@ public class QCircleDialog {
 				break;
 
 		}
-		if (mode != DialogMode.YesNo)
-			dialogLayout.findViewById(R.id.negative).setVisibility(View.GONE);
 		template.getLayoutById(TemplateTag.CONTENT).addView(dialogLayout);
 		layout.addView(templateLayout = template.getView());
-
 	}
 
-    /**
-     * hides the dialog.
-     */
+	/**
+	 * hides the dialog.
+	 */
 	public void hide() {
 		((RelativeLayout) activityTemplate.getLayoutById(TemplateTag.CONTENT).getParent()).removeView(templateLayout);
 		templateLayout = null;
 	}
 
-    /**
-     * The {@code DialogMode} enumerates modes which are
-     * supported by {@link com.lge.qcircle.template.QCircleDialog}.
-     */
+	/**
+	 * The {@code DialogMode} enumerates modes which are
+	 * supported by {@link com.lge.qcircle.template.QCircleDialog}.
+	 */
 	public enum DialogMode {
 		/**
 		 * A dialog with yes and no buttons.

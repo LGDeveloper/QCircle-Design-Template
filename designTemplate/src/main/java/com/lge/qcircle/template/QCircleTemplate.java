@@ -235,7 +235,7 @@ public class QCircleTemplate {
 			}
 			addTitleView(mTitle, heightRatio);
 		} else { // change the string only
-			mTitle.setTitle(title);
+			mTitle.setText(title);
 			changeTitleViewHeight(heightRatio);
 		}
 	}
@@ -873,5 +873,4 @@ public class QCircleTemplate {
         }
         return mTopOffset;
     }
-
 }
