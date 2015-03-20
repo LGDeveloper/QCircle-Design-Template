@@ -120,39 +120,6 @@ public class QCircleActivity extends Activity {
 		super.onDestroy();
 		//unregister the broadcast receiver
         template.unregisterReceiver();
-		//mContext.unregisterReceiver(mIntentReceiver);
-	}
-
-
-	/**
-	 * creates an intent filter to filter the intent related Quick Circle only.
-	 * registers a broadcast receiver to the system
-    */
-    /*
-	private void registerReceiver() {
-
-		IntentFilter filter = new IntentFilter();
-		// Add QCircle intent to the intent filter
-		filter.addAction(ACTION_ACCESSORY_COVER_EVENT);
-		// Register a broadcast receiver with the system
-		mContext.registerReceiver(mIntentReceiver, filter);
 
 	}
-	*/
-	
-	/**
-	 * sets window manager layout parameters.This method add a FLAG_SHOW_WHEN_LOCKED to the window when the cover is closed.
-	 * Also, it sets other parameters for the application.
-	 */
-	private void setQuickCircleWindowParam() {
-		win = getWindow();
-		if (win != null) {
-			// Show the sample application view on top
-			win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-					| WindowManager.LayoutParams.FLAG_FULLSCREEN
-					| WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		}
-	}
-	
-
 }

@@ -89,13 +89,6 @@ public class MainActivity extends Activity {
 
         //**[START] Register a broadcast receiver
         template.registerIntentReceiver();
-
-
-        //If you want to use your own broadcast receiver provided by QCircleTemplate,
-        //uncomment the following line.
-        //IntentFilter filter = new IntentFilter();
-        //filter.addAction(ACTION_ACCESSORY_COVER_EVENT);
-        //registerReceiver(mIntentReceiver, filter);
         //**[END]
 
 		/* Customize main content area*/
@@ -159,9 +152,6 @@ public class MainActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
         //**[START] Unregister a broadcast receiver
-        //If you are using your own broadcast receiver provided by QCircleTemplate,
-        //uncomment the following line.
-        //unregisterReceiver(mIntentReceiver);
         template.unregisterReceiver();
         //**[END]
 	}
