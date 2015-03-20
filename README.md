@@ -1,6 +1,22 @@
 QCircle-Design-Template<P>
 Design template library for LG QCircle SDK
 
+ Visit Project Page for Design template library for LG QCircle SDK
+ (http://lgdeveloper.github.io/QCircle-Design-Template)
+  
+ 
+# Helping QCircle-Design-Template
+ 
+ We love all developers who want to help this project.<br>
+ Please, follow the simple guide line below.<br>
+ There are two branches in the project. origin/master is a release branch; only stable and approved codes are merged to origin/master.
+ origin/develop is a current development branch. <br>
+ For develoeprs who want to join, make a new branch from origin/developer and name a new branch start with feature--.
+ Please, merge your branch with origin/developer once it is ready.
+ origin/develop will be evantually merged to origin/master.
+ 
+ 
+
 See Wiki pages:<p>
 # [Introduction](https://github.com/LGDeveloper/QCircle-Design-Template/wiki/Introduction)
 purpose and functions of LG QCircle design template library, and the types of design template that the library provides are explained. 
