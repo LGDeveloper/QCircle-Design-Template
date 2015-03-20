@@ -38,19 +38,7 @@ import android.widget.ViewFlipper;
 public class MainActivity extends Activity {
 	QCircleTemplate template = null;
 
-	// [START]declared in LGIntent.java of LG Framework
-	public static final int EXTRA_ACCESSORY_COVER_OPENED = 0;
-	public static final int EXTRA_ACCESSORY_COVER_CLOSED = 1;
-	public static final String EXTRA_ACCESSORY_COVER_STATE = "com.lge.intent.extra.ACCESSORY_COVER_STATE";
-	public static final String ACTION_ACCESSORY_COVER_EVENT = "com.lge.android.intent.action.ACCESSORY_COVER_EVENT";
-	// [END]declared in LGIntent.java of LG Framework
-
-	private final boolean DEBUG = true;
-	private final String TAG = "[Template APIs Sample]";
-	private Window win = null;
-	private int mQuickCoverState = 0;
-
-    //sujin.cho 20150311
+    //Added , 20150320
     private QCircleTitle mTitle;
     private QCircleBackButton mBackButton;
     private Button mButton = null;
@@ -179,49 +167,4 @@ public class MainActivity extends Activity {
 	}
 
 
-    // use only in case, you want to implement your own br receiver
-    // your own broadcast receiver
-    /*
-	private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			String action = intent.getAction();
-			if (action == null) {
-				return;
-			}
-
-			//Receives a LG QCirle intent for the cover event
-			if (ACTION_ACCESSORY_COVER_EVENT.equals(action)) {
-
-                //Check the availability of the case
-                if(!QCircleTemplate.isQuickCircleAvailable(getApplicationContext())){
-                    Log.i(TAG, "Quick Circle case is not available");
-                }
-
-
-				//Gets the current state of the cover
-				mQuickCoverState = intent.getIntExtra(EXTRA_ACCESSORY_COVER_STATE,
-						EXTRA_ACCESSORY_COVER_OPENED);
-
-				if (DEBUG) {
-					Log.d(TAG, "mQuickCoverState:" + mQuickCoverState);
-				}
-
-				if (mQuickCoverState == EXTRA_ACCESSORY_COVER_CLOSED) { // closed
-					//Set window flags
-					setQuickCircleWindowParam();
-				} 
-				else if (mQuickCoverState == EXTRA_ACCESSORY_COVER_OPENED) { // opened
-						
-						//Call FullScreenActivity
-						Intent callFullscreen = new Intent(MainActivity.this, FullActivity.class);
-						startActivity(callFullscreen);
-						
-						//Finish QCircleActivity
-						MainActivity.this.finish();
-				}
-			}
-		}
-	};
-	*/
 }

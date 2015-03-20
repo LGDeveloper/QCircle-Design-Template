@@ -26,49 +26,19 @@ import com.lge.qcircle.utils.QCircleFeature;
 
 public class QCircleActivity extends Activity {
 	
-	
-
-	// [START]declared in LGIntent.java of LG Framework
-	public static final int EXTRA_ACCESSORY_COVER_OPENED = 0;
-	public static final int EXTRA_ACCESSORY_COVER_CLOSED = 1;
-	public static final String EXTRA_ACCESSORY_COVER_STATE = "com.lge.intent.extra.ACCESSORY_COVER_STATE";
-	public static final String ACTION_ACCESSORY_COVER_EVENT = "com.lge.android.intent.action.ACCESSORY_COVER_EVENT";
-	// [END]declared in LGIntent.java of LG Framework
-
-	// [START] QuickCover Settings DB
-	public static final String SMARTCOVER_ENABLE = "quick_view_enable";
-	// Quick Cover Type
-	public static final int TYPE_QUICKCIRCLE = 3;
-	// [END] QuickCover Settings DB
-	
-	// [START] QuickCircle info.
-	static boolean quickCircleEnabled = false;
-	static int quickCaseType = 0;
-	static boolean quickCircleClosed = true;	
-	// [END] QuickCircle info.
 
 	QCircleTemplate template = null;
     QCircleTitle mTitle = null;
     QCircleBackButton mBackButton = null;
 
-	
-	// -------------------------------------------------------------------------------
-	private final boolean DEBUG = true;
-	private final String TAG = "[QCircleSamepleCode]";
-	private int mQuickCoverState = 0;
 	private Context mContext;
 	private Window win = null;
-	private ContentResolver contentResolver = null;
+
 	
 	//For background images
 	private Drawable mypic = null;
 	private Drawable mypic2 = null;
 	private Boolean mSwitched = false;
-	
-	//Query the Device model
-	protected String device = android.os.Build.DEVICE;
-	protected Boolean isG3 = false;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +47,6 @@ public class QCircleActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		mContext = getApplicationContext();
-		
-		//Get content resolver
-		contentResolver = getContentResolver();
 
 		//[START] Creating a template and Customizing
 		//create a template and set a layout
@@ -187,67 +154,5 @@ public class QCircleActivity extends Activity {
 		}
 	}
 	
-   	
-	/**
-	 * creates a broadcast receiver. The broadcast receiver receives the intent related to Quick Circle.
-	 * Once the receiver receives the Quick Circle intent, it gets the current state of the cover.
-	 * When the cover is closed, the app shows the circle layout and the cover is open, it shows LG Developer Site
-	 * on full screen.
-     *
-     */
-    /*
-	private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			
-			
-			String action = intent.getAction();
-			if (action == null) {
-				return;
-			}
-			
-
-			//Receives a LG QCirle intent for the cover event
-			if (ACTION_ACCESSORY_COVER_EVENT.equals(action)) {
-				if (DEBUG) {
-					Log.i(TAG, "ACTION_ACCESSORY_COVER_EVENT");
-				}
-				//Check the availability of the case 
-				quickCircleEnabled = Settings.Global.getInt(contentResolver,
-						SMARTCOVER_ENABLE, 1) == 1 ? true : false;
-				
-				if (DEBUG) {
-					Log.d(TAG, "quickCircleEnabled:" + quickCircleEnabled);
-				}
-				if(!quickCircleEnabled) return;
-				
-				//Get a case type
-				quickCaseType = Settings.Global.getInt(contentResolver, "cover_type", 0);
-				if(quickCaseType != TYPE_QUICKCIRCLE) return;
-				
-				//Gets the current state of the cover
-				mQuickCoverState = intent.getIntExtra(EXTRA_ACCESSORY_COVER_STATE,
-						EXTRA_ACCESSORY_COVER_OPENED);
-				
-				if (DEBUG) {
-					Log.i(TAG, "mQuickCoverState:" + mQuickCoverState);
-				}
-
-				if (mQuickCoverState == EXTRA_ACCESSORY_COVER_CLOSED) { // closed
-					//Set window flags
-						setQuickCircleWindowParam();
-				} 
-				else if (mQuickCoverState == EXTRA_ACCESSORY_COVER_OPENED) { // opened
-						
-						String url = "http://developer.lge.com/main/Intro.dev";
-						Intent full = new Intent(Intent.ACTION_VIEW);
-						full.setData(Uri.parse(url));
-						startActivity(full);
-						QCircleActivity.this.finish();
-				}
-			}
-		}
-	};
-  */
 
 }

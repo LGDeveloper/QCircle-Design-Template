@@ -238,6 +238,9 @@ public class QCircleTemplate {
 		}
 	}
 
+    /**
+     * @deprecated
+     */
 	/**
 	 * sets a title with the default height ratio and the given title color and background color.
 	 * <p>
@@ -257,6 +260,9 @@ public class QCircleTemplate {
 		setTitle(title, fixedTitleRatio, textColor, backgroundColor);
 	}
 
+    /**
+     * @deprecated
+     */
 	/**
 	 * sets a title as the given view with the given height ratio.
 	 * <p>
@@ -290,6 +296,9 @@ public class QCircleTemplate {
 		}
 	}
 
+    /**
+     * @deprecated
+     */
 	/**
 	 * sets a back button.
 	 * <p>
@@ -303,6 +312,9 @@ public class QCircleTemplate {
 		setBackButton(null);
 	}
 
+    /**
+     * @deprecated
+     */
 	/**
 	 * sets a back button with callback.
 	 * <p>
@@ -326,6 +338,9 @@ public class QCircleTemplate {
 		}
 	}
 
+    /**
+     * @deprecated
+     */
 	/**
 	 * Set the theme to the back button. Default is light.
 	 * @param isDark Is dark theme
@@ -447,6 +462,9 @@ public class QCircleTemplate {
 			mBackButton.setBackgroundTransparent();
 	}
 
+    /**
+     * @deprecated
+     */
 	/**
 	 * sets the font size of the title.
 	 * <p>
@@ -498,6 +516,9 @@ public class QCircleTemplate {
 		}
 	}
 
+    /**
+     * @deprecated
+     */
 	/**
 	 * adds a title view to the layout.
 	 * <p>
@@ -524,6 +545,9 @@ public class QCircleTemplate {
 		}
 	}
 
+    /**
+     * @deprecated
+     */
 	/**
 	 * adds a button view to the layout.
 	 * <p>
