@@ -51,11 +51,10 @@ public class QCircleActivity extends Activity {
 		//[START] Creating a template and Customizing
 		//create a template and set a layout
 		template = new QCircleTemplate(this, TemplateType.CIRCLE_EMPTY);
-		//set title
 
+		//set title
         mTitle = new QCircleTitle(this, "Bean Bird In Circle");
         template.addElement(mTitle);
-        //template.setTitle("Bean Bird In Circle");
 
 		//add back button
         mBackButton = new QCircleBackButton(this);
