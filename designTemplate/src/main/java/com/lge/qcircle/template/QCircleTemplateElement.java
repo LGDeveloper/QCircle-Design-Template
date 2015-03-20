@@ -39,7 +39,7 @@ public abstract class QCircleTemplateElement {
      */
     public abstract int getId();
 
-    protected abstract void setElement(RelativeLayout parent);
+    protected abstract void addTo(RelativeLayout parent);
 
 
 }

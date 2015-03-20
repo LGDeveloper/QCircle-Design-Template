@@ -20,8 +20,6 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import com.lge.qcircle.template.QCircleBackButton;
-import com.lge.qcircle.template.QCircleTitle;
 
 /**
  * The {@code QCircleTemplate} class provides design templates for LG QuickCircle.
@@ -854,7 +852,7 @@ public class QCircleTemplate {
      */
     public void addElement(QCircleTemplateElement element)
     {
-        element.setElement(mCircleLayout);
+        element.addTo(mCircleLayout);
         if(element instanceof QCircleBackButton) mBackButton = (QCircleBackButton) element;
         else if(element instanceof QCircleTitle) mTitle = (QCircleTitle) element;
         adjustContentLayout();

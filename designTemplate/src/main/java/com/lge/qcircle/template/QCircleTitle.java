@@ -247,13 +247,13 @@ public final class QCircleTitle extends QCircleTemplateElement {
      * @author sujin.cho
      */
     @Override
-    protected void setElement(RelativeLayout parent) {
+    protected void addTo(RelativeLayout parent) {
         // TODO Auto-generated method stub
         setLayoutParams();
         parent.addView(mRootView);
     }
 
-    /*
+    /**
      * set layout parameters of title view. sets position and height of the title view.
 	 * @author sujin.cho
 	 *
@@ -266,8 +266,9 @@ public final class QCircleTitle extends QCircleTemplateElement {
         mRootView.setLayoutParams(params);
     }
 
-    /*
+    /**
     * change a height of title view.
+     * @param heightRatio ratio of the portion of title area respect to the circle diameter.
     * @author sujin..cho
     */
     public void setTitleHeight(float heightRatio)

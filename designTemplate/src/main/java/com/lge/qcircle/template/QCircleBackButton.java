@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 
+import com.lge.qcircle.utils.QCircleFeature;
+
 /**
  * The {@code QCircleBackButton} class represents back buttons of QuickCircle.
  *
@@ -149,24 +151,30 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	}
 
     /**
+     * adds this to the template.
+     * @param parent
      * @author sujin.cho
      */
     @Override
-    public void setElement(RelativeLayout parent) {
+    public void addTo(RelativeLayout parent) {
         // TODO Auto-generated method stub
         setLayoutParams();
         parent.addView(mBtnContent);
     }
 
+    /**
+     * sets layout parameters of the back button.
+     *
+     */
     private void setLayoutParams()
     {
-        //int buttonAreaHeight = (int) (mFullSize * fixedButtonRatio);
-        int buttonAreaHeight = (int)(1046 * 0.23);
+        int diameter = QCircleTemplate.getDiameter();
+        int buttonAreaHeight = (int)(diameter * fixedButtonRatio);
 
         // add a button into the bottom of the circle layout
-        params = new RelativeLayout.LayoutParams(1046,buttonAreaHeight);
+        params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,buttonAreaHeight);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
         mBtnContent.setLayoutParams(params);
-        //mCircleLayout.addView(buttonView.getView(), params);
+
     }
 }

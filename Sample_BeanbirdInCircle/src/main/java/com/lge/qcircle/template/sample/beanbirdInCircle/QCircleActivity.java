@@ -3,35 +3,26 @@ package com.lge.qcircle.template.sample.beanbirdInCircle;
 
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
-
-
-
-
-
 import android.widget.RelativeLayout.LayoutParams;
-
 import com.lge.qcircle.template.QCircleTemplate;
+import com.lge.qcircle.template.QCircleTitle;
 import com.lge.qcircle.template.TemplateTag;
 import com.lge.qcircle.template.TemplateType;
+import com.lge.qcircle.template.QCircleBackButton;
+import com.lge.qcircle.utils.QCircleFeature;
+
 
 public class QCircleActivity extends Activity {
 	
@@ -57,6 +48,9 @@ public class QCircleActivity extends Activity {
 	// [END] QuickCircle info.
 
 	QCircleTemplate template = null;
+    QCircleTitle mTitle = null;
+    QCircleBackButton mBackButton = null;
+
 	
 	// -------------------------------------------------------------------------------
 	private final boolean DEBUG = true;
@@ -91,13 +85,26 @@ public class QCircleActivity extends Activity {
 		//create a template and set a layout
 		template = new QCircleTemplate(this, TemplateType.CIRCLE_EMPTY);
 		//set title
-		template.setTitle("Bean Bird In Circle");
-		//add back button
-		template.setBackButton();
-        template.setBackButtonTheme(true);
 
-        //Register your own broadcast receiver
-        registerReceiver();             // and then register your own broadcast receiver
+        mTitle = new QCircleTitle(this, "Bean Bird In Circle");
+        template.addElement(mTitle);
+        //template.setTitle("Bean Bird In Circle");
+
+		//add back button
+        mBackButton = new QCircleBackButton(this);
+        mBackButton.isDark(true);
+        template.addElement(mBackButton);
+
+
+        //**[START] Create Intent for full screen
+        String url = "http://developer.lge.com/main/Intro.dev";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        template.setFullscreenIntent(intent);
+        //**[END]
+
+        //**[START] Register a broadcast receiver
+        template.registerIntentReceiver();
 
         //create drawables for background
 		mypic = getResources().getDrawable(R.drawable.background1);
@@ -110,7 +117,7 @@ public class QCircleActivity extends Activity {
 		RelativeLayout main = template.getLayoutById(TemplateTag.CONTENT_MAIN);
 		LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		params.addRule(RelativeLayout.CENTER_IN_PARENT);
-		params.topMargin = 300;
+		params.topMargin = QCircleFeature.getRelativePixelValue(300);
 		
 		//create button for switchin background
 		Button btn = new Button(mContext);
@@ -145,14 +152,16 @@ public class QCircleActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		//unregister the broadcast receiver
-		mContext.unregisterReceiver(mIntentReceiver);
+        template.unregisterReceiver();
+		//mContext.unregisterReceiver(mIntentReceiver);
 	}
 
 
 	/**
 	 * creates an intent filter to filter the intent related Quick Circle only.
 	 * registers a broadcast receiver to the system
-	 */
+    */
+    /*
 	private void registerReceiver() {
 
 		IntentFilter filter = new IntentFilter();
@@ -162,6 +171,7 @@ public class QCircleActivity extends Activity {
 		mContext.registerReceiver(mIntentReceiver, filter);
 
 	}
+	*/
 	
 	/**
 	 * sets window manager layout parameters.This method add a FLAG_SHOW_WHEN_LOCKED to the window when the cover is closed.
@@ -182,8 +192,10 @@ public class QCircleActivity extends Activity {
 	 * creates a broadcast receiver. The broadcast receiver receives the intent related to Quick Circle.
 	 * Once the receiver receives the Quick Circle intent, it gets the current state of the cover.
 	 * When the cover is closed, the app shows the circle layout and the cover is open, it shows LG Developer Site
-	 * on full screen.  
-	 */
+	 * on full screen.
+     *
+     */
+    /*
 	private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -210,7 +222,7 @@ public class QCircleActivity extends Activity {
 				if(!quickCircleEnabled) return;
 				
 				//Get a case type
-				quickCaseType = Settings.Global.getInt(contentResolver, "cover_type", 0/*default value*/);
+				quickCaseType = Settings.Global.getInt(contentResolver, "cover_type", 0);
 				if(quickCaseType != TYPE_QUICKCIRCLE) return;
 				
 				//Gets the current state of the cover
@@ -236,5 +248,6 @@ public class QCircleActivity extends Activity {
 			}
 		}
 	};
+  */
 
 }

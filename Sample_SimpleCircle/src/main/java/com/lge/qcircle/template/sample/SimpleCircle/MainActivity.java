@@ -6,6 +6,7 @@ import com.lge.qcircle.template.QCircleTemplate;
 import com.lge.qcircle.template.QCircleTitle;
 import com.lge.qcircle.template.TemplateTag;
 import com.lge.qcircle.template.TemplateType;
+import com.lge.qcircle.utils.QCircleFeature;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -141,7 +142,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 mTitle.setBackgroundColor(Color.GREEN);
-                mTitle.setTitle("Hello");
+                mTitle.setText("Hello");
 
             }
         });
@@ -153,7 +154,7 @@ public class MainActivity extends Activity {
 			/* Add image to side bar*/
 			side1.setBackgroundResource(R.drawable.ic_launcher);
 			LayoutParams params = side1.getLayoutParams();
-			params.width = 400;
+			params.width = QCircleFeature.getRelativePixelValue(400);
 			side1.setLayoutParams(params);
 
             //sujin.cho
@@ -177,17 +178,10 @@ public class MainActivity extends Activity {
         //**[END]
 	}
 
-	private void setQuickCircleWindowParam() {
-		win = getWindow();
-		if (win != null) {
-			// Show the sample application view on top
-			win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-					| WindowManager.LayoutParams.FLAG_FULLSCREEN
-					| WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		}
-	}
 
+    // use only in case, you want to implement your own br receiver
     // your own broadcast receiver
+    /*
 	private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -229,4 +223,5 @@ public class MainActivity extends Activity {
 			}
 		}
 	};
+	*/
 }

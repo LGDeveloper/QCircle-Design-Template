@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.lge.qcircle.template.QCircleTemplate;
 
 /**
+ * The {@code QCircleFeature} class provides useful methods for Quick Circle applications.
  * Created by sujin.cho on 2015-03-11.
  */
 public class QCircleFeature {
@@ -15,8 +16,12 @@ public class QCircleFeature {
     private static final int G3_DIAMETER = 1046;
 
 
-
-
+    /**
+     * Activates a number badge with a count.
+     * The number badge will show up on the icon.
+     * @param context
+     * @param count
+     */
     public static void activateNumberBadge(Context context, int count)
     {
         if(numberBadge == null)
@@ -27,6 +32,11 @@ public class QCircleFeature {
         context.sendBroadcast(numberBadge);
     }
 
+    /**
+     * Changes a count number of a number badge.
+     * @param context
+     * @param count
+     */
     public static void setNumberBadge(Context context, int count)
     {
         if(numberBadge == null)
