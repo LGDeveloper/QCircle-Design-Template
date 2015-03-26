@@ -83,7 +83,7 @@ public class QCircleActivity extends Activity {
 		RelativeLayout main = template.getLayoutById(TemplateTag.CONTENT_MAIN);
 		LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		params.addRule(RelativeLayout.CENTER_IN_PARENT);
-		params.topMargin = QCircleFeature.getRelativePixelValue(300);
+		params.topMargin = QCircleFeature.getRelativePixelValue(this,300);
 		
 		//create button for switchin background
 		Button btn = new Button(mContext);

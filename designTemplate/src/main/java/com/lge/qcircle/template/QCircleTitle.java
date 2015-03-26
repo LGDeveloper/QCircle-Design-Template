@@ -1,7 +1,9 @@
 package com.lge.qcircle.template;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Color;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -10,22 +12,26 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.lge.qcircle.utils.QCircleFeature;
+
 /**
  * The {@code QCircleTitle} class represents title views of QuickCircle.
  *
  * @author jeongeun.jeon
  */
-public final class QCircleTitle extends QCircleTemplateElement {
-	private final String TAG = "QCircleTitle";
+public final class QCircleTitle extends QCircleTemplateElement{
+
+    private final String TAG = "QCircleTitle";
 	protected Context mContext = null;
 
 	protected LinearLayout mRootView = null;
 	protected TextView mTitleView = null;
 
+
     //sujin.cho
     RelativeLayout.LayoutParams params = null;
     private final float fixedTitleRatio = 0.23f; // Title height ratio
-
+    private static int mFullSize = 0; // circle diameter
 
 	/**
 	 * creates a title bar with a text.
@@ -42,7 +48,10 @@ public final class QCircleTitle extends QCircleTemplateElement {
 		this(context, title, Color.BLACK, Color.TRANSPARENT);
 	}
 
-	/**
+
+
+
+    /**
 	 * creates a title bar with a text.
 	 * <p>
 	 * It makes a {@link android.widget.TextView} with the given text.
@@ -83,6 +92,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	public QCircleTitle(Context context, View title, int backgroundColor) {
 		if (context != null) {
 			mContext = context;
+            getTemplateDiameter(context);
 			mRootView = createRootView(context, backgroundColor);
 			if (title != null) {
 				if (title instanceof TextView) mTitleView = (TextView) title;
@@ -251,6 +261,10 @@ public final class QCircleTitle extends QCircleTemplateElement {
         // TODO Auto-generated method stub
         setLayoutParams();
         parent.addView(mRootView);
+        //adjust layout
+        RelativeLayout content = (RelativeLayout) parent.findViewById(TemplateTag.CONTENT);
+        RelativeLayout.LayoutParams contentParams = (RelativeLayout.LayoutParams) content.getLayoutParams();
+        contentParams.addRule(RelativeLayout.ABOVE, mRootView.getId());
     }
 
     /**
@@ -260,7 +274,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	 */
     private void setLayoutParams()
     {
-        int titleAreaHeight = (int)(QCircleTemplate.getDiameter() * fixedTitleRatio);
+        int titleAreaHeight = (int)(mFullSize * fixedTitleRatio);
         params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, titleAreaHeight);
         params.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
         mRootView.setLayoutParams(params);
@@ -276,8 +290,31 @@ public final class QCircleTitle extends QCircleTemplateElement {
         if (heightRatio <= 0) // adjust the height
             heightRatio = fixedTitleRatio;
         params = (RelativeLayout.LayoutParams)mRootView.getLayoutParams();
-        params.height = (int)(QCircleTemplate.getDiameter() * heightRatio);
+        params.height = (int)(mFullSize * heightRatio);
         mRootView.setLayoutParams(params);
     }
 
+
+    /**
+     * locates the circle on the correct position. The correct position depends on phone model.
+     * <p>
+     * @author sujin.cho
+     */
+    private void getTemplateDiameter(Context context)
+    {
+        if(context != null) {
+            if (!QCircleFeature.isQuickCircleAvailable(context)) {
+                Log.i(TAG, "Quick Circle case is not available");
+                return;
+            }
+            // circle size
+            int id = context.getResources().getIdentifier(
+                    "config_circle_diameter", "dimen", "com.lge.internal");
+            mFullSize = context.getResources().getDimensionPixelSize(id);
+        }
+        else
+        {
+
+        }
+    }
 }

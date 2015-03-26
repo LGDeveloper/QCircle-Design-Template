@@ -135,7 +135,7 @@ public class MainActivity extends Activity {
 			/* Add image to side bar*/
 			side1.setBackgroundResource(R.drawable.ic_launcher);
 			LayoutParams params = side1.getLayoutParams();
-			params.width = QCircleFeature.getRelativePixelValue(400);
+			params.width = QCircleFeature.getRelativePixelValue(this,400);
 			side1.setLayoutParams(params);
 
             //sujin.cho

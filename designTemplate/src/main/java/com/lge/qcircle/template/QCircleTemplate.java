@@ -21,6 +21,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.lge.qcircle.utils.QCircleFeature;
+
 /**
  * The {@code QCircleTemplate} class provides design templates for LG QuickCircle.
  * <p>
@@ -56,7 +58,7 @@ public class QCircleTemplate {
 	protected static final String DEVICE_T6 = "tiger6";
 
 	// environments
-	protected static Context mContext = null;
+	protected Context mContext = null;
 	protected BroadcastReceiver mReceiver = null;
 	protected Intent mFullscreenIntent = null;
 	protected IntentCreatorAsync mAsyncCreator = null;
@@ -70,12 +72,19 @@ public class QCircleTemplate {
 	protected QCircleTitle mTitle = null;
 
 	// layout values
-	private static int mFullSize = 0; // circle diameter
-	private static int mTopOffset = 0; // top offset of circle
-	private static int mYpos = 0; // y offset of circle
+    private static int mFullSize = 0; // circle diameter
+    private static int mTopOffset = 0; // top offset of circle
+    private static int mYpos = 0;
 
+    /**
+    @deprecated
+     */
 	private final float fixedButtonRatio = 0.23f; // Button height ratio
+    /**
+     @deprecated
+     */
 	private final float fixedTitleRatio = 0.23f; // Title height ratio
+
 
 	/**
 	 * creates a template with an empty content.
@@ -161,6 +170,7 @@ public class QCircleTemplate {
 	}
 
 	/**
+     * @deprecated
 	 * sets a title.
 	 * <p>
 	 * It creates a title bar on the top of the layout.
@@ -172,14 +182,12 @@ public class QCircleTemplate {
 	 *              If it is null, no title text will be shown but the title bar will occupy some
 	 *              space.
 	 */
-    /*
-	 * @deprecated
-	 */
 	public void setTitle(String title) {
 		setTitle(title, fixedTitleRatio);
 	}
 
 	/**
+     * @deprecated
 	 * sets a title with the given height ratio.
 	 * <p>
 	 * It creates a title bar on the top of the layout. The height of the title bar depends on
@@ -195,14 +203,12 @@ public class QCircleTemplate {
 	 *                    If it is less or equal to 0, the height ratio of the title bar will be 0.2 of
 	 *                    QuickCircle diameter.
 	 */
-    /*
-	 * @deprecated
-	 */
 	public void setTitle(String title, float heightRatio) {
 		setTitle(title, heightRatio, Color.BLACK, Color.TRANSPARENT);
 	}
 
 	/**
+     * @deprecated
 	 * sets a title with the given height ratio and the given title color and background color.
 	 * <p>
 	 * It creates a title bar on the top of the layout. The height of the title bar depends on
@@ -220,9 +226,6 @@ public class QCircleTemplate {
 	 * @param textColor       The color of the title
 	 * @param backgroundColor The background color of the title
 	 */
-    /*
-	 * @deprecated
-	 */
 	public void setTitle(String title, float heightRatio, int textColor, int backgroundColor) {
 		if (mTitle == null) {
 			if (mContext != null)
@@ -238,10 +241,9 @@ public class QCircleTemplate {
 		}
 	}
 
-    /**
-     * @deprecated
-     */
+
 	/**
+     * @deprecated
 	 * sets a title with the default height ratio and the given title color and background color.
 	 * <p>
 	 * It creates a title bar on the top of the layout. The height of the title bar depends on
@@ -260,10 +262,9 @@ public class QCircleTemplate {
 		setTitle(title, fixedTitleRatio, textColor, backgroundColor);
 	}
 
-    /**
-     * @deprecated
-     */
+
 	/**
+     * @deprecated
 	 * sets a title as the given view with the given height ratio.
 	 * <p>
 	 * It creates a title bar on the top of the layout. The content of the title bar is
@@ -296,10 +297,9 @@ public class QCircleTemplate {
 		}
 	}
 
-    /**
-     * @deprecated
-     */
+
 	/**
+     * @deprecated
 	 * sets a back button.
 	 * <p>
 	 * It creates a back button on the bottom of the layout.
@@ -312,10 +312,9 @@ public class QCircleTemplate {
 		setBackButton(null);
 	}
 
-    /**
-     * @deprecated
-     */
+
 	/**
+     * @deprecated
 	 * sets a back button with callback.
 	 * <p>
 	 * It creates a back button on the bottom of the layout.
@@ -338,10 +337,9 @@ public class QCircleTemplate {
 		}
 	}
 
-    /**
-     * @deprecated
-     */
+
 	/**
+     * @deprecated
 	 * Set the theme to the back button. Default is light.
 	 * @param isDark Is dark theme
      * @author Yoav Sternberg
@@ -462,10 +460,9 @@ public class QCircleTemplate {
 			mBackButton.setBackgroundTransparent();
 	}
 
-    /**
-     * @deprecated
-     */
+
 	/**
+     * @deprecated
 	 * sets the font size of the title.
 	 * <p>
 	 *
@@ -498,6 +495,7 @@ public class QCircleTemplate {
 	}
 
     /**
+     * @deprecated
      * changes the height of the title.<P>
      * If there is no title bar on the layout, no happens.
      * @param heightRatio ratio of the title bar.
@@ -516,10 +514,9 @@ public class QCircleTemplate {
 		}
 	}
 
-    /**
-     * @deprecated
-     */
+
 	/**
+     * @deprecated
 	 * adds a title view to the layout.
 	 * <p>
 	 * It is called by {@link #setTitle(String)} to adjust the circle layout. The title view is
@@ -545,10 +542,9 @@ public class QCircleTemplate {
 		}
 	}
 
-    /**
-     * @deprecated
-     */
+
 	/**
+     * @deprecated
 	 * adds a button view to the layout.
 	 * <p>
 	 * It is called by {@link com.lge.qcircle.template.QCircleTemplate#setBackButton()} to adjust the circle layout. The
@@ -632,10 +628,11 @@ public class QCircleTemplate {
      * <p>
      * @author sujin.cho
      */
-    private static void initCircleLayoutParam()
+    private void initCircleLayoutParam()
     {
-        if(!isQuickCircleAvailable(mContext)){
+        if(!QCircleFeature.isQuickCircleAvailable(mContext)){
             Log.i(TAG, "Quick Circle case is not available");
+            return;
         }
 
         // circle size
@@ -653,38 +650,7 @@ public class QCircleTemplate {
         mTopOffset = mYpos + ((height - mFullSize) / 2);
     }
 
-    /**
-     * Checks the availability of  Quick Circle case.
-     * <P>
-     * Checks whether a smart case is available and if it is, check the case type.
-     * @param context
-     */
-    public static boolean isQuickCircleAvailable(Context context)
-    {
-        ContentResolver contentResolver = context.getContentResolver();
-        boolean smartcaseEnabled = false;
-        int smartcaseType = 0;
-        boolean result = false;
 
-        if(contentResolver == null)
-        {
-            Log.d(TAG, "Content Resolver is null");
-            return result;
-        }
-        smartcaseEnabled = Settings.Global.getInt(contentResolver,"quick_view_enable", 1) == 1 ? true : false;
-        if(!smartcaseEnabled){
-            Log.i(TAG, "No smart case available");
-            return result;
-        }
-        smartcaseType = Settings.Global.getInt(contentResolver, "cover_type", 0);
-        if(smartcaseType != 3){
-            Log.i(TAG, "Case type is not Quick Circle");
-            return result;
-        }
-        result = true;
-
-        return result;
-    }
 
         /**
          * sets the design template.
@@ -735,7 +701,6 @@ public class QCircleTemplate {
 	 * circle hidden after you invoke this method. The full screen intent will starts if you set a
 	 * fullscreen intent by calling {@link #setFullscreenIntent(android.content.Intent)}.
 	 */
-
 	public void registerIntentReceiver() {
         if( mContext != null ) {
             mReceiver = new BroadcastReceiver() {
@@ -748,8 +713,9 @@ public class QCircleTemplate {
                         return;
                     }
 
-                    if(!isQuickCircleAvailable(mContext)){
+                    if(!QCircleFeature.isQuickCircleAvailable(mContext)){
                         Log.i(TAG, "Quick Circle case is not available");
+                        return;
                     }
 
                     // Receives a LG QCirle intent for the cover event
@@ -816,7 +782,7 @@ public class QCircleTemplate {
 		}
 	}
 
-	/*
+	/**
 	 * @deprecated
 	 */
 	protected boolean setLayoutById(int id, View view) {
@@ -882,14 +848,14 @@ public class QCircleTemplate {
         adjustContentLayout();
     }
 
-    public static int getDiameter() {
+    public int getDiameter() {
         if(mFullSize == 0) {
             initCircleLayoutParam();
         }
         return mFullSize;
     }
 
-    public static int getYpos() {
+    public int getYpos() {
         if(mTopOffset == 0) {
             initCircleLayoutParam();
         }

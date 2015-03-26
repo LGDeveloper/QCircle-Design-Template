@@ -12,9 +12,12 @@ public abstract class QCircleTemplateElement {
 
     protected Context mContext = null;
 
+
+
     public QCircleTemplateElement(){
 
     }
+
 
     /**
      * creates a template element.
@@ -24,6 +27,7 @@ public abstract class QCircleTemplateElement {
     public QCircleTemplateElement(Context context) {
         mContext = context;
     }
+
 
     /**
      * gets the view of the element

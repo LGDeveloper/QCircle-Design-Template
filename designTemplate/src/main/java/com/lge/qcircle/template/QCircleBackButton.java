@@ -1,8 +1,10 @@
 package com.lge.qcircle.template;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Color;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,17 +21,25 @@ import com.lge.qcircle.utils.QCircleFeature;
  * @author jeongeun.jeon
  */
 public final class QCircleBackButton extends QCircleTemplateElement{
-	private final String TAG = "QCircleBackButton";
+
+    private final String TAG = "QCircleBackButton";
 	private OnClickListener mListener;
 	private ImageView mBtnContent = null;
 	private int		mButtonHeight = 0;
 	private Context mContext = null;
 	private boolean isDark = false;
-	
+
+
+
 	private static float PADDING_RATIO = 0.35f;
     //sujin.cho
     private final float fixedButtonRatio = 0.23f;
     RelativeLayout.LayoutParams params = null;
+
+    // layout values
+    protected static int mFullSize = 0; // circle diameter
+    protected static int mTopOffset = 0; // top offset of circle
+    private static int mYpos = 0;
 
 
 
@@ -41,7 +51,8 @@ public final class QCircleBackButton extends QCircleTemplateElement{
      */
     public QCircleBackButton(Context context) {
         mContext = context;
-        mButtonHeight = (int)(fixedButtonRatio * QCircleTemplate.getDiameter());
+        getTemplateDiameter(context);
+        mButtonHeight = (int)(fixedButtonRatio * mFullSize);
         if (!setButton())
             Log.d(TAG, "Cannot create a button. Context is null.");
     }
@@ -52,9 +63,17 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	 * @param context {@code Activity} which has a circle view.<br>
 	 * <b>If it is null, you might get errors when you use method of this class.</b>
 	 */
-	public QCircleBackButton(Context context, int height) {
-		this(context, height, null);
+    /*
+	public QCircleBackButton(Context context, float heightRatio) {
+
+        mContext = context;
+        getTemplateDiameter(context);
+        mButtonHeight = (int)(heightRatio * mFullSize);
+        if (!setButton())
+            Log.d(TAG, "Cannot create a button. Context is null.");
+        //this(context, height, null);
 	}
+*/
 
 	/**
 	 * creates a back button.
@@ -82,7 +101,6 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 		if (mContext != null) {
 			mBtnContent = new ImageView(mContext);
 			mBtnContent.setPadding(0,(int)(mButtonHeight*PADDING_RATIO), 0, (int)(mButtonHeight*PADDING_RATIO));
-			
 			// set attributes
 			mBtnContent.setId(R.id.backButton);
 			setTheme();
@@ -168,13 +186,33 @@ public final class QCircleBackButton extends QCircleTemplateElement{
      */
     private void setLayoutParams()
     {
-        int diameter = QCircleTemplate.getDiameter();
-        int buttonAreaHeight = (int)(diameter * fixedButtonRatio);
-
+        int buttonAreaHeight = (int)(mFullSize * fixedButtonRatio);
         // add a button into the bottom of the circle layout
         params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,buttonAreaHeight);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
         mBtnContent.setLayoutParams(params);
+    }
 
+    /**
+     * locates the circle on the correct position. The correct position depends on phone model.
+     * <p>
+     * @author sujin.cho
+     */
+    private void getTemplateDiameter(Context context)
+    {
+        if(context != null) {
+            if (!QCircleFeature.isQuickCircleAvailable(context)) {
+                Log.i(TAG, "Quick Circle case is not available");
+                return;
+            }
+            // circle size
+            int id = context.getResources().getIdentifier(
+                    "config_circle_diameter", "dimen", "com.lge.internal");
+            mFullSize = context.getResources().getDimensionPixelSize(id);
+        }
+        else
+        {
+
+        }
     }
 }
