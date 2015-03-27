@@ -421,6 +421,7 @@ public class QCircleTemplate {
 	}
 
 	/**
+     * @deprecated
 	 * sets the background of the template as the given image.
 	 * <p>
 	 * The background affects all the layouts including a title bar and a back button.
@@ -441,24 +442,51 @@ public class QCircleTemplate {
 		// mTitle.setBackgroundTransparent();
 	}
 
+    /**
+     * sets the background of the template as the given image.
+     * <p>
+     * The background affects all the layouts including a title bar and a back button.
+     *
+     * @param image              background image
+     * @see #setBackgroundColor(int, boolean)
+     */
+    public void setBackgroundDrawable(Drawable image) {
+        if (mCircleLayout != null)
+            mCircleLayout.setBackground(image);
+    }
+
 	/**
-	 * sets the background of the template as the given color.
-	 * <p>
-	 * The background affects all the layouts including a title bar and a back button.
-	 *
-	 * @param color              background color
-	 * @param overwiteButtonArea flag for clear background of the back button if it exists.<br>
-	 *                           The default background of a back button is light gray. You should clear the
-	 *                           background color of a back button when you want to use full-layout background.<br>
-	 *                           Set this flag in that case.
-	 * @see #setBackgroundDrawable(android.graphics.drawable.Drawable, boolean)
-	 */
-	public void setBackgroundColor(int color, boolean overwiteButtonArea) {
-		if (mCircleLayout != null)
-			mCircleLayout.setBackgroundColor(color);
-		if (overwiteButtonArea && mBackButton != null)
-			mBackButton.setBackgroundTransparent();
-	}
+     * @deprecated
+     * sets the background of the template as the given color.
+     * <p>
+     * The background affects all the layouts including a title bar and a back button.
+     *
+     * @param color              background color
+     * @param overwiteButtonArea flag for clear background of the back button if it exists.<br>
+     *                           The default background of a back button is light gray. You should clear the
+     *                           background color of a back button when you want to use full-layout background.<br>
+     *                           Set this flag in that case.
+     * @see #setBackgroundDrawable(android.graphics.drawable.Drawable, boolean)
+     */
+    public void setBackgroundColor(int color, boolean overwiteButtonArea) {
+        if (mCircleLayout != null)
+            mCircleLayout.setBackgroundColor(color);
+        if (overwiteButtonArea && mBackButton != null)
+            mBackButton.setBackgroundTransparent();
+    }
+
+    /**
+     * sets the background of the template as the given color.
+     * <p>
+     * The background affects all the layouts including a title bar and a back button.
+     *
+     * @param color              background color
+     * @see #setBackgroundDrawable(android.graphics.drawable.Drawable, boolean)
+     */
+    public void setBackgroundColor(int color) {
+        if (mCircleLayout != null)
+            mCircleLayout.setBackgroundColor(color);
+    }
 
 
 	/**
@@ -567,6 +595,7 @@ public class QCircleTemplate {
 	}
 
 	/**
+     * @deprecated
 	 * adjust the circle layout when a title view or a button view is added.
 	 * <p>
 	 * It is called by {@link #addBackButtonView(QCircleBackButton)).
@@ -842,10 +871,11 @@ public class QCircleTemplate {
      */
     public void addElement(QCircleTemplateElement element)
     {
-        element.addTo(mCircleLayout);
-        if(element instanceof QCircleBackButton) mBackButton = (QCircleBackButton) element;
-        else if(element instanceof QCircleTitle) mTitle = (QCircleTitle) element;
-        adjustContentLayout();
+        element.addTo(mCircleLayout, mContent);
+
+        //remove it later....
+        if(element instanceof QCircleBackButton) mBackButton = (QCircleBackButton)element;
+        else if(element instanceof QCircleTitle) mTitle = (QCircleTitle)element;
     }
 
     public int getDiameter() {

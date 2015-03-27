@@ -42,8 +42,5 @@ public abstract class QCircleTemplateElement {
      * @return ID of the element view
      */
     public abstract int getId();
-
-    protected abstract void addTo(RelativeLayout parent);
-
-
+    protected abstract void addTo(RelativeLayout parent, RelativeLayout content);
 }

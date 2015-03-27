@@ -1,9 +1,7 @@
 package com.lge.qcircle.template;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Color;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -22,14 +20,12 @@ import com.lge.qcircle.utils.QCircleFeature;
 public final class QCircleTitle extends QCircleTemplateElement{
 
     private final String TAG = "QCircleTitle";
-	protected Context mContext = null;
 
-	protected LinearLayout mRootView = null;
-	protected TextView mTitleView = null;
-
+	private LinearLayout mRootView = null;
+	private TextView mTitleView = null;
 
     //sujin.cho
-    RelativeLayout.LayoutParams params = null;
+    private RelativeLayout.LayoutParams mParams = null;
     private final float fixedTitleRatio = 0.23f; // Title height ratio
     private static int mFullSize = 0; // circle diameter
 
@@ -257,28 +253,23 @@ public final class QCircleTitle extends QCircleTemplateElement{
      * @author sujin.cho
      */
     @Override
-    protected void addTo(RelativeLayout parent) {
-        // TODO Auto-generated method stub
-        setLayoutParams();
-        parent.addView(mRootView);
-        //adjust layout
-        RelativeLayout content = (RelativeLayout) parent.findViewById(TemplateTag.CONTENT);
-        RelativeLayout.LayoutParams contentParams = (RelativeLayout.LayoutParams) content.getLayoutParams();
-        contentParams.addRule(RelativeLayout.ABOVE, mRootView.getId());
+    public void addTo(RelativeLayout parent, RelativeLayout content) {
+
+        if((mRootView != null) && (parent != null)) {
+            setTitleHeight(0.0f);
+            parent.addView(mRootView);
+            adjustLayout(content);
+        }
     }
 
-    /**
-     * set layout parameters of title view. sets position and height of the title view.
-	 * @author sujin.cho
-	 *
-	 */
-    private void setLayoutParams()
+    private void adjustLayout(RelativeLayout content)
     {
-        int titleAreaHeight = (int)(mFullSize * fixedTitleRatio);
-        params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, titleAreaHeight);
-        params.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
-        mRootView.setLayoutParams(params);
+        RelativeLayout.LayoutParams contentParams = new RelativeLayout.LayoutParams(
+                content.getLayoutParams().width, content.getLayoutParams().height);
+        contentParams.addRule(RelativeLayout.BELOW, mRootView.getId());
+        content.setLayoutParams(contentParams);
     }
+
 
     /**
     * change a height of title view.
@@ -287,11 +278,14 @@ public final class QCircleTitle extends QCircleTemplateElement{
     */
     public void setTitleHeight(float heightRatio)
     {
-        if (heightRatio <= 0) // adjust the height
-            heightRatio = fixedTitleRatio;
-        params = (RelativeLayout.LayoutParams)mRootView.getLayoutParams();
-        params.height = (int)(mFullSize * heightRatio);
-        mRootView.setLayoutParams(params);
+        if(mRootView != null) {
+            if (heightRatio <= 0) // adjust the height
+                heightRatio = fixedTitleRatio;
+            mParams = (RelativeLayout.LayoutParams) mRootView.getLayoutParams();
+            mParams.height = (int) (mFullSize * heightRatio);
+            mParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
+            mRootView.setLayoutParams(mParams);
+        }
     }
 
 

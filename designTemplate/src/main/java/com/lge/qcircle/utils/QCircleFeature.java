@@ -1,13 +1,13 @@
 package com.lge.qcircle.utils;
 
-import android.app.Activity;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.lge.qcircle.template.QCircleTemplate;
+
 
 /**
  * The {@code QCircleFeature} class provides useful methods for Quick Circle applications.
@@ -16,19 +16,19 @@ import com.lge.qcircle.template.QCircleTemplate;
 public class QCircleFeature {
 
     protected static final String TAG = "QCircleFeature";
+
+    //needs to remove intent
     private static Intent numberBadge = null;
     private static final String ACTION_UPDATE_NOTIFICATION = "com.lge.launcher.intent.action.BADGE_COUNT_UPDATE";
     private static final int G3_DIAMETER = 1046;
     private static int mFullSize = 0; // circle diameter
 
-
     /**
      * Activates a number badge with a count.
      * The number badge will show up on the icon.
-     * @param context
      * @param count
      */
-    public static void activateNumberBadge(Context context, int count)
+    public void activateNumberBadge(Context context, int count)
     {
         if(numberBadge == null)
             numberBadge = new Intent(ACTION_UPDATE_NOTIFICATION);
@@ -43,7 +43,7 @@ public class QCircleFeature {
      * @param context
      * @param count
      */
-    public static void setNumberBadge(Context context, int count)
+    public void setNumberBadge(Context context, int count)
     {
         if(numberBadge == null)
         {

@@ -26,7 +26,6 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	private OnClickListener mListener;
 	private ImageView mBtnContent = null;
 	private int		mButtonHeight = 0;
-	private Context mContext = null;
 	private boolean isDark = false;
 
 
@@ -34,13 +33,10 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	private static float PADDING_RATIO = 0.35f;
     //sujin.cho
     private final float fixedButtonRatio = 0.23f;
-    RelativeLayout.LayoutParams params = null;
+    private RelativeLayout.LayoutParams mParams = null;
 
     // layout values
-    protected static int mFullSize = 0; // circle diameter
-    protected static int mTopOffset = 0; // top offset of circle
-    private static int mYpos = 0;
-
+    private static int mFullSize = 0; // circle diameter
 
 
     /**
@@ -174,10 +170,19 @@ public final class QCircleBackButton extends QCircleTemplateElement{
      * @author sujin.cho
      */
     @Override
-    public void addTo(RelativeLayout parent) {
-        // TODO Auto-generated method stub
-        setLayoutParams();
-        parent.addView(mBtnContent);
+    public void addTo(RelativeLayout parent, RelativeLayout content) {
+        if ((mBtnContent != null) && (parent != null)) {
+            setLayoutParams();
+            parent.addView(mBtnContent);
+            adjustLayout(content);
+        }
+    }
+
+    private void adjustLayout(RelativeLayout content)
+    {
+        RelativeLayout.LayoutParams contentParams = (RelativeLayout.LayoutParams) content.getLayoutParams();
+        contentParams.addRule(RelativeLayout.ABOVE, mBtnContent.getId());
+        content.setLayoutParams(contentParams);
     }
 
     /**
@@ -188,9 +193,9 @@ public final class QCircleBackButton extends QCircleTemplateElement{
     {
         int buttonAreaHeight = (int)(mFullSize * fixedButtonRatio);
         // add a button into the bottom of the circle layout
-        params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,buttonAreaHeight);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-        mBtnContent.setLayoutParams(params);
+        mParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,buttonAreaHeight);
+        mParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
+        mBtnContent.setLayoutParams(mParams);
     }
 
     /**

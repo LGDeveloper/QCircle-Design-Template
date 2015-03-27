@@ -77,7 +77,7 @@ public class QCircleActivity extends Activity {
 		mypic2 = getResources().getDrawable(R.drawable.background2);
 		
 		//set background
-		template.setBackgroundDrawable(mypic, true);
+		template.setBackgroundDrawable(mypic);
 		
 		//get main content area 
 		RelativeLayout main = template.getLayoutById(TemplateTag.CONTENT_MAIN);
