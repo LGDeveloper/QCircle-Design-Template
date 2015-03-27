@@ -9,9 +9,6 @@ import com.lge.qcircle.template.TemplateType;
 import com.lge.qcircle.utils.QCircleFeature;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
@@ -76,10 +73,11 @@ public class MainActivity extends Activity {
         template.addElement(mBackButton);
 
 
+
 		//**[END]
 						
 		//**[START] Customize the Layout
-		template.setSidebarRatio(0.5f);		
+		template.setSidebarRatio(0.5f);
 		//**[END]
 
         //**[START] Create Intent for full screen
@@ -129,7 +127,7 @@ public class MainActivity extends Activity {
         });
 
 		/* Customize the first side bar*/
-		//If the app has more than one side bar, CONTENT_SIDE_2 can be used for the second side bar.
+    	//If the app has more than one side bar, CONTENT_SIDE_2 can be used for the second side bar.
 		RelativeLayout side1 = template.getLayoutById(TemplateTag.CONTENT_SIDE_1);
 		if( side1 != null ) {
 			/* Add image to side bar*/

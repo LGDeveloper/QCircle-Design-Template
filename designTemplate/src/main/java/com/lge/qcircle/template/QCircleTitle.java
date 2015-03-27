@@ -256,7 +256,7 @@ public final class QCircleTitle extends QCircleTemplateElement{
     public void addTo(RelativeLayout parent, RelativeLayout content) {
 
         if((mRootView != null) && (parent != null)) {
-            setTitleHeight(0.0f);
+            setLayoutParams();
             parent.addView(mRootView);
             adjustLayout(content);
         }
@@ -264,12 +264,21 @@ public final class QCircleTitle extends QCircleTemplateElement{
 
     private void adjustLayout(RelativeLayout content)
     {
-        RelativeLayout.LayoutParams contentParams = new RelativeLayout.LayoutParams(
-                content.getLayoutParams().width, content.getLayoutParams().height);
-        contentParams.addRule(RelativeLayout.BELOW, mRootView.getId());
-        content.setLayoutParams(contentParams);
+        if(content != null) {
+            RelativeLayout.LayoutParams contentParams = new RelativeLayout.LayoutParams(
+                    content.getLayoutParams().width, content.getLayoutParams().height);
+            contentParams.addRule(RelativeLayout.BELOW, mRootView.getId());
+            content.setLayoutParams(contentParams);
+        }
     }
 
+    private void setLayoutParams()
+    {
+        int titleAreaHeight = (int)(mFullSize * fixedTitleRatio);
+        mParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, titleAreaHeight);
+        mParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
+        mRootView.setLayoutParams(mParams);
+    }
 
     /**
     * change a height of title view.
@@ -278,6 +287,7 @@ public final class QCircleTitle extends QCircleTemplateElement{
     */
     public void setTitleHeight(float heightRatio)
     {
+
         if(mRootView != null) {
             if (heightRatio <= 0) // adjust the height
                 heightRatio = fixedTitleRatio;

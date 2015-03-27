@@ -800,6 +800,8 @@ public class QCircleTemplate {
 	 */
 	private void setQuickCircleWindowParam() {
 		if (mContext != null && mContext instanceof Activity) {
+            //remove title bar
+           // ((Activity) mContext).requestWindowFeature(Window.FEATURE_NO_TITLE);
 			Window win = ((Activity) mContext).getWindow();
 			if (win != null) {
 				// Show the sample application view on top

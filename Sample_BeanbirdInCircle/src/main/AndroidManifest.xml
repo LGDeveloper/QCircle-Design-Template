@@ -25,7 +25,8 @@
             android:icon="@drawable/icon"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            >
             <intent-filter>
                 <action android:name="com.lge.quickcover" />
                 <action android:name="android.intent.action.MAIN" />
