@@ -78,16 +78,13 @@ public class QCircleActivity extends Activity {
 		
 		//set background
 		template.setBackgroundDrawable(mypic);
-		
-		//get main content area 
-		RelativeLayout main = template.getLayoutById(TemplateTag.CONTENT_MAIN);
-		LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		params.addRule(RelativeLayout.CENTER_IN_PARENT);
-		params.topMargin = QCircleFeature.getRelativePixelValue(this,300);
-		
+
 		//create button for switchin background
 		Button btn = new Button(mContext);
 		btn.setBackgroundResource(R.drawable.button);
+        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        params.topMargin = QCircleFeature.getRelativePixelValue(this,300);
 		btn.setLayoutParams(params);
 		btn.setOnClickListener(new OnClickListener() {
 			
@@ -95,19 +92,32 @@ public class QCircleActivity extends Activity {
 			public void onClick(View v) {
 				if(mSwitched == false)
 				{
-					template.setBackgroundDrawable(mypic2, true);
+					template.setBackgroundDrawable(mypic2);
 					mSwitched = true;
 				}
 				else
 				{
-					template.setBackgroundDrawable(mypic, true);
+					template.setBackgroundDrawable(mypic);
 					mSwitched = false;
 				}
 			}
 		});
 
+        //create button for switchin background
+        Button notibtn = new Button(mContext);
+        notibtn.setText("IncreaseNumberBadge");
+        notibtn.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+             }
+         });
+
+
 		//add button to the main content area
-		main.addView(btn);
+        //get main content area
+        RelativeLayout main = template.getLayoutById(TemplateTag.CONTENT_MAIN);
+        main.addView(btn);
 		//[END]
 				
 		setContentView(template.getView());

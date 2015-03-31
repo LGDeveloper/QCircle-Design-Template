@@ -151,7 +151,7 @@ public final class QCircleTitle extends QCircleTemplateElement{
 	}
 
 	/**
-	 * sets the font size of the title text.
+	 * Sets the font size of the title text.
 	 *
 	 * @param size font size in pixel. <br>
 	 *             If it is less or equal to 0, the font size will not change.
@@ -163,7 +163,8 @@ public final class QCircleTitle extends QCircleTemplateElement{
 	}
 
     /**
-     * change a background color of title view
+     * Changes a background color of title view.
+     * @param color  The background color.  If 0, no background. Currently must be black, with any desired alpha level.
      * @author sujin.cho
      */
     public void setBackgroundColor(int color)
@@ -173,7 +174,8 @@ public final class QCircleTitle extends QCircleTemplateElement{
     }
 
     /**
-     * change a text color
+     * Changes a text color
+     * @param color The font color.  If 0, no background. Currently must be black, with any desired alpha level.
      * @author sujin.cho
      */
     public void setTextColor(int color)
@@ -183,7 +185,7 @@ public final class QCircleTitle extends QCircleTemplateElement{
     }
 
 	/**
-	 * create a root layout.
+	 * Creates a root layout with a transparent background.
 	 * <p>
 	 * The root layout will include all of contents for a title bar.
 	 *
@@ -195,7 +197,7 @@ public final class QCircleTitle extends QCircleTemplateElement{
 	}
 
 	/**
-	 * create a root layout.
+	 * Creates a root layout.
 	 * <p>
 	 * The root layout will include all of contents for a title bar.
 	 *
@@ -216,7 +218,7 @@ public final class QCircleTitle extends QCircleTemplateElement{
 	}
 
 	/**
-	 * create a TextView.
+	 * Creates a TextView.
 	 *
 	 * @param context Activity which has this title bar
 	 * @param title   title text
@@ -227,7 +229,7 @@ public final class QCircleTitle extends QCircleTemplateElement{
 	}
 
 	/**
-	 * create a TextView.
+	 * Creates a TextView.
 	 *
 	 * @param context   Activity which has this title bar
 	 * @param title     title text
@@ -245,15 +247,17 @@ public final class QCircleTitle extends QCircleTemplateElement{
 	}
 
     /**
-     * add a title view to parent
-     * This method is called in QCircle Template.
+     * Adds a title view to parent
+     * <p>
+     * This method is called in QCircleTemplate. First, the methods sets layout parameters for the title.
+     * Next, the method adds the title to parent. Once the title is added, UIs in the parent needs to be adjusted for the new component.
      *
      * @param parent QCircle Layout which
      *
      * @author sujin.cho
      */
     @Override
-    public void addTo(RelativeLayout parent, RelativeLayout content) {
+    protected void addTo(RelativeLayout parent, RelativeLayout content) {
 
         if((mRootView != null) && (parent != null)) {
             setLayoutParams();
@@ -281,8 +285,8 @@ public final class QCircleTitle extends QCircleTemplateElement{
     }
 
     /**
-    * change a height of title view.
-     * @param heightRatio ratio of the portion of title area respect to the circle diameter.
+    * Changes a height of title view.
+    * @param heightRatio ratio of the portion of title area respect to the circle diameter.
     * @author sujin..cho
     */
     public void setTitleHeight(float heightRatio)
@@ -300,7 +304,7 @@ public final class QCircleTitle extends QCircleTemplateElement{
 
 
     /**
-     * locates the circle on the correct position. The correct position depends on phone model.
+     * Locates the circle on the correct position. The correct position depends on phone model.
      * <p>
      * @author sujin.cho
      */

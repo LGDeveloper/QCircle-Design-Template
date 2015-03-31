@@ -3,13 +3,11 @@ package com.lge.qcircle.template;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -151,7 +149,7 @@ public class QCircleTemplate {
 	/**
 	 * sets the intent running in fullscreen when the cover is opened.
 	 *
-	 * @param creatorAsync will be called only when need the intent.
+	 * @param creatorAsync will be called only when the intent is needed.
 	 */
 	public void setFullscreenIntent(IntentCreatorAsync creatorAsync) {
 		mFullscreenIntent = null;
@@ -657,11 +655,11 @@ public class QCircleTemplate {
      * <p>
      * @author sujin.cho
      */
-    private void initCircleLayoutParam()
+    private boolean initCircleLayoutParam()
     {
         if(!QCircleFeature.isQuickCircleAvailable(mContext)){
             Log.i(TAG, "Quick Circle case is not available");
-            return;
+            return false;
         }
 
         // circle size
@@ -677,6 +675,8 @@ public class QCircleTemplate {
                 "config_circle_window_height", "dimen", "com.lge.internal");
         int height = mContext.getResources().getDimensionPixelSize(id);
         mTopOffset = mYpos + ((height - mFullSize) / 2);
+
+        return true;
     }
 
 
@@ -870,27 +870,41 @@ public class QCircleTemplate {
 	}
 
     /**
+     * Adds a UI element to a template.
+     *
+     * @param element UI element.
+     *                The element should extend QCricleTemplateElement abstract class.
+     *
      * @author sujin.cho
      */
     public void addElement(QCircleTemplateElement element)
     {
         element.addTo(mCircleLayout, mContent);
-
         //remove it later....
         if(element instanceof QCircleBackButton) mBackButton = (QCircleBackButton)element;
         else if(element instanceof QCircleTitle) mTitle = (QCircleTitle)element;
     }
 
+    /**
+     * Returns a diameter of the Quick Circle. This can be used to fit a layout in the Quick Circle window.
+     * @return diameter if the "config_circle_diameter" has a value.
+     * -1 if the "config_circle_diameter" is not loaded.
+     */
     public int getDiameter() {
         if(mFullSize == 0) {
-            initCircleLayoutParam();
+            if(initCircleLayoutParam() != true) return -1;
         }
         return mFullSize;
     }
 
+    /**
+     * Returns a vertical position of the Quick Circle from the top. This can be used to properly locate a layout in the Quick Circle window.
+     * @return a position from the top if required configs have values.
+     * -1 if required configs are not loaded.
+     */
     public int getYpos() {
         if(mTopOffset == 0) {
-            initCircleLayoutParam();
+            if(initCircleLayoutParam() != true) return -1;
         }
         return mTopOffset;
     }

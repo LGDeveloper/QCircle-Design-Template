@@ -10,26 +10,19 @@ import com.lge.qcircle.utils.QCircleFeature;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.IntentFilter;
+
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
+
 
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-
 import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.ViewFlipper;
+
 
 
 public class MainActivity extends Activity {
@@ -125,6 +118,11 @@ public class MainActivity extends Activity {
 
             }
         });
+        //sujin.cho
+        RelativeLayout.LayoutParams btnParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        btnParams.topMargin = QCircleFeature.getRelativePixelValue(this, 300);
+        mButton.setLayoutParams(btnParams);
+        main.addView(mButton);
 
 		/* Customize the first side bar*/
     	//If the app has more than one side bar, CONTENT_SIDE_2 can be used for the second side bar.
@@ -136,8 +134,6 @@ public class MainActivity extends Activity {
 			params.width = QCircleFeature.getRelativePixelValue(this,400);
 			side1.setLayoutParams(params);
 
-            //sujin.cho
-            side1.addView(mButton);
 		}
 		//**[END]
 

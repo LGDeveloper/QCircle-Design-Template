@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.lge.qcircle.template.QCircleTitle;
 
 /**
  * The {@code QCircleDialog} class provides a Dialog for Quick Circle.<P>
@@ -62,6 +63,9 @@ public class QCircleDialog {
 		private View.OnClickListener positiveButtonListener;
 		private View.OnClickListener negativeButtonListener = null;
 		private DialogMode mode = DialogMode.Ok;
+
+        //sujin.cho
+        private QCircleTitle mTitle = null;
 
 		/**
 		 * sets title of the Dialog.<P>
@@ -169,9 +173,9 @@ public class QCircleDialog {
 		this.activityTemplate = activityTemplate;
 		RelativeLayout layout = (RelativeLayout) activityTemplate.getLayoutById(TemplateTag.CONTENT).getParent();
 		final QCircleTemplate template = new QCircleTemplate(activity);
-		template.setTitle(title == null ? "" : title, Color.WHITE, activity.getResources().getColor(
-				mode == DialogMode.Error ? R.color.dialog_title_background_color_error : R.color.dialog_title_background_color_regular));
-		template.setTitleTextSize(17);
+		//template.setTitle(title == null ? "" : title, Color.WHITE, activity.getResources().getColor(
+		//		mode == DialogMode.Error ? R.color.dialog_title_background_color_error : R.color.dialog_title_background_color_regular));
+		//template.setTitleTextSize(17);
 		RelativeLayout dialogLayout = (RelativeLayout) activity.getLayoutInflater()
 				.inflate(mode == DialogMode.YesNo ? R.layout.qcircle_dialog_layout_yes_no : R.layout.qcircle_dialog_layout, layout, false);
 		if (text != null) {

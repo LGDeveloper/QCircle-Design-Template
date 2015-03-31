@@ -128,7 +128,7 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	}
 
     /**
-     * uses dark theme for the back button.<P>
+     * Uses dark theme for the back button.<P>
      *
      * @param isDark  flag which indicates whether dark theme is used or not.
      * @author Yoav Sternberg
@@ -139,7 +139,7 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	}
 
 	/**
-	 * gets the view of the button.
+	 * Gets the view of the button.
 	 *
 	 * @return button view
 	 */
@@ -148,7 +148,7 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	}
 
 	/**
-	 * gets the ID of the button view.
+	 * Gets the ID of the button view.
 	 *
 	 * @return ID of the button view
 	 */
@@ -157,7 +157,7 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	}
 
 	/**
-	 * sets the background of the button transparent.
+	 * Sets the background of the button transparent.
 	 */
 	public void setBackgroundTransparent() {
 		if (mBtnContent != null)
@@ -165,12 +165,12 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 	}
 
     /**
-     * adds this to the template.
+     * Adds this to the template.
      * @param parent
      * @author sujin.cho
      */
     @Override
-    public void addTo(RelativeLayout parent, RelativeLayout content) {
+    protected void addTo(RelativeLayout parent, RelativeLayout content) {
         if ((mBtnContent != null) && (parent != null)) {
             setLayoutParams();
             parent.addView(mBtnContent);

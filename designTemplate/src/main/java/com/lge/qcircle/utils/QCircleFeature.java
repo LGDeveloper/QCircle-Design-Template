@@ -18,7 +18,6 @@ public class QCircleFeature {
     protected static final String TAG = "QCircleFeature";
 
     //needs to remove intent
-    private static Intent numberBadge = null;
     private static final String ACTION_UPDATE_NOTIFICATION = "com.lge.launcher.intent.action.BADGE_COUNT_UPDATE";
     private static final int G3_DIAMETER = 1046;
     private static int mFullSize = 0; // circle diameter
@@ -26,16 +25,16 @@ public class QCircleFeature {
     /**
      * Activates a number badge with a count.
      * The number badge will show up on the icon.
+     * @param context
      * @param count
      */
-    public void activateNumberBadge(Context context, int count)
+    public Intent activateNumberBadge(Context context, int count)
     {
-        if(numberBadge == null)
-            numberBadge = new Intent(ACTION_UPDATE_NOTIFICATION);
+        Intent numberBadge = new Intent(ACTION_UPDATE_NOTIFICATION);
         numberBadge.putExtra("badge_count_package_name", context.getPackageName());
         numberBadge.putExtra("badge_count_class_name",  context.getClass().getName());
         numberBadge.putExtra("badge_count", count);
-        context.sendBroadcast(numberBadge);
+        return numberBadge;
     }
 
     /**
@@ -43,15 +42,14 @@ public class QCircleFeature {
      * @param context
      * @param count
      */
-    public void setNumberBadge(Context context, int count)
+    public void setNumberBadge(Context context, Intent intentForBadge, int count)
     {
-        if(numberBadge == null)
+        if(intentForBadge == null)
         {
-            activateNumberBadge(context,count);
-            return;
+            intentForBadge = activateNumberBadge(context,count);
         }
-        numberBadge.putExtra("badge_count", count);
-        context.sendBroadcast(numberBadge);
+        intentForBadge.putExtra("badge_count", count);
+        context.sendBroadcast(intentForBadge);
     }
 
     /**
