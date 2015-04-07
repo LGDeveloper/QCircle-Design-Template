@@ -29,6 +29,8 @@ public final class QCircleTitle extends QCircleTemplateElement{
     private final float fixedTitleRatio = 0.23f; // Title height ratio
     private static int mFullSize = 0; // circle diameter
 
+    private boolean useDefaultHeight = true;
+
 	/**
 	 * creates a title bar with a text.
 	 * <p>
@@ -260,7 +262,10 @@ public final class QCircleTitle extends QCircleTemplateElement{
     protected void addTo(RelativeLayout parent, RelativeLayout content) {
 
         if((mRootView != null) && (parent != null)) {
-            setLayoutParams();
+
+            if(useDefaultHeight == true) {
+                setLayoutParams(fixedTitleRatio);
+            }
             parent.addView(mRootView);
             adjustLayout(content);
         }
@@ -276,13 +281,15 @@ public final class QCircleTitle extends QCircleTemplateElement{
         }
     }
 
-    private void setLayoutParams()
+
+    private void setLayoutParams(float heightRatio)
     {
-        int titleAreaHeight = (int)(mFullSize * fixedTitleRatio);
+        int titleAreaHeight = (int)(mFullSize * heightRatio);
         mParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, titleAreaHeight);
         mParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
         mRootView.setLayoutParams(mParams);
     }
+
 
     /**
     * Changes a height of title view.
@@ -291,15 +298,8 @@ public final class QCircleTitle extends QCircleTemplateElement{
     */
     public void setTitleHeight(float heightRatio)
     {
-
-        if(mRootView != null) {
-            if (heightRatio <= 0) // adjust the height
-                heightRatio = fixedTitleRatio;
-            mParams = (RelativeLayout.LayoutParams) mRootView.getLayoutParams();
-            mParams.height = (int) (mFullSize * heightRatio);
-            mParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
-            mRootView.setLayoutParams(mParams);
-        }
+        useDefaultHeight = false;
+        setLayoutParams(heightRatio);
     }
 
 

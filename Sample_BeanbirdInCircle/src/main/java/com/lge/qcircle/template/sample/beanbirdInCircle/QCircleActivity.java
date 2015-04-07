@@ -3,19 +3,25 @@ package com.lge.qcircle.template.sample.beanbirdInCircle;
 
 
 import android.app.Activity;
-import android.content.ContentResolver;
+
 import android.content.Context;
 import android.content.Intent;
+
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+
 import android.view.Window;
-import android.view.WindowManager;
+
 import android.widget.Button;
+
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.view.ViewGroup.LayoutParams;
+import com.lge.qcircle.template.ButtonTheme;
 import com.lge.qcircle.template.QCircleTemplate;
 import com.lge.qcircle.template.QCircleTitle;
 import com.lge.qcircle.template.TemplateTag;
@@ -40,6 +46,8 @@ public class QCircleActivity extends Activity {
 	private Drawable mypic2 = null;
 	private Boolean mSwitched = false;
 
+    private final static String TAG = "QCircleActivity";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -58,7 +66,7 @@ public class QCircleActivity extends Activity {
 
 		//add back button
         mBackButton = new QCircleBackButton(this);
-        mBackButton.isDark(true);
+        mBackButton.setTheme(ButtonTheme.DARK);
         template.addElement(mBackButton);
 
 
@@ -82,9 +90,12 @@ public class QCircleActivity extends Activity {
 		//create button for switchin background
 		Button btn = new Button(mContext);
 		btn.setBackgroundResource(R.drawable.button);
-        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.CENTER_IN_PARENT);
-        params.topMargin = QCircleFeature.getRelativePixelValue(this,300);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+       // params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        params.topMargin = QCircleFeature.getRelativePixelValue(this,270);
+        params.width = QCircleFeature.getRelativePixelValue(this,200);
+        params.height = QCircleFeature.getRelativePixelValue(this,200);
+        params.leftMargin = QCircleFeature.getRelativePixelValue(this,600);
 		btn.setLayoutParams(params);
 		btn.setOnClickListener(new OnClickListener() {
 			
@@ -104,12 +115,31 @@ public class QCircleActivity extends Activity {
 		});
 
         //create button for switchin background
-        Button notibtn = new Button(mContext);
-        notibtn.setText("IncreaseNumberBadge");
-        notibtn.setOnClickListener(new OnClickListener() {
+        Button notiBtn = new Button(mContext);
+        notiBtn.setText("Number Badge");
+        params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.ALIGN_LEFT, btn.getId());
+        params.topMargin = QCircleFeature.getRelativePixelValue(this,270);
+        params.leftMargin = QCircleFeature.getRelativePixelValue(this,50);
+        notiBtn.setLayoutParams(params);
+
+        Log.d(TAG, this.getPackageName());
+        Log.d(TAG, mContext.getClass().getName());
+        Log.d(TAG, this.getClass().getName());
+
+        //Numberbadge
+        final Activity activity = this;
+        final Intent numberIntent  = QCircleFeature.activateNumberBadge(activity, 1);
+        mContext.sendBroadcast(numberIntent);
+
+        notiBtn.setOnClickListener(new OnClickListener() {
+
+            int count = 1;
              @Override
              public void onClick(View v) {
-
+                 count++;
+                 QCircleFeature.setNumberBadge(activity, numberIntent, count);
+                 mContext.sendBroadcast(numberIntent);
              }
          });
 
@@ -118,6 +148,8 @@ public class QCircleActivity extends Activity {
         //get main content area
         RelativeLayout main = template.getLayoutById(TemplateTag.CONTENT_MAIN);
         main.addView(btn);
+        main.addView(notiBtn);
+
 		//[END]
 				
 		setContentView(template.getView());

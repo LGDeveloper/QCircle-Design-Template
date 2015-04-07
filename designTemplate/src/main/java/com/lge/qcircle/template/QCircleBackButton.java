@@ -99,7 +99,7 @@ public final class QCircleBackButton extends QCircleTemplateElement{
 			mBtnContent.setPadding(0,(int)(mButtonHeight*PADDING_RATIO), 0, (int)(mButtonHeight*PADDING_RATIO));
 			// set attributes
 			mBtnContent.setId(R.id.backButton);
-			setTheme();
+            initTheme();
 			mBtnContent.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -122,7 +122,7 @@ public final class QCircleBackButton extends QCircleTemplateElement{
      * sets theme of the back button.
      * @author Yoav Sternberg
      */
-	private void setTheme() {
+	private void initTheme() {
 		mBtnContent.setImageResource(isDark ? R.drawable.backover_dark : R.drawable.backover);
 		mBtnContent.setBackgroundResource(isDark ? R.drawable.back_button_background_dark : R.drawable.back_button_background);
 	}
@@ -132,11 +132,33 @@ public final class QCircleBackButton extends QCircleTemplateElement{
      *
      * @param isDark  flag which indicates whether dark theme is used or not.
      * @author Yoav Sternberg
+     * @deprecated
      */
 	public void isDark(boolean isDark) {
 		this.isDark = isDark;
-		setTheme();
+        initTheme();
 	}
+
+    /**
+     * Sets a theme for the back button. This provides three types of themes.
+     *
+     * @param type
+     */
+    public void setTheme(ButtonTheme type)
+    {
+        if(mBtnContent != null) {
+            if (type == ButtonTheme.DARK) {
+                mBtnContent.setImageResource(R.drawable.backover_dark);
+                mBtnContent.setBackgroundResource(R.drawable.back_button_background_dark);
+            } else if (type == ButtonTheme.LIGHT) {
+                mBtnContent.setImageResource(R.drawable.backover);
+                mBtnContent.setBackgroundResource(R.drawable.back_button_background);
+            } else if (type == ButtonTheme.TRANSPARENT) {
+                mBtnContent.setBackgroundColor(Color.TRANSPARENT);
+            }
+        }
+    }
+
 
 	/**
 	 * Gets the view of the button.

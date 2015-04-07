@@ -1,5 +1,6 @@
 package com.lge.qcircle.template.sample.SimpleCircle;
 
+import com.lge.qcircle.template.ButtonTheme;
 import com.lge.qcircle.template.QCircleBackButton;
 import com.lge.qcircle.template.QCircleDialog;
 import com.lge.qcircle.template.QCircleTemplate;
@@ -13,6 +14,8 @@ import android.content.Intent;
 
 
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 
@@ -46,27 +49,26 @@ public class MainActivity extends Activity {
 //		template = new QCircleTemplate(this, R.layout.circle_circle);
 		template = new QCircleTemplate(this, TemplateType.CIRCLE_VERTICAL);
 		//**[END]
-		
-		//**[START] Add a title bar
-		/*Add text*/
-        mTitle = new QCircleTitle(this,"My Title");
+
+        //**[START] Add a title bar
+        mTitle = new QCircleTitle(this, "My title");
         mTitle.setTextSize(20);
+        mTitle.setBackgroundColor(Color.LTGRAY);
         template.addElement(mTitle);
+
+
 
 		/*
 		//If you want to add an image or sub layout to a title bar
 		//create a new view and set it as a title*/
-		//View newView = (View) getLayoutInflater().inflate(R.layout.activity_main, null);
-        //mTitle.setView(newView);
+	  //View newView = (View) getLayoutInflater().inflate(R.layout.activity_main, null);
+      //mTitle.setView(newView);
 		//**[END]
 
 
 		//**[START] Add a back button
         mBackButton = new QCircleBackButton(this);
         template.addElement(mBackButton);
-
-
-
 		//**[END]
 						
 		//**[START] Customize the Layout
@@ -131,7 +133,7 @@ public class MainActivity extends Activity {
 			/* Add image to side bar*/
 			side1.setBackgroundResource(R.drawable.ic_launcher);
 			LayoutParams params = side1.getLayoutParams();
-			params.width = QCircleFeature.getRelativePixelValue(this,400);
+			//params.width = QCircleFeature.getRelativePixelValue(this,400);
 			side1.setLayoutParams(params);
 
 		}

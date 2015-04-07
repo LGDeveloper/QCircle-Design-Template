@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
 import android.util.Log;
-
+import android.app.Activity;
 
 
 /**
@@ -15,41 +15,51 @@ import android.util.Log;
  */
 public class QCircleFeature {
 
-    protected static final String TAG = "QCircleFeature";
 
     //needs to remove intent
     private static final String ACTION_UPDATE_NOTIFICATION = "com.lge.launcher.intent.action.BADGE_COUNT_UPDATE";
     private static final int G3_DIAMETER = 1046;
     private static int mFullSize = 0; // circle diameter
+    private final static String TAG = "QCircleFeature";
 
     /**
      * Activates a number badge with a count.
      * The number badge will show up on the icon.
-     * @param context
+     * @param activity
      * @param count
      */
-    public Intent activateNumberBadge(Context context, int count)
+    public static Intent activateNumberBadge(Activity activity, int count)
     {
         Intent numberBadge = new Intent(ACTION_UPDATE_NOTIFICATION);
-        numberBadge.putExtra("badge_count_package_name", context.getPackageName());
-        numberBadge.putExtra("badge_count_class_name",  context.getClass().getName());
+        numberBadge.putExtra("badge_count_package_name", activity.getPackageName());
+        numberBadge.putExtra("badge_count_class_name",  activity.getClass().getName());
         numberBadge.putExtra("badge_count", count);
         return numberBadge;
     }
 
     /**
      * Changes a count number of a number badge.
-     * @param context
+     * @param activity
      * @param count
      */
-    public void setNumberBadge(Context context, Intent intentForBadge, int count)
+    public static void setNumberBadge(Activity activity, Intent intentForBadge, int count)
     {
         if(intentForBadge == null)
         {
-            intentForBadge = activateNumberBadge(context,count);
+            intentForBadge = activateNumberBadge(activity,count);
         }
         intentForBadge.putExtra("badge_count", count);
-        context.sendBroadcast(intentForBadge);
+       // context.sendBroadcast(intentForBadge);
+    }
+
+    public static void removeNumberBadge(Activity activity, Intent intentForBadge)
+    {
+        if(intentForBadge == null)
+        {
+            Log.e(TAG, "Intent is null!!");
+        }
+        intentForBadge.putExtra("badge_count", 0);
+
     }
 
     /**
