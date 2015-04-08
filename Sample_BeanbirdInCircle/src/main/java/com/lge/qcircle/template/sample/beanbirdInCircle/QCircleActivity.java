@@ -123,9 +123,6 @@ public class QCircleActivity extends Activity {
         params.leftMargin = QCircleFeature.getRelativePixelValue(this,50);
         notiBtn.setLayoutParams(params);
 
-        Log.d(TAG, this.getPackageName());
-        Log.d(TAG, mContext.getClass().getName());
-        Log.d(TAG, this.getClass().getName());
 
         //Numberbadge
         final Activity activity = this;
