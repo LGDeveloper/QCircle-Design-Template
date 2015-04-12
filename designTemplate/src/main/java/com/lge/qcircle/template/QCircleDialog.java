@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.lge.qcircle.template.QCircleTitle;
 
 /**
  * The {@code QCircleDialog} class provides a Dialog for Quick Circle.<P>
@@ -24,7 +23,7 @@ public class QCircleDialog {
 	QCircleTemplate activityTemplate;
 	// Dialog properties
 	String title;
-	String text;
+	CharSequence text;
 	String positiveButtonText;
 	String negativeButtonText;
 	Drawable image;
@@ -56,7 +55,7 @@ public class QCircleDialog {
 	 */
 	public static class Builder {
 		private String title = null;
-		private String text;
+		private CharSequence text;
 		private String positiveButtonText;
 		private String negativeButtonText;
 		private Drawable image = null;
@@ -64,8 +63,8 @@ public class QCircleDialog {
 		private View.OnClickListener negativeButtonListener = null;
 		private DialogMode mode = DialogMode.Ok;
 
-        //sujin.cho
-        private QCircleTitle mTitle = null;
+		//sujin.cho
+		private QCircleTitle mTitle = null;
 
 		/**
 		 * sets title of the Dialog.<P>
@@ -84,7 +83,7 @@ public class QCircleDialog {
 		 * @param text main text. It will be displayed on the middle of the dialog.
 		 * @return a Builder with main text
 		 */
-		public Builder setText(String text) {
+		public Builder setText(CharSequence text) {
 			this.text = text;
 			return this;
 		}
@@ -138,8 +137,9 @@ public class QCircleDialog {
 		 *
 		 * @param positiveButtonText text for positive button
 		 */
-		public void setPositiveButtonText(String positiveButtonText) {
+		public Builder setPositiveButtonText(String positiveButtonText) {
 			this.positiveButtonText = positiveButtonText;
+			return this;
 		}
 
 		/**
@@ -147,8 +147,9 @@ public class QCircleDialog {
 		 *
 		 * @param negativeButtonText text for negative button
 		 */
-		public void setNegativeButtonText(String negativeButtonText) {
+		public Builder setNegativeButtonText(String negativeButtonText) {
 			this.negativeButtonText = negativeButtonText;
+			return this;
 		}
 
 		/**
@@ -173,9 +174,10 @@ public class QCircleDialog {
 		this.activityTemplate = activityTemplate;
 		RelativeLayout layout = (RelativeLayout) activityTemplate.getLayoutById(TemplateTag.CONTENT).getParent();
 		final QCircleTemplate template = new QCircleTemplate(activity);
-		//template.setTitle(title == null ? "" : title, Color.WHITE, activity.getResources().getColor(
-		//		mode == DialogMode.Error ? R.color.dialog_title_background_color_error : R.color.dialog_title_background_color_regular));
-		//template.setTitleTextSize(17);
+		QCircleTitle qCircleTitle = new QCircleTitle(activity, title == null ? "" : title, Color.WHITE,
+				activity.getResources().getColor(mode == DialogMode.Error ? R.color.dialog_title_background_color_error : R.color.dialog_title_background_color_regular));
+		qCircleTitle.setTextSize(17f);
+		template.addElement(qCircleTitle);
 		RelativeLayout dialogLayout = (RelativeLayout) activity.getLayoutInflater()
 				.inflate(mode == DialogMode.YesNo ? R.layout.qcircle_dialog_layout_yes_no : R.layout.qcircle_dialog_layout, layout, false);
 		if (text != null) {
