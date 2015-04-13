@@ -88,7 +88,7 @@ public final class QCircleTitle extends QCircleTemplateElement{
 	 * @param backgroundColor The background color of the title
 	 */
 	public QCircleTitle(Context context, View title, int backgroundColor) {
-		if (context != null) {
+		//if (context != null) {
 			mContext = context;
             getTemplateDiameter(context);
 			mRootView = createRootView(context, backgroundColor);
