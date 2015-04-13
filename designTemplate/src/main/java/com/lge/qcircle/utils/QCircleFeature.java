@@ -100,7 +100,7 @@ public class QCircleFeature {
                 Log.e(TAG, "Content Resolver is null");
                 return false;
             }
-            //default is 1. (LG framework setting. When user gets a phone, the case is enable as default)
+            //default is 1. (LG framework setting. When user gets a phone, the case is enabled as default)
             smartcaseEnabled = Settings.Global.getInt(contentResolver,"quick_view_enable", 1) == 1 ? true : false;
             if(!smartcaseEnabled) {
                 Log.i(TAG, "No smart case available");

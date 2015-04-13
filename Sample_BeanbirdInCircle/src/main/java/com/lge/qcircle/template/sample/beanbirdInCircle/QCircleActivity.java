@@ -11,7 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
-import android.util.Log;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -87,7 +87,7 @@ public class QCircleActivity extends Activity {
 		//set background
 		template.setBackgroundDrawable(mypic);
 
-		//create button for switchin background
+		//create button for switching background
 		Button btn = new Button(mContext);
 		btn.setBackgroundResource(R.drawable.button);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
