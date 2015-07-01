@@ -42,7 +42,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	 * @param context {@code Activity} which has a circle view.<br>
 	 *                If it is null, you might get errors when you use method of this class.
 	 */
-	public QCircleTitle(Context context, String title) {
+	public QCircleTitle(Context context, CharSequence title) {
 		this(context, title, Color.BLACK, Color.TRANSPARENT);
 	}
 
@@ -59,7 +59,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	 * @param titleTextColor  The color of the title
 	 * @param backgroundColor The background color of the title
 	 */
-	public QCircleTitle(Context context, String title, int titleTextColor, int backgroundColor) {
+	public QCircleTitle(Context context, CharSequence title, int titleTextColor, int backgroundColor) {
 		this(context, createTextView(context, title, titleTextColor), backgroundColor);
 	}
 
@@ -77,7 +77,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	 * @param backgroundColor The background color of the title
 	 * @param textSize        The text size
 	 */
-	public QCircleTitle(Context context, String title, int titleTextColor, int backgroundColor, float textSize) {
+	public QCircleTitle(Context context, CharSequence title, int titleTextColor, int backgroundColor, float textSize) {
 		this(context, title, titleTextColor, backgroundColor);
 		setTextSize(textSize);
 	}
@@ -159,7 +159,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	 *              If it is null, no title text will be shown but the title bar will occupy some
 	 *              space.
 	 */
-	public void setText(String title) {
+	public void setText(CharSequence title) {
 		if (mRootView != null && mTitleView != null)
 			mTitleView.setText(title);
 		else if (mRootView != null) {
@@ -242,7 +242,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	 * @param title   title text
 	 * @return TextView with the given text
 	 */
-	private static TextView createTextView(Context context, String title) {
+	private static TextView createTextView(Context context, CharSequence title) {
 		return createTextView(context, title, Color.BLACK);
 	}
 
@@ -254,7 +254,7 @@ public final class QCircleTitle extends QCircleTemplateElement {
 	 * @param textColor the color of the text
 	 * @return TextView with the given text
 	 */
-	private static TextView createTextView(Context context, String title, int textColor) {
+	private static TextView createTextView(Context context, CharSequence title, int textColor) {
 		TextView text = new TextView(context);
 		text.setText(title);
 		text.setBackgroundColor(Color.TRANSPARENT);
