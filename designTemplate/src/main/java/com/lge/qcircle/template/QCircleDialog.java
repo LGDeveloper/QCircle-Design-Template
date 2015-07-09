@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -169,8 +170,8 @@ public class QCircleDialog {
     public void show(final Activity activity, QCircleTemplate activityTemplate) {
         this.activity = activity;
         this.activityTemplate = activityTemplate;
-        RelativeLayout layout = (RelativeLayout) activityTemplate.getLayoutById(TemplateTag.CONTENT).getParent();
-        final QCircleTemplate template = new QCircleTemplate(activity, TemplateType.CIRCLE_EMPTY, false);
+        ViewGroup layout = (ViewGroup) activityTemplate.getView().getParent();
+        final QCircleTemplate template = new QCircleTemplate(activity, TemplateType.CIRCLE_EMPTY);
         QCircleTitle qCircleTitle = new QCircleTitle(activity, title == null ? "" : title, Color.WHITE,
                 activity.getResources().getColor(mode == DialogMode.Error ? R.color.dialog_title_background_color_error : R.color.dialog_title_background_color_regular));
         qCircleTitle.setTextSize(17f);
@@ -227,6 +228,7 @@ public class QCircleDialog {
 
         }
         template.getLayoutById(TemplateTag.CONTENT).addView(dialogLayout);
+        activityTemplate.getView().setVisibility(View.GONE);
         layout.addView(templateLayout = template.getView());
     }
 
@@ -234,7 +236,8 @@ public class QCircleDialog {
      * hides the dialog.
      */
     public void hide() {
-        ((RelativeLayout) activityTemplate.getLayoutById(TemplateTag.CONTENT).getParent()).removeView(templateLayout);
+        ((ViewGroup) activityTemplate.getView().getParent()).removeView(templateLayout);
+        activityTemplate.getView().setVisibility(View.VISIBLE);
         templateLayout = null;
     }
 
